@@ -2,54 +2,62 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { media } from '../styles/media';
 import { fadeIn } from '../styles/animations';
-import LanguageSwitcher from './LanguageSwitcher';
 import { ContentContainer } from '../styles/ContentContainer';
 
 const HeaderWrapper = styled.header`
-  background-color: #282c34;
-  padding: 40px 0;
+  background-color: transparent;
+  padding: 120px 20px 60px;
   color: white;
   animation: ${fadeIn} 1s ease-in-out;
   width: 100%;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
 
   ${media.tablet`
-    padding: 30px 0;
+    padding: 100px 15px 40px;
+    min-height: calc(100vh - 180px);
   `}
 
   ${media.mobile`
-    padding: 20px 0;
+    padding: 90px 10px 30px;
+    min-height: calc(100vh - 160px);
   `}
 `;
 
 const HeaderContent = styled(ContentContainer)`
-  position: relative;
   text-align: center;
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin: 0;
+  text-shadow: 0 0 20px rgba(100, 150, 255, 0.5);
 
   ${media.tablet`
-    font-size: 2rem;
+    font-size: 2.5rem;
   `}
 
   ${media.mobile`
-    font-size: 1.5rem;
+    font-size: 2rem;
   `}
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: normal;
-  margin: 10px 0 0;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.8);
 
   ${media.tablet`
-    font-size: 1rem;
+    font-size: 1.2rem;
   `}
 
   ${media.mobile`
-    font-size: 0.9rem;
+    font-size: 1rem;
   `}
 `;
 
@@ -59,7 +67,6 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContent>
-        <LanguageSwitcher />
         <Title>{t('title')}</Title>
         <Subtitle>{t('subtitle')}</Subtitle>
       </HeaderContent>

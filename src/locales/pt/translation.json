@@ -3,5 +3,44 @@
   "subtitle": "Engenheiro de Software | InfoSec | DevOps",
   "aboutTitle": "Sobre Mim",
   "aboutText": "Atuo no desenvolvimento de sistemas críticos, com foco em arquitetura segura, alta performance e manutenção de sistemas legados. Tenho sólida experiência em PHP (Hyperf, Laravel, CodeIgniter) e na construção de bibliotecas open source focadas em produtividade e integração. Com experiência internacional no desenvolvimento de aplicações para clientes na Europa e América do Norte, sou especialista em traduzir necessidades de negócio em requisitos técnicos claros e objetivos.",
-  "technologiesTitle": "Tecnologias & Ferramentas"
+  "technologiesTitle": "Tecnologias & Ferramentas",
+  "navbar": {
+    "presentation": "Sobre",
+    "projects": "Projetos",
+    "company": "Empresa",
+    "contact": "Contato"
+  },
+  "presentation": {
+    "title": "Sobre Mim",
+    "intro": "Olá! Sou João Emanuel, um Engenheiro de Software apaixonado com anos de experiência no desenvolvimento de soluções robustas e escaláveis.",
+    "experience": "Sou especialista em desenvolvimento full-stack com forte foco em tecnologias backend, segurança e práticas DevOps. Minha experiência abrange PHP, JavaScript/TypeScript e frameworks modernos como React, Next.js, Node.js e Nest.js.",
+    "passion": "Sou apaixonado por código limpo, boas práticas e pela construção de sistemas que fazem diferença real. Adoro enfrentar desafios complexos e transformar requisitos de negócio em soluções técnicas elegantes."
+  },
+  "projects": {
+    "title": "Meus Projetos",
+    "project1": {
+      "title": "Sistema de Gestão Empresarial",
+      "description": "Sistema ERP completo construído com PHP (Laravel) e React, gerenciando estoque, vendas e gestão financeira para empresas de médio porte."
+    },
+    "project2": {
+      "title": "Dashboard de Monitoramento em Tempo Real",
+      "description": "Dashboard de alta performance usando Next.js e Node.js com WebSocket para visualização de dados e monitoramento de sistemas em tempo real."
+    },
+    "project3": {
+      "title": "Bibliotecas Open Source",
+      "description": "Desenvolvedor de múltiplas bibliotecas PHP open-source focadas em integração de APIs, validação de dados e ferramentas de produtividade para desenvolvedores."
+    }
+  },
+  "company": {
+    "title": "Experiência Profissional",
+    "technologies": "Tecnologias & Ferramentas",
+    "builders": "Atuo como Engenheiro de Software na Builders, desenvolvendo soluções críticas e arquitetando sistemas escaláveis com foco em performance e segurança.",
+    "extds": "Líder de Projetos na EXTDS Portugal/Bélgica, coordenando equipes internacionais e gerenciando o desenvolvimento de aplicações para clientes na Europa."
+  },
+  "contact": {
+    "title": "Vamos Conversar!",
+    "linkedin": "Conecte-se comigo no LinkedIn",
+    "email": "Envie-me um email",
+    "github": "Confira meu código no GitHub"
+  }
 }

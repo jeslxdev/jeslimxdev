@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# Portfólio Pessoal - jeslimx
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório do meu portfólio pessoal, desenvolvido com tecnologias modernas para apresentar minhas habilidades, projetos e experiência profissional.
 
-Currently, two official plugins are available:
+##  Arquitetura e Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto foi estruturado com foco em componentização, performance e manutenibilidade.
 
-## React Compiler
+-   **Framework Principal**: React 18+ com Vite
+-   **Linguagem**: TypeScript
+-   **Estilização**: Styled Components (CSS-in-JS)
+-   **Internacionalização**: `i18next` e `react-i18next` para suporte a múltiplos idiomas (PT/EN).
+-   **Animações**:
+    -   Fundo dinâmico criado com HTML5 Canvas.
+    -   Transições de componentes baseadas em CSS com `cubic-bezier` para uma experiência de usuário fluida.
+-   **Arquitetura de Componentes**:
+    -   O estado principal da navegação é controlado no `App.tsx`.
+    -   As seções (`Presentation`, `Projects`, `Company`, `Contact`) são modais que aparecem com animações direcionais.
+    -   Componentes de UI reutilizáveis (`Title`, `Wrapper`, etc.) são centralizados para consistência.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Deploy
 
-Note: This will impact Vite dev & build performances.
+A aplicação está configurada para ser executada em um contêiner Docker com Nginx, otimizado para performance e segurança, e pronta para ser distribuída via Cloudflare.
 
-## Expanding the ESLint configuration
+Para instruções detalhadas de deploy, veja o **[Guia de Deploy](./docs/DEPLOYMENT.md)**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como Executar Localmente
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clone o repositório:**
+    ```sh
+    git clone https://github.com/jeslxdev/jeslimxdev.git
+    ```
+2.  **Instale as dependências:**
+    ```sh
+    npm install
+    ```
+3.  **Inicie o servidor de desenvolvimento:**
+    ```sh
+    npm run dev
+    ```
+A aplicação estará disponível em `http://localhost:5173`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

@@ -3,5 +3,44 @@
   "subtitle": "Software Engineer | InfoSec | DevOps",
   "aboutTitle": "About Me",
   "aboutText": "I work on critical systems development, focusing on secure architecture, high performance, and legacy system maintenance. I have solid experience in PHP (Hyperf, Laravel, CodeIgniter) and building open source libraries focused on productivity and integration. With international experience developing applications for clients in Europe and North America, I specialize in translating business needs into clear and objective technical requirements.",
-  "technologiesTitle": "Technologies & Tools"
+  "technologiesTitle": "Technologies & Tools",
+  "navbar": {
+    "presentation": "About",
+    "projects": "Projects",
+    "company": "Company",
+    "contact": "Contact"
+  },
+  "presentation": {
+    "title": "About Me",
+    "intro": "Hello! I'm João Emanuel, a passionate Software Engineer with years of experience in developing robust and scalable solutions.",
+    "experience": "I specialize in full-stack development with a strong focus on backend technologies, security, and DevOps practices. My experience spans across PHP, JavaScript/TypeScript, and modern frameworks like React, Next.js, Node.js, and Nest.js.",
+    "passion": "I'm passionate about clean code, best practices, and building systems that make a real difference. I love tackling complex challenges and transforming business requirements into elegant technical solutions."
+  },
+  "projects": {
+    "title": "My Projects",
+    "project1": {
+      "title": "Enterprise Management System",
+      "description": "Complete ERP system built with PHP (Laravel) and React, handling inventory, sales, and financial management for medium-sized companies."
+    },
+    "project2": {
+      "title": "Real-time Monitoring Dashboard",
+      "description": "High-performance dashboard using Next.js and Node.js with WebSocket for real-time data visualization and system monitoring."
+    },
+    "project3": {
+      "title": "Open Source Libraries",
+      "description": "Developer of multiple open-source PHP libraries focused on API integration, data validation, and development productivity tools."
+    }
+  },
+  "company": {
+    "title": "Professional Experience",
+    "technologies": "Technologies & Tools",
+    "builders": "Working as a Software Engineer at Builders, developing critical solutions and architecting scalable systems with focus on performance and security.",
+    "extds": "Project Leader at EXTDS Portugal/Belgium, coordinating international teams and managing application development for European clients."
+  },
+  "contact": {
+    "title": "Let's Connect!",
+    "linkedin": "Connect with me on LinkedIn",
+    "email": "Send me an email",
+    "github": "Check out my code on GitHub"
+  }
 }
