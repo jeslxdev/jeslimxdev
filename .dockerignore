@@ -1,0 +1,29 @@
+# Dependências do Node.js
+node_modules
+
+# Arquivos de log do npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretório de build (será gerado dentro do contêiner)
+dist
+build
+
+# Arquivos de ambiente local (se houver)
+.env
+.env.local
+.env.*.local
+
+# Arquivos do Docker que não precisam ser copiados para a imagem
+Dockerfile
+.dockerignore
+
+# Arquivos de configuração de IDEs
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
