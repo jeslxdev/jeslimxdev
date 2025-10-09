@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { media } from '../styles/media';
+import { Card as ProjectCard } from './common/Card';
 
 const ProjectsWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;
   right: ${props => props.$isVisible ? '0' : '-100%'};
-  top: 0;
-  height: 100vh;
-  width: 600px;
-  background: rgba(27, 61, 80, 0.95);
+  top: calc(var(--nav-safe-top) + var(--panel-gap-y));
+  height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
+  width: min(600px, calc(100% - var(--panel-gap-x)));
+  background: rgba(27, 61, 80, 0.25);
   backdrop-filter: blur(20px);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 500;
-  padding: 120px 40px 120px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 900;
+  padding: clamp(16px, 3vw, 28px);
   overflow-y: auto;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: -10px 0 60px rgba(0, 0, 0, 0.6);
@@ -36,58 +37,25 @@ const ProjectsWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   }
 
   ${media.tablet`
-    width: 80%;
-    padding: 100px 30px 100px;
+    width: calc(100% - var(--panel-gap-x));
+    padding: clamp(14px, 3vw, 24px);
+    height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
   `}
 
   ${media.mobile`
     width: 100%;
-    padding: 80px 25px;
+    top: calc(var(--nav-safe-top) + var(--panel-gap-y));
+    height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
+    padding: clamp(12px, 5vw, 24px);
     border-left: none;
   `}
 `;
 
 const Title = styled.h2`
   color: #f5f5f5;
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  margin-bottom: clamp(16px, 3vw, 30px);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-  ${media.mobile`
-    font-size: 1.5rem;
-  `}
-`;
-
-const ProjectCard = styled.div`
-  background: rgba(61, 58, 58, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  &:hover {
-    background: rgba(61, 58, 58, 0.8);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
-
-  h3 {
-    color: #f5f5f5;
-    margin: 0 0 10px 0;
-  }
-
-  p {
-    margin: 0;
-    color: rgba(245, 245, 245, 0.8);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  ${media.mobile`
-    padding: 18px;
-  `}
 `;
 
 interface ProjectsProps {

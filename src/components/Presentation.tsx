@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { media } from '../styles/media';
+import { Card } from './common/Card';
 
 const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;
   left: ${props => props.$isVisible ? '0' : '-100%'};
-  top: 0;
-  height: 100vh;
-  width: 600px;
-  background: rgba(27, 61, 80, 0.95);
+  top: calc(var(--nav-safe-top) + var(--panel-gap-y));
+  height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
+  width: min(600px, calc(100% - var(--panel-gap-x)));
+  background: rgba(27, 61, 80, 0.25); /* softer opacity */
   backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 500;
-  padding: 120px 40px 120px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 900;
+  padding: clamp(16px, 3vw, 28px);
   overflow-y: auto;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 10px 0 60px rgba(0, 0, 0, 0.6);
@@ -36,13 +37,15 @@ const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string
   }
 
   ${media.tablet`
-    width: 80%;
-    padding: 100px 30px 100px;
+    width: calc(100% - var(--panel-gap-x));
+    padding: clamp(14px, 3vw, 24px);
   `}
 
   ${media.mobile`
     width: 100%;
-    padding: 80px 25px;
+    top: calc(var(--nav-safe-top) + var(--panel-gap-y));
+    height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
+    padding: clamp(12px, 5vw, 24px);
     border-right: none;
   `}
 `;
@@ -63,10 +66,6 @@ const Content = styled.div`
   line-height: 1.7;
   font-size: 1rem;
 
-  p {
-    margin-bottom: 15px;
-  }
-
   ${media.mobile`
     font-size: 0.95rem;
     line-height: 1.6;
@@ -85,9 +84,15 @@ const Presentation = ({ isVisible, direction = 'left' }: PresentationProps) => {
     <PresentationWrapper $isVisible={isVisible} $direction={direction}>
       <Title>{t('presentation.title')}</Title>
       <Content>
-        <p>{t('presentation.intro')}</p>
-        <p>{t('presentation.experience')}</p>
-        <p>{t('presentation.passion')}</p>
+        <Card>
+          <p>{t('presentation.intro')}</p>
+        </Card>
+        <Card>
+          <p>{t('presentation.experience')}</p>
+        </Card>
+        <Card>
+          <p>{t('presentation.passion')}</p>
+        </Card>
       </Content>
     </PresentationWrapper>
   );

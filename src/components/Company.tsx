@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { media } from '../styles/media';
+import { Card } from './common/Card';
 
 const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;
-  top: calc(50% - 40px); /* Ajuste para centralizar acima do footer */
+  top: calc(50% + (var(--nav-safe-top) / 2) - 40px); /* Centralized, respecting navbar */
   left: 50%;
   transform: translate(-50%, -50%) scale(${props => props.$isVisible ? '1' : '0.8'});
   opacity: ${props => props.$isVisible ? '1' : '0'};
   width: 85%;
   max-width: 750px;
   height: auto;
-  max-height: 60vh; /* Reduzido para mais respiro */
-  background: rgba(27, 61, 80, 0.95);
+  max-height: calc(70vh);
+  background: rgba(27, 61, 80, 0.2);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 500;
-  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 900;
+  padding: clamp(16px, 3vw, 28px);
   overflow-y: auto;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
@@ -44,40 +45,30 @@ const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   ${media.tablet`
     padding: 30px;
     max-width: 85%;
-    max-height: 65vh;
+    max-height: 70vh;
     width: 90%;
   `}
 
   ${media.mobile`
-    padding: 25px; /* Aumentado */
+    padding: clamp(12px, 4vw, 20px); /* Compact for mobile */
     width: 92%;
     max-width: 95%;
-    max-height: 70vh; /* Ajustado */
-    top: calc(50% - 30px); /* Ajuste mobile */
+    top: calc(50% + (var(--nav-safe-top) / 2) - 30px);
+    max-height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
   `}
 `;
 
 const Title = styled.h2`
   color: #f5f5f5;
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  margin-bottom: clamp(16px, 3vw, 30px);
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-  ${media.tablet`
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-  `}
-
-  ${media.mobile`
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  `}
 `;
 
 const TechSection = styled.div`
   margin-bottom: 30px;
-  padding: 25px;
+  padding: clamp(16px, 3vw, 25px);
   background: rgba(61, 58, 58, 0.5);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -85,7 +76,7 @@ const TechSection = styled.div`
   h3 {
     color: #f5f5f5;
     margin: 0 0 20px 0;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     text-align: center;
   }
 
@@ -130,8 +121,8 @@ const TechIcons = styled.div`
 
 const Content = styled.div`
   color: rgba(245, 245, 245, 0.95);
-  line-height: 1.8;
-  font-size: 1.05rem;
+  line-height: 1.75;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
 
   p {
     margin-bottom: 18px;
@@ -141,7 +132,7 @@ const Content = styled.div`
     color: #f5f5f5;
     margin-top: 25px;
     margin-bottom: 15px;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     padding-left: 12px;
     border-left: 3px solid rgba(255, 255, 255, 0.3);
   }
@@ -199,11 +190,15 @@ const Company = ({ isVisible, direction = 'top' }: CompanyProps) => {
       </TechSection>
 
       <Content>
-        <h3>🏢 Builders</h3>
-        <p>{t('company.builders')}</p>
+        <Card>
+          <h3>🏢 Builders</h3>
+          <p>{t('company.builders')}</p>
+        </Card>
 
-        <h3>🌍 EXTDS - Portugal / Bélgica</h3>
-        <p>{t('company.extds')}</p>
+        <Card>
+          <h3>🌍 EXTDS - Portugal / Bélgica</h3>
+          <p>{t('company.extds')}</p>
+        </Card>
       </Content>
     </CompanyWrapper>
   );

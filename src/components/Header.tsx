@@ -6,7 +6,7 @@ import { ContentContainer } from '../styles/ContentContainer';
 
 const HeaderWrapper = styled.header`
   background-color: transparent;
-  padding: 120px 20px 60px;
+  padding: calc(var(--nav-safe-top) + 40px) 20px 60px;
   color: white;
   animation: ${fadeIn} 1s ease-in-out;
   width: 100%;
@@ -15,16 +15,16 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - var(--nav-safe-top) - 120px);
 
   ${media.tablet`
-    padding: 100px 15px 40px;
-    min-height: calc(100vh - 180px);
+    padding: calc(var(--nav-safe-top) + 30px) 15px 40px;
+    min-height: calc(100vh - var(--nav-safe-top) - 100px);
   `}
 
   ${media.mobile`
-    padding: 90px 10px 30px;
-    min-height: calc(100vh - 160px);
+    padding: calc(var(--nav-safe-top) + 20px) 10px 30px;
+    min-height: calc(100vh - var(--nav-safe-top) - 80px);
   `}
 `;
 

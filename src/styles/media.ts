@@ -8,9 +8,11 @@ const sizes = {
 
 type MediaSizes = keyof typeof sizes;
 
+type CssArg = string | number | CSSProp;
+
 export const media = Object.keys(sizes).reduce(
   (acc, label) => {
-    acc[label as MediaSizes] = (first: TemplateStringsArray, ...args: any[]) =>
+    acc[label as MediaSizes] = (first: TemplateStringsArray, ...args: CssArg[]) =>
       css`
         @media (max-width: ${sizes[label as MediaSizes]}px) {
           ${css(first, ...args)}
@@ -18,5 +20,5 @@ export const media = Object.keys(sizes).reduce(
       `;
     return acc;
   },
-  {} as Record<MediaSizes, (first: TemplateStringsArray, ...args: any[]) => CSSProp>
+  {} as Record<MediaSizes, (first: TemplateStringsArray, ...args: CssArg[]) => CSSProp>
 );

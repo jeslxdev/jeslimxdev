@@ -6,6 +6,9 @@ const MainContent = styled.main`
   background-color: transparent;
   position: relative;
   z-index: 100;
+  /* Ensure content starts below navbar and stays above footer */
+  padding-top: var(--nav-safe-top);
+  padding-bottom: calc(var(--footer-safe-bottom) + 20px);
 `;
 
 export default MainContent;

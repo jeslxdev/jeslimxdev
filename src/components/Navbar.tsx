@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { media } from '../styles/media';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -12,10 +13,10 @@ const NavbarWrapper = styled.nav`
   width: 90%;
   max-width: 1200px;
   padding: 15px 30px;
-  background: rgba(27, 61, 80, 0.9);
+  background: rgba(27, 61, 80, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
@@ -101,9 +102,38 @@ interface NavbarProps {
 
 const Navbar = ({ onNavigate }: NavbarProps) => {
   const { t } = useTranslation();
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // Measure navbar height + offset and expose as CSS variables to prevent content overlap
+  useLayoutEffect(() => {
+    const updateVars = () => {
+      const el = navRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const styles = getComputedStyle(el);
+      const topPx = parseFloat(styles.top || '0');
+      const height = rect.height;
+      const offset = Math.round(topPx + height);
+      const root = document.documentElement;
+      root.style.setProperty('--nav-height', `${Math.round(height)}px`);
+      root.style.setProperty('--nav-offset', `${offset}px`);
+      // Also a safer top offset that includes safe-area
+      const safeTop = Number.parseFloat(getComputedStyle(root).getPropertyValue('--safe-top')) || 0;
+      root.style.setProperty('--nav-safe-top', `${offset + safeTop}px`);
+    };
+
+    updateVars();
+    window.addEventListener('resize', updateVars);
+    const ro = new ResizeObserver(updateVars);
+    if (navRef.current) ro.observe(navRef.current);
+    return () => {
+      window.removeEventListener('resize', updateVars);
+      ro.disconnect();
+    };
+  }, []);
 
   return (
-    <NavbarWrapper>
+    <NavbarWrapper ref={navRef}>
       <Logo>JE</Logo>
       <NavLinks>
         <NavLink onClick={() => onNavigate('home')}>Home</NavLink>

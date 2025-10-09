@@ -54,16 +54,12 @@ const AnimatedBackground = () => {
       'rgba(90, 110, 130, ',    // Azul acinzentado
     ];
 
-    // Função para gerar números aleatórios
-    const generateRandomNumber = () => {
-      const types = [
-        () => Math.floor(Math.random() * 10).toString(), // 0-9
-        () => Math.floor(Math.random() * 100).toString(), // 00-99
-        () => Math.random().toFixed(2).substring(2), // decimais
-        () => Math.floor(Math.random() * 16).toString(16).toUpperCase(), // hex 0-F
-      ];
-      return types[Math.floor(Math.random() * types.length)]();
-    };
+    // Tokens semânticos de PHP/Programação
+    const phpTokens = [
+      ';', ':', '<?php', '?>', '$', '->', '::', '=>', 'echo', 'return', 'function', 'class', 'if', 'else', 'foreach', 'try', 'catch', 'new', 'public', 'private', 'protected', 'static'
+    ];
+
+    const pickPhpToken = () => phpTokens[Math.floor(Math.random() * phpTokens.length)];
 
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
@@ -73,14 +69,14 @@ const AnimatedBackground = () => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Criar códigos hexadecimais subindo
+    // Criar tokens subindo
     for (let i = 0; i < 80; i++) {
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       codeRains.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         speed: Math.random() * 1.5 + 0.5,
-        text: generateRandomNumber(),
+        text: pickPhpToken(),
         opacity: Math.random() * 0.6 + 0.4,
         color: randomColor,
         size: Math.random() * 6 + 14,
@@ -99,7 +95,7 @@ const AnimatedBackground = () => {
       codeRains.forEach((rain) => {
         // Mudar número aleatoriamente baseado no intervalo
         if (frameCount - rain.lastChange >= rain.changeInterval) {
-          rain.text = generateRandomNumber();
+          rain.text = pickPhpToken();
           rain.lastChange = frameCount;
         }
 
@@ -111,7 +107,7 @@ const AnimatedBackground = () => {
           rain.y = canvas.height + 30;
           rain.x = Math.random() * canvas.width;
           rain.color = colors[Math.floor(Math.random() * colors.length)];
-          rain.text = generateRandomNumber();
+          rain.text = pickPhpToken();
         }
 
         // Desenhar código com glow sutil
