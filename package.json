@@ -2,7 +2,7 @@
   "name": "jeslimx",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://jeslxdev.github.io/jeslimxdev",
+  "homepage": "/",
   "type": "module",
   "scripts": {
     "dev": "vite",
