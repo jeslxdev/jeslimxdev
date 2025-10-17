@@ -2,7 +2,7 @@
   "name": "jeslimx",
   "private": true,
   "version": "0.0.0",
-  "homepage": "/",
+  "homepage": "https://jeslimx.tech",
   "type": "module",
   "scripts": {
     "dev": "vite",
