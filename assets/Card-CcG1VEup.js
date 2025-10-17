@@ -1,4 +1,4 @@
-import{l as r,d as o}from"./styled-CEm8g-ZS.js";import{m as a}from"./index-CFql9Dtu.js";const e=r`
+import{l as r,d as o}from"./styled-CEm8g-ZS.js";import{m as a}from"./index-AsXsGJ90.js";const e=r`
   background: rgba(61, 58, 58, 0.25); /* softer ~25% transparency */
   border: 1px solid rgba(255, 255, 255, 0.28); /* slightly stronger border for contrast */
   border-radius: 16px;

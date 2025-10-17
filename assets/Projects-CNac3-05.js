@@ -1,4 +1,4 @@
-import{c as r,m as a,j as e}from"./index-CFql9Dtu.js";import{d as t}from"./styled-CEm8g-ZS.js";import{C as o}from"./Card-BJfvwGIH.js";import{u as i}from"./i18n-Dx6h7Z1a.js";import"./vendor-_g6xLlVr.js";const p=t.div`
+import{c as r,m as a,j as e}from"./index-AsXsGJ90.js";import{d as t}from"./styled-CEm8g-ZS.js";import{C as o}from"./Card-CcG1VEup.js";import{u as i}from"./i18n-Dx6h7Z1a.js";import"./vendor-_g6xLlVr.js";const p=t.div`
   position: fixed;
   right: ${r=>r.$isVisible?"0":"-100%"};
   top: calc(var(--nav-safe-top) + var(--panel-gap-y));

@@ -1,4 +1,4 @@
-import{c as e,m as i,j as r}from"./index-CFql9Dtu.js";import{d as t}from"./styled-CEm8g-ZS.js";import{C as o}from"./Card-BJfvwGIH.js";import{u as a}from"./i18n-Dx6h7Z1a.js";import"./vendor-_g6xLlVr.js";const n=t.div`
+import{c as e,m as i,j as r}from"./index-AsXsGJ90.js";import{d as t}from"./styled-CEm8g-ZS.js";import{C as o}from"./Card-CcG1VEup.js";import{u as a}from"./i18n-Dx6h7Z1a.js";import"./vendor-_g6xLlVr.js";const n=t.div`
   position: fixed;
   top: calc(50% + (var(--nav-safe-top) / 2) - 40px); /* Centralized, respecting navbar */
   left: 50%;
