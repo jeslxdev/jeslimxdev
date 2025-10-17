@@ -1,18 +1,16 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GlobalStyle from './styles/GlobalStyle';
 import AppWrapper from './AppWrapper';
 import MainContent from './MainContent';
-import LoadingSpinner from './components/common/LoadingSpinner';
 
-// Lazy loading dos componentes pesados
-const AnimatedBackground = lazy(() => import('./components/AnimatedBackground'));
-const Presentation = lazy(() => import('./components/Presentation'));
-const Projects = lazy(() => import('./components/Projects'));
-const Company = lazy(() => import('./components/Company'));
-const Contact = lazy(() => import('./components/Contact'));
+import AnimatedBackground from './components/ModernBackground';
+import Presentation from './components/Presentation';
+import Projects from './components/Projects';
+import Company from './components/Company';
+import Contact from './components/Contact';
 
 type SectionType = 'home' | 'presentation' | 'projects' | 'company' | 'contact';
 
@@ -26,31 +24,17 @@ function App() {
   return (
     <AppWrapper>
       <GlobalStyle />
-
-      {/* Renderizar background animado apenas quando necessário */}
-      <Suspense fallback={null}>
-        <AnimatedBackground />
-      </Suspense>
+      <AnimatedBackground />
 
       <Navbar onNavigate={handleNavigate} />
 
       {activeSection === 'home' && <Header />}
 
       <MainContent>
-        <Suspense fallback={<LoadingSpinner />}>
-          {activeSection === 'presentation' && (
-            <Presentation isVisible={true} direction="left" />
-          )}
-          {activeSection === 'projects' && (
-            <Projects isVisible={true} direction="right" />
-          )}
-          {activeSection === 'company' && (
-            <Company isVisible={true} direction="top" />
-          )}
-          {activeSection === 'contact' && (
-            <Contact isVisible={true} direction="bottom" />
-          )}
-        </Suspense>
+        <Presentation isVisible={activeSection === 'presentation'} direction="left" />
+        <Projects isVisible={activeSection === 'projects'} direction="right" />
+        <Company isVisible={activeSection === 'company'} direction="top" />
+        <Contact isVisible={activeSection === 'contact'} direction="bottom" />
       </MainContent>
 
       <Footer />

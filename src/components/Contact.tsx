@@ -36,7 +36,7 @@ const ContactWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   &::-webkit-scrollbar-thumb {
     background: rgba(245, 245, 245, 0.3);
     border-radius: 10px;
-    
+
     &:hover {
       background: rgba(245, 245, 245, 0.5);
     }
@@ -120,13 +120,6 @@ const Contact = ({ isVisible, direction = 'bottom' }: ContactProps) => {
           <div className="info">
             <h3>LinkedIn</h3>
             <p>{t('contact.linkedin')}</p>
-          </div>
-        </ContactCard>
-        <ContactCard href="mailto:joaoemanuel@example.com">
-          <span className="icon">📧</span>
-          <div className="info">
-            <h3>Email</h3>
-            <p>{t('contact.email')}</p>
           </div>
         </ContactCard>
         <ContactCard href="https://github.com/jeslxdev" target="_blank" rel="noopener noreferrer">

@@ -61,7 +61,7 @@ const Footer = () => {
             LinkedIn
           </Link>
         </p>
-        <p>© {new Date().getFullYear()} Jeslimx. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Lima IT. All rights reserved.</p>
       </ContentContainer>
     </FooterWrapper>
   );
