@@ -44,7 +44,7 @@ const AnimatedBackground = () => {
     let animationFrameId: number;
     const codeRains: CodeRain[] = [];
     let frameCount = 0;
-    
+
     // Cores mais neutras e simbólicas - tons de cinza azulado
     const colors = [
       'rgba(120, 140, 160, ',   // Cinza azulado claro
@@ -69,8 +69,12 @@ const AnimatedBackground = () => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
+    // Reduzir partículas em dispositivos móveis
+    const isMobile = window.innerWidth <= 768;
+    const particleCount = isMobile ? 25 : 50; // Reduzir significativamente em mobile
+
     // Criar tokens subindo
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < particleCount; i++) {
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       codeRains.push({
         x: Math.random() * canvas.width,
@@ -80,14 +84,21 @@ const AnimatedBackground = () => {
         opacity: Math.random() * 0.6 + 0.4,
         color: randomColor,
         size: Math.random() * 6 + 14,
-        changeInterval: Math.floor(Math.random() * 10) + 5, // Muda a cada 5-15 frames
+        changeInterval: Math.floor(Math.random() * 20) + 10, // Mudanças menos frequentes
         lastChange: 0,
       });
     }
 
     const animate = () => {
       frameCount++;
-      
+
+      // Em mobile, pular frames para economizar performance
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile && frameCount % 2 !== 0) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
       // Clear com fade mais escuro para efeito sutil
       ctx.fillStyle = 'rgba(1, 4, 9, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -110,44 +121,53 @@ const AnimatedBackground = () => {
           rain.text = pickPhpToken();
         }
 
-        // Desenhar código com glow sutil
+        // Desenhar código com glow sutil (reduzido em mobile)
+        const isMobile = window.innerWidth <= 768;
         ctx.font = `bold ${rain.size}px "Courier New", monospace`;
-        
-        // Glow externo suave
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = rain.color + '0.5)';
-        ctx.fillStyle = rain.color + rain.opacity + ')';
-        ctx.fillText(rain.text, rain.x, rain.y);
-        
-        // Glow interno
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = rain.color + '0.8)';
-        ctx.fillStyle = rain.color + Math.min(rain.opacity + 0.2, 1) + ')';
-        ctx.fillText(rain.text, rain.x, rain.y);
-        
+
+        if (!isMobile) {
+          // Glow externo suave apenas em desktop
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = rain.color + '0.5)';
+          ctx.fillStyle = rain.color + rain.opacity + ')';
+          ctx.fillText(rain.text, rain.x, rain.y);
+
+          // Glow interno
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = rain.color + '0.8)';
+          ctx.fillStyle = rain.color + Math.min(rain.opacity + 0.2, 1) + ')';
+          ctx.fillText(rain.text, rain.x, rain.y);
+        } else {
+          // Sem glow em mobile para economizar performance
+          ctx.fillStyle = rain.color + rain.opacity + ')';
+          ctx.fillText(rain.text, rain.x, rain.y);
+        }
+
         ctx.shadowBlur = 0;
 
-        // Desenhar pontos brilhantes menores e sutis
-        const pointOffset = rain.text.length * 8;
-        ctx.beginPath();
-        ctx.arc(rain.x + pointOffset, rain.y - 10, 2, 0, Math.PI * 2);
-        ctx.fillStyle = rain.color + Math.min(rain.opacity + 0.3, 1) + ')';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = rain.color + '0.6)';
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        // Linhas verticais ocasionais mais sutis
-        if (Math.random() < 0.01) {
+        // Desenhar pontos brilhantes menores e sutis (apenas em desktop)
+        if (!isMobile) {
+          const pointOffset = rain.text.length * 8;
           ctx.beginPath();
-          ctx.moveTo(rain.x, rain.y);
-          ctx.lineTo(rain.x, rain.y - 30);
-          ctx.strokeStyle = rain.color + '0.2)';
-          ctx.lineWidth = 1;
-          ctx.shadowBlur = 5;
-          ctx.shadowColor = rain.color + '0.4)';
-          ctx.stroke();
+          ctx.arc(rain.x + pointOffset, rain.y - 10, 2, 0, Math.PI * 2);
+          ctx.fillStyle = rain.color + Math.min(rain.opacity + 0.3, 1) + ')';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = rain.color + '0.6)';
+          ctx.fill();
           ctx.shadowBlur = 0;
+
+          // Linhas verticais ocasionais mais sutis
+          if (Math.random() < 0.005) { // Reduzir frequência
+            ctx.beginPath();
+            ctx.moveTo(rain.x, rain.y);
+            ctx.lineTo(rain.x, rain.y - 30);
+            ctx.strokeStyle = rain.color + '0.2)';
+            ctx.lineWidth = 1;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = rain.color + '0.4)';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+          }
         }
       });
 

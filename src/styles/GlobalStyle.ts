@@ -35,6 +35,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: #1B3D50;
     color: #f5f5f5;
     width: 100%;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+
+    /* Melhorar performance em mobile */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+
+    /* Otimizações para touch */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   #root {
