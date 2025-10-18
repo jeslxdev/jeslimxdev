@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import GlobalStyle from './styles/GlobalStyle';
-import AppWrapper from './AppWrapper';
-import MainContent from './MainContent';
+import Navbar from '@/components/Navbar';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import GlobalStyle from '@/styles/GlobalStyle';
+import AppWrapper from '@/AppWrapper';
+import MainContent from '@/MainContent';
 
-import AnimatedBackground from './components/ModernBackground';
-import Presentation from './components/Presentation';
-import Projects from './components/Projects';
-import Company from './components/Company';
-import Contact from './components/Contact';
+import AnimatedBackground from '@/components/ModernBackground';
+import Presentation from '@/components/Presentation';
+import Projects from '@/components/Projects';
+import Company from '@/components/Company';
+import Contact from '@/components/Contact';
 
 type SectionType = 'home' | 'presentation' | 'projects' | 'company' | 'contact';
 

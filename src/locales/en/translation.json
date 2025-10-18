@@ -1,8 +1,8 @@
 {
-  "title": "João Emanuel (Lima)",
-  "subtitle": "Software Engineer | InfoSec | DevOps",
+  "title": "João Emanuel (Eslimx)",
+  "subtitle": "Software Engineer | InfoSec | DevOps | Cybersecurity",
   "aboutTitle": "About Me",
-  "aboutText": "I work on critical systems development, focusing on secure architecture, high performance, and legacy system maintenance. I have solid experience in PHP (Hyperf, Laravel, CodeIgniter) and building open source libraries focused on productivity and integration. With international experience developing applications for clients in Europe and North America, I specialize in translating business needs into clear and objective technical requirements.",
+  "aboutText": "Software Engineer specialized in InfoSec, DevOps, and Cybersecurity. Development focused on high performance, security, and scalable architectures, applying Clean Code, Clean Architecture, SOLID, and DDD. Expertise in Cloudflare, Docker, and CI/CD. Primary stacks: PHP, NestJS, Python, React, and Java.",
   "technologiesTitle": "Technologies & Tools",
   "navbar": {
     "presentation": "About",
@@ -12,30 +12,38 @@
   },
   "presentation": {
     "title": "About Me",
-    "intro": "Hello! I'm João Emanuel, a passionate Software Engineer with years of experience in developing robust and scalable solutions.",
-    "experience": "I specialize in full-stack development with a strong focus on backend technologies, security, and DevOps practices. My experience spans across PHP, JavaScript/TypeScript, and modern frameworks like React, Next.js, Node.js, and Nest.js.",
-    "passion": "I'm passionate about clean code, best practices, and building systems that make a real difference. I love tackling complex challenges and transforming business requirements into elegant technical solutions."
+    "intro": "Software Engineer specialized in InfoSec, DevOps, and Cybersecurity, with strong expertise in developing robust and scalable solutions.",
+    "experience": "Development focused on high performance, top-tier security, and scalable architectures, rigorously applying Clean Code, Clean Architecture, SOLID, and Domain-Driven Design (DDD) principles. Technical expertise in cloud infrastructure (Cloudflare), containerization (Docker), CI/CD automation, and multi-language development.",
+    "passion": "Mastery of primary stacks: PHP, NestJS, Python, React, and Java. Proven interpersonal skills in technical leadership, strategic project management, and efficient translation of business rules into high-impact technological solutions."
+  },
+  "skills": {
+    "architecture": "Architecture",
+    "security": "Security",
+    "devops": "DevOps",
+    "development": "Development",
+    "cloud": "Cloud",
+    "leadership": "Leadership"
   },
   "projects": {
     "title": "My Projects",
     "project1": {
-      "title": "Enterprise Management System",
-      "description": "Complete ERP system built with PHP (Laravel) and React, handling inventory, sales, and financial management for medium-sized companies."
+      "title": "Secure Cloud Infrastructure",
+      "description": "Scalable infrastructure architecture using Cloudflare, Docker, and CI/CD with focus on high availability and advanced security."
     },
     "project2": {
-      "title": "Real-time Monitoring Dashboard",
-      "description": "High-performance dashboard using Next.js and Node.js with WebSocket for real-time data visualization and system monitoring."
+      "title": "Security Monitoring System",
+      "description": "Real-time monitoring platform with vulnerability analysis, threat detection, and automated incident response."
     },
     "project3": {
-      "title": "Open Source Libraries",
-      "description": "Developer of multiple open-source PHP libraries focused on API integration, data validation, and development productivity tools."
+      "title": "Clean Architecture with DDD",
+      "description": "Implementation of enterprise systems applying Clean Architecture, SOLID, and Domain-Driven Design for maximum maintainability and scalability."
     }
   },
   "company": {
     "title": "Professional Experience",
     "technologies": "Technologies & Tools",
-    "builders": "Working as a Software Engineer at Builders, developing critical solutions and architecting scalable systems with focus on performance and security.",
-    "extds": "Project Leader at EXTDS Portugal/Belgium, coordinating international teams and managing application development for European clients."
+    "builders": "Software Engineer specialized in security, DevOps, and scalable architectures. Development of critical solutions with focus on performance and data protection.",
+    "extds": "Technical leadership and international project management, coordinating teams and implementing high-impact solutions with focus on quality and security."
   },
   "contact": {
     "title": "Let's Connect!",

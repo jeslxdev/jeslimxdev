@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLayoutEffect, useRef } from 'react';
-import { ContentContainer } from '../styles/ContentContainer';
+import { ContentContainer } from '@/styles/ContentContainer';
 
 const FooterWrapper = styled.footer`
   background-color: transparent;

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { media } from '../../styles/media';
+import { media } from '@/styles/media';
 
 // A reusable responsive Card with adaptive spacing and typography
 const base = css`

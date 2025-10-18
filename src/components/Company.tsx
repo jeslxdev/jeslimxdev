@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { media } from '../styles/media';
-import { Card } from './common/Card';
+import { media } from '@/styles/media';
+import { Card } from '@/components/common/Card';
 
 const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;
@@ -36,7 +36,7 @@ const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   &::-webkit-scrollbar-thumb {
     background: rgba(245, 245, 245, 0.3);
     border-radius: 10px;
-    
+
     &:hover {
       background: rgba(245, 245, 245, 0.5);
     }
@@ -144,7 +144,7 @@ const Content = styled.div`
     p {
       margin-bottom: 15px;
     }
-    
+
     h3 {
       font-size: 1.15rem;
       margin-top: 20px;
@@ -159,7 +159,7 @@ const Content = styled.div`
     p {
       margin-bottom: 12px;
     }
-    
+
     h3 {
       font-size: 1.05rem;
       margin-top: 18px;
@@ -181,7 +181,7 @@ const Company = ({ isVisible, direction = 'top' }: CompanyProps) => {
   return (
     <CompanyWrapper $isVisible={isVisible} $direction={direction}>
       <Title>{t('company.title')}</Title>
-      
+
       <TechSection>
         <h3>{t('company.technologies')}</h3>
         <TechIcons>

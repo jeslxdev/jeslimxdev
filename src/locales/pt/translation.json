@@ -1,8 +1,8 @@
 {
-  "title": "João Emanuel (Lima)",
-  "subtitle": "Engenheiro de Software | InfoSec | DevOps",
+  "title": "João Emanuel (Eslimx)",
+  "subtitle": "Engenheiro de Software | InfoSec | DevOps | Cibersegurança",
   "aboutTitle": "Sobre Mim",
-  "aboutText": "Atuo no desenvolvimento de sistemas críticos, com foco em arquitetura segura, alta performance e manutenção de sistemas legados. Tenho sólida experiência em PHP (Hyperf, Laravel, CodeIgniter) e na construção de bibliotecas open source focadas em produtividade e integração. Com experiência internacional no desenvolvimento de aplicações para clientes na Europa e América do Norte, sou especialista em traduzir necessidades de negócio em requisitos técnicos claros e objetivos.",
+  "aboutText": "Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança. Desenvolvimento focado em alta performance, segurança e arquiteturas escaláveis, aplicando Clean Code, Clean Architecture, SOLID e DDD. Expertise em Cloudflare, Docker e CI/CD. Stacks principais: PHP, NestJS, Python, React e Java.",
   "technologiesTitle": "Tecnologias & Ferramentas",
   "navbar": {
     "presentation": "Sobre",
@@ -12,30 +12,38 @@
   },
   "presentation": {
     "title": "Sobre Mim",
-    "intro": "Olá! Sou João Emanuel, um Engenheiro de Software apaixonado com anos de experiência no desenvolvimento de soluções robustas e escaláveis.",
-    "experience": "Sou especialista em desenvolvimento full-stack com forte foco em tecnologias backend, segurança e práticas DevOps. Minha experiência abrange PHP, JavaScript/TypeScript e frameworks modernos como React, Next.js, Node.js e Nest.js.",
-    "passion": "Sou apaixonado por código limpo, boas práticas e pela construção de sistemas que fazem diferença real. Adoro enfrentar desafios complexos e transformar requisitos de negócio em soluções técnicas elegantes."
+    "intro": "Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança, com forte atuação no desenvolvimento de soluções robustas e escaláveis.",
+    "experience": "Desenvolvimento focado em alta performance, segurança de ponta e arquiteturas escaláveis, aplicando rigorosamente os princípios de Clean Code, Clean Architecture, SOLID e Domain-Driven Design (DDD). Expertise técnica em infraestrutura cloud (Cloudflare), containerização (Docker), automação de CI/CD e desenvolvimento em múltiplas linguagens.",
+    "passion": "Domínio das stacks principais: PHP, NestJS, Python, React e Java. Habilidades interpessoais comprovadas em liderança técnica, gestão estratégica de projetos e tradução eficiente de regras de negócio em soluções tecnológicas de alto impacto."
+  },
+  "skills": {
+    "architecture": "Arquitetura",
+    "security": "Segurança",
+    "devops": "DevOps",
+    "development": "Desenvolvimento",
+    "cloud": "Cloud",
+    "leadership": "Liderança"
   },
   "projects": {
     "title": "Meus Projetos",
     "project1": {
-      "title": "Sistema de Gestão Empresarial",
-      "description": "Sistema ERP completo construído com PHP (Laravel) e React, gerenciando estoque, vendas e gestão financeira para empresas de médio porte."
+      "title": "Infraestrutura Cloud Segura",
+      "description": "Arquitetura de infraestrutura escalável utilizando Cloudflare, Docker e CI/CD com foco em alta disponibilidade e segurança avançada."
     },
     "project2": {
-      "title": "Dashboard de Monitoramento em Tempo Real",
-      "description": "Dashboard de alta performance usando Next.js e Node.js com WebSocket para visualização de dados e monitoramento de sistemas em tempo real."
+      "title": "Sistema de Monitoramento de Segurança",
+      "description": "Plataforma de monitoramento em tempo real com análise de vulnerabilidades, detecção de ameaças e automação de resposta a incidentes."
     },
     "project3": {
-      "title": "Bibliotecas Open Source",
-      "description": "Desenvolvedor de múltiplas bibliotecas PHP open-source focadas em integração de APIs, validação de dados e ferramentas de produtividade para desenvolvedores."
+      "title": "Arquitetura Clean com DDD",
+      "description": "Implementação de sistemas corporativos aplicando Clean Architecture, SOLID e Domain-Driven Design para máxima manutenibilidade e escalabilidade."
     }
   },
   "company": {
     "title": "Experiência Profissional",
     "technologies": "Tecnologias & Ferramentas",
-    "builders": "Atuo como Engenheiro de Software na Builders, desenvolvendo soluções críticas e arquitetando sistemas escaláveis com foco em performance e segurança.",
-    "extds": "Líder de Projetos na EXTDS Portugal/Bélgica, coordenando equipes internacionais e gerenciando o desenvolvimento de aplicações para clientes na Europa."
+    "builders": "Engenheiro de Software especializado em segurança, DevOps e arquiteturas escaláveis. Desenvolvimento de soluções críticas com foco em performance e proteção de dados.",
+    "extds": "Liderança técnica e gestão de projetos internacionais, coordenando equipes e implementando soluções de alto impacto com foco em qualidade e segurança."
   },
   "contact": {
     "title": "Vamos Conversar!",

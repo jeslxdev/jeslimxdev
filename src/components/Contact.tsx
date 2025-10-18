@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { media } from '../styles/media';
-import { Card as ContactCardBase } from './common/Card';
+import { media } from '@/styles/media';
+import { Card as ContactCardBase } from '@/components/common/Card';
 
 const ContactWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;

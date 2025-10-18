@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { media } from '../styles/media';
-import { Card } from './common/Card';
+import { media } from '@/styles/media';
+import { Card } from '@/components/common/Card';
 
 const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: fixed;
@@ -30,7 +30,7 @@ const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string
   &::-webkit-scrollbar-thumb {
     background: rgba(245, 245, 245, 0.3);
     border-radius: 10px;
-    
+
     &:hover {
       background: rgba(245, 245, 245, 0.5);
     }

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { media } from '../styles/media';
-import LanguageSwitcher from './LanguageSwitcher';
+import { media } from '@/styles/media';
+import { LanguageSwitcher } from '@/presentation/components/LanguageSwitcher';
 
 const NavbarWrapper = styled.nav`
   position: fixed;

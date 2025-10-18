@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { media } from '../styles/media';
-import { fadeIn } from '../styles/animations';
-import { ContentContainer } from '../styles/ContentContainer';
+import { media } from '@/styles/media';
+import { fadeIn } from '@/styles/animations';
+import { ContentContainer } from '@/styles/ContentContainer';
 
 const HeaderWrapper = styled.header`
   background-color: transparent;
