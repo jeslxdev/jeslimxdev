@@ -4,7 +4,7 @@
  * Open/Closed: Can be extended with new animations without modifying core logic
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,7 @@ const fadeIn = keyframes`
 
 const slideIn = keyframes`
   from {
-    transform: translateX(-100%);
+    transform: translateX(-10px);
     opacity: 0;
   }
   to {
@@ -155,41 +155,48 @@ const languages: ReadonlyArray<LanguageOption> = [
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
   const [isAnimating, setIsAnimating] = useState<string | null>(null);
-  const [isChanging, setIsChanging] = useState(false);
+
+  // Normalizar o código do idioma (remover região se houver)
+  const getCurrentLanguageCode = () => {
+    const currentLang = i18n.language || 'pt';
+    return currentLang.split('-')[0]; // 'pt-BR' -> 'pt'
+  };
 
   const handleLanguageChange = useCallback(async (languageCode: string) => {
-    if (i18n.language === languageCode || isChanging) return;
+    const currentCode = i18n.language?.split('-')[0] || 'pt';
 
-    setIsChanging(true);
+    if (currentCode === languageCode || isAnimating) {
+      return;
+    }
+
     setIsAnimating(languageCode);
 
     try {
       await i18n.changeLanguage(languageCode);
 
-      // Keep animation for a short period
+      // Manter animação por um curto período
       setTimeout(() => {
         setIsAnimating(null);
-        setIsChanging(false);
       }, 400);
     } catch (error) {
       console.error('Failed to change language:', error);
       setIsAnimating(null);
-      setIsChanging(false);
     }
-  }, [i18n, isChanging]);
+  }, [i18n, isAnimating]);
+
+  const currentLangCode = getCurrentLanguageCode();
 
   return (
     <SwitcherContainer>
       {languages.map((lang, index) => (
-        <>
+        <Fragment key={lang.code}>
           <LanguageButton
-            key={lang.code}
-            $isActive={i18n.language === lang.code}
+            $isActive={currentLangCode === lang.code}
             $isAnimating={isAnimating === lang.code}
             onClick={() => handleLanguageChange(lang.code)}
-            disabled={isChanging}
+            disabled={!!isAnimating}
             aria-label={`Switch to ${lang.label}`}
-            aria-pressed={i18n.language === lang.code}
+            aria-pressed={currentLangCode === lang.code}
           >
             <FlagEmoji $isAnimating={isAnimating === lang.code}>
               {lang.flag}
@@ -197,7 +204,7 @@ export const LanguageSwitcher: React.FC = () => {
             <LanguageLabel>{lang.label}</LanguageLabel>
           </LanguageButton>
           {index < languages.length - 1 && <Divider />}
-        </>
+        </Fragment>
       ))}
     </SwitcherContainer>
   );

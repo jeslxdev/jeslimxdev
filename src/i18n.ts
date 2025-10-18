@@ -19,9 +19,19 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'pt',
+    supportedLngs: ['pt', 'en'],
+    load: 'languageOnly', // Ignora códigos de região como 'pt-BR'
     interpolation: {
       escapeValue: false,
+    },
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
+    },
+    react: {
+      useSuspense: false,
     },
   });
 
