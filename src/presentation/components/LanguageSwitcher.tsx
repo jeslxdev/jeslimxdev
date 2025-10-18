@@ -4,7 +4,7 @@
  * Open/Closed: Can be extended with new animations without modifying core logic
  */
 
-import { useState, useCallback, Fragment } from 'react';
+import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -157,40 +157,34 @@ export const LanguageSwitcher: React.FC = () => {
   const [isAnimating, setIsAnimating] = useState<string | null>(null);
 
   // Normalizar o código do idioma (remover região se houver)
-  const getCurrentLanguageCode = () => {
-    const currentLang = i18n.language || 'pt';
-    return currentLang.split('-')[0]; // 'pt-BR' -> 'pt'
-  };
+  const currentLangCode = (i18n.language || 'pt').split('-')[0];
 
-  const handleLanguageChange = useCallback(async (languageCode: string) => {
-    const currentCode = i18n.language?.split('-')[0] || 'pt';
-
-    if (currentCode === languageCode || isAnimating) {
+  const handleLanguageChange = (languageCode: string) => {
+    // Evitar múltiplos cliques
+    if (currentLangCode === languageCode || isAnimating) {
       return;
     }
 
     setIsAnimating(languageCode);
 
-    try {
-      await i18n.changeLanguage(languageCode);
-
-      // Manter animação por um curto período
+    // Trocar idioma
+    i18n.changeLanguage(languageCode).then(() => {
+      // Limpar animação após completar
       setTimeout(() => {
         setIsAnimating(null);
       }, 400);
-    } catch (error) {
+    }).catch((error) => {
       console.error('Failed to change language:', error);
       setIsAnimating(null);
-    }
-  }, [i18n, isAnimating]);
-
-  const currentLangCode = getCurrentLanguageCode();
+    });
+  };
 
   return (
     <SwitcherContainer>
       {languages.map((lang, index) => (
-        <Fragment key={lang.code}>
+        <>
           <LanguageButton
+            key={lang.code}
             $isActive={currentLangCode === lang.code}
             $isAnimating={isAnimating === lang.code}
             onClick={() => handleLanguageChange(lang.code)}
@@ -203,8 +197,8 @@ export const LanguageSwitcher: React.FC = () => {
             </FlagEmoji>
             <LanguageLabel>{lang.label}</LanguageLabel>
           </LanguageButton>
-          {index < languages.length - 1 && <Divider />}
-        </Fragment>
+          {index < languages.length - 1 && <Divider key={`divider-${index}`} />}
+        </>
       ))}
     </SwitcherContainer>
   );

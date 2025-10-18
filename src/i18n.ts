@@ -31,7 +31,12 @@ i18n
       lookupLocalStorage: 'i18nextLng',
     },
     react: {
-      useSuspense: false,
+      useSuspense: false, // Importante: evita suspense que pode causar tela branca
+      bindI18n: 'languageChanged', // Re-render apenas quando o idioma mudar
+      bindI18nStore: '', // Não re-render em mudanças de store
+      transEmptyNodeValue: '', // Valor padrão para nodes vazios
+      transSupportBasicHtmlNodes: true,
+      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
     },
   });
 
