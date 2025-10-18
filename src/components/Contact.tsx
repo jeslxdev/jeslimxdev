@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { Card as ContactCardBase } from '@/components/common/Card';
 
@@ -109,7 +109,7 @@ interface ContactProps {
 }
 
 const Contact = ({ isVisible, direction = 'bottom' }: ContactProps) => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   return (
     <ContactWrapper $isVisible={isVisible} $direction={direction}>

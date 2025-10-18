@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLayoutEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { LanguageSwitcher } from '@/presentation/components/LanguageSwitcher';
 
@@ -101,7 +101,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ onNavigate }: NavbarProps) => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
   const navRef = useRef<HTMLDivElement>(null);
 
   // Measure navbar height + offset and expose as CSS variables to prevent content overlap

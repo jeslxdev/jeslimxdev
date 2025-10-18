@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { Card as ProjectCard } from '@/components/common/Card';
 
@@ -64,7 +64,7 @@ interface ProjectsProps {
 }
 
 const Projects = ({ isVisible, direction = 'right' }: ProjectsProps) => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   return (
     <ProjectsWrapper $isVisible={isVisible} $direction={direction}>

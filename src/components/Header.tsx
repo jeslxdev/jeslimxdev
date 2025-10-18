@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { fadeIn } from '@/styles/animations';
 import { ContentContainer } from '@/styles/ContentContainer';
@@ -62,7 +62,7 @@ const Subtitle = styled.h2`
 `;
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   return (
     <HeaderWrapper>

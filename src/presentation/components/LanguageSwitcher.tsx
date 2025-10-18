@@ -6,7 +6,8 @@
 
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
+import type { Language } from '@/infrastructure/i18n/translations';
 
 const fadeIn = keyframes`
   from {
@@ -153,13 +154,12 @@ const languages: ReadonlyArray<LanguageOption> = [
 ];
 
 export const LanguageSwitcher: React.FC = () => {
-  const { i18n } = useTranslation();
-  const [isAnimating, setIsAnimating] = useState<string | null>(null);
+  const { language, changeLanguage } = useLanguage();
+  const [isAnimating, setIsAnimating] = useState<Language | null>(null);
 
-  // Normalizar o código do idioma (remover região se houver)
-  const currentLangCode = (i18n.language || 'pt').split('-')[0];
+  const currentLangCode = language;
 
-  const handleLanguageChange = (languageCode: string) => {
+  const handleLanguageChange = (languageCode: Language) => {
     // Evitar múltiplos cliques
     if (currentLangCode === languageCode || isAnimating) {
       return;
@@ -167,16 +167,13 @@ export const LanguageSwitcher: React.FC = () => {
 
     setIsAnimating(languageCode);
 
-    // Trocar idioma
-    i18n.changeLanguage(languageCode).then(() => {
-      // Limpar animação após completar
-      setTimeout(() => {
-        setIsAnimating(null);
-      }, 400);
-    }).catch((error) => {
-      console.error('Failed to change language:', error);
+    // Trocar idioma (síncrono e rápido!)
+    changeLanguage(languageCode);
+    
+    // Limpar animação após completar
+    setTimeout(() => {
       setIsAnimating(null);
-    });
+    }, 400);
   };
 
   return (
@@ -187,7 +184,7 @@ export const LanguageSwitcher: React.FC = () => {
             key={lang.code}
             $isActive={currentLangCode === lang.code}
             $isAnimating={isAnimating === lang.code}
-            onClick={() => handleLanguageChange(lang.code)}
+            onClick={() => handleLanguageChange(lang.code as Language)}
             disabled={!!isAnimating}
             aria-label={`Switch to ${lang.label}`}
             aria-pressed={currentLangCode === lang.code}

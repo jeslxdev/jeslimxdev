@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { Card } from '@/components/common/Card';
 
@@ -78,7 +78,7 @@ interface PresentationProps {
 }
 
 const Presentation = ({ isVisible, direction = 'left' }: PresentationProps) => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   return (
     <PresentationWrapper $isVisible={isVisible} $direction={direction}>
