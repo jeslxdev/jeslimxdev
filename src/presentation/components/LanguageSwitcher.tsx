@@ -1,47 +1,8 @@
-/**
- * Language Switcher Component - Presentation Layer
- * Single Responsibility: Handle language switching UI only
- * Open/Closed: Can be extended with new animations without modifying core logic
- */
-
-import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+﻿import styled from 'styled-components';
 import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import type { Language } from '@/infrastructure/i18n/translations';
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const slideIn = keyframes`
-  from {
-    transform: translateX(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-const pulse = keyframes`
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-`;
-
 const SwitcherContainer = styled.div`
-  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -51,89 +12,44 @@ const SwitcherContainer = styled.div`
   border-radius: 12px;
   padding: 0.25rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: ${fadeIn} 0.3s ease-out;
   transition: all 0.3s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 `;
 
-const LanguageButton = styled.button<{ $isActive: boolean; $isAnimating: boolean }>`
-  position: relative;
+const LanguageButton = styled.button<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: ${props => props.$isActive
-    ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.3))'
-    : 'transparent'};
+  background: ${props => props.$isActive ? 'rgba(59, 130, 246, 0.3)' : 'transparent'};
   color: ${props => props.$isActive ? '#fff' : 'rgba(255, 255, 255, 0.7)'};
   border: none;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: ${props => props.$isActive ? '600' : '500'};
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  z-index: 1;
+  transition: all 0.3s ease;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(99, 102, 241, 0.4));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-  }
-
-  &:hover:not(:disabled) {
+  &:hover {
     color: #fff;
     transform: translateY(-2px);
-
-    &::before {
-      opacity: 1;
-    }
   }
 
-  &:active:not(:disabled) {
+  &:active {
     transform: translateY(0);
-  }
-
-  ${props => props.$isAnimating && `
-    animation: ${pulse} 0.4s ease-out;
-  `}
-
-  ${props => props.$isActive && `
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-  `}
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
   }
 `;
 
-const FlagEmoji = styled.span<{ $isAnimating: boolean }>`
-  font-size: 1.2rem;
-  line-height: 1;
-  display: inline-block;
-  transition: transform 0.3s ease;
-
-  ${props => props.$isAnimating && `
-    animation: ${slideIn} 0.4s ease-out;
-  `}
+const FlagText = styled.span`
+  font-size: 1.25rem;
 `;
 
 const LanguageLabel = styled.span`
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  letter-spacing: 0.02em;
+  user-select: none;
 `;
 
 const Divider = styled.div`
@@ -142,39 +58,13 @@ const Divider = styled.div`
   background: rgba(255, 255, 255, 0.15);
 `;
 
-interface LanguageOption {
-  code: string;
-  label: string;
-  flag: string;
-}
-
-const languages: ReadonlyArray<LanguageOption> = [
-  { code: 'pt', label: 'PT', flag: '🇧🇷' },
-  { code: 'en', label: 'EN', flag: '🇺🇸' },
+const languages = [
+  { code: 'pt' as Language, label: 'PT', flag: String.fromCodePoint(0x1F1E7, 0x1F1F7) },
+  { code: 'en' as Language, label: 'EN', flag: String.fromCodePoint(0x1F1FA, 0x1F1F8) },
 ];
 
 export const LanguageSwitcher: React.FC = () => {
   const { language, changeLanguage } = useLanguage();
-  const [isAnimating, setIsAnimating] = useState<Language | null>(null);
-
-  const currentLangCode = language;
-
-  const handleLanguageChange = (languageCode: Language) => {
-    // Evitar múltiplos cliques
-    if (currentLangCode === languageCode || isAnimating) {
-      return;
-    }
-
-    setIsAnimating(languageCode);
-
-    // Trocar idioma (síncrono e rápido!)
-    changeLanguage(languageCode);
-    
-    // Limpar animação após completar
-    setTimeout(() => {
-      setIsAnimating(null);
-    }, 400);
-  };
 
   return (
     <SwitcherContainer>
@@ -182,19 +72,14 @@ export const LanguageSwitcher: React.FC = () => {
         <>
           <LanguageButton
             key={lang.code}
-            $isActive={currentLangCode === lang.code}
-            $isAnimating={isAnimating === lang.code}
-            onClick={() => handleLanguageChange(lang.code as Language)}
-            disabled={!!isAnimating}
-            aria-label={`Switch to ${lang.label}`}
-            aria-pressed={currentLangCode === lang.code}
+            $isActive={language === lang.code}
+            onClick={() => changeLanguage(lang.code)}
+            type="button"
           >
-            <FlagEmoji $isAnimating={isAnimating === lang.code}>
-              {lang.flag}
-            </FlagEmoji>
+            <FlagText>{lang.flag}</FlagText>
             <LanguageLabel>{lang.label}</LanguageLabel>
           </LanguageButton>
-          {index < languages.length - 1 && <Divider key={`divider-${index}`} />}
+          {index < languages.length - 1 && <Divider key={`div-${index}`} />}
         </>
       ))}
     </SwitcherContainer>
