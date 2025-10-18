@@ -3,8 +3,9 @@ import { media } from '@/styles/media';
 
 // A reusable responsive Card with adaptive spacing and typography
 const base = css`
-  background: rgba(61, 58, 58, 0.25); /* softer ~25% transparency */
-  border: 1px solid rgba(255, 255, 255, 0.28); /* slightly stronger border for contrast */
+  background: rgba(255, 255, 255, 0.05); /* Apenas 5% de opacidade - quase transparente */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: clamp(12px, 2.5vw, 20px);
   margin-bottom: clamp(12px, 2.5vw, 20px);
@@ -12,10 +13,10 @@ const base = css`
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 
   &:hover {
-    background: rgba(61, 58, 58, 0.75);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   }
 
   h3 {
@@ -35,7 +36,7 @@ const base = css`
 export const Card = styled.div`
   ${base}
   /* Full-perimeter semantic line */
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 
   ${media.mobile`
     border-radius: 14px;

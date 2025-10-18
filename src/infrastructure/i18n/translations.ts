@@ -63,7 +63,7 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   pt: {
-    title: 'João Emanuel (Eslimx)',
+    title: 'João Emanuel',
     subtitle: 'Engenheiro de Software | InfoSec | DevOps | Cibersegurança',
     aboutTitle: 'Sobre Mim',
     aboutText: 'Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança. Desenvolvimento focado em alta performance, segurança e arquiteturas escaláveis, aplicando Clean Code, Clean Architecture, SOLID e DDD. Expertise em Cloudflare, Docker e CI/CD. Stacks principais: PHP, NestJS, Python, React e Java.',
@@ -117,7 +117,7 @@ export const translations: Record<Language, Translations> = {
     },
   },
   en: {
-    title: 'João Emanuel (Eslimx)',
+    title: 'João Emanuel',
     subtitle: 'Software Engineer | InfoSec | DevOps | Cybersecurity',
     aboutTitle: 'About Me',
     aboutText: 'Software Engineer specialized in InfoSec, DevOps, and Cybersecurity. Development focused on high performance, security, and scalable architectures, applying Clean Code, Clean Architecture, SOLID, and DDD. Expertise in Cloudflare, Docker, and CI/CD. Primary stacks: PHP, NestJS, Python, React, and Java.',

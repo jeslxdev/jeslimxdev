@@ -4,19 +4,16 @@ import { media } from '@/styles/media';
 import { Card } from '@/components/common/Card';
 
 const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
-  position: fixed;
-  left: ${props => props.$isVisible ? '0' : '-100%'};
-  top: calc(var(--nav-safe-top) + var(--panel-gap-y));
-  height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
-  width: min(600px, calc(100% - var(--panel-gap-x)));
-  background: rgba(27, 61, 80, 0.25); /* softer opacity */
+  position: relative;
+  width: min(600px, 90%);
+  max-height: 80vh;
+  background: rgba(27, 61, 80, 0.5); /* 50% transparency */
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  z-index: 900;
   padding: clamp(16px, 3vw, 28px);
   overflow-y: auto;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 10px 0 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -37,16 +34,14 @@ const PresentationWrapper = styled.div<{ $isVisible: boolean; $direction: string
   }
 
   ${media.tablet`
-    width: calc(100% - var(--panel-gap-x));
+    width: 90%;
     padding: clamp(14px, 3vw, 24px);
   `}
 
   ${media.mobile`
-    width: 100%;
-    top: calc(var(--nav-safe-top) + var(--panel-gap-y));
-    height: calc(100vh - var(--nav-safe-top) - var(--footer-safe-bottom) - (2 * var(--panel-gap-y)));
+    width: 95%;
+    max-height: 85vh;
     padding: clamp(12px, 5vw, 24px);
-    border-right: none;
   `}
 `;
 

@@ -3,18 +3,19 @@ import { useLayoutEffect, useRef } from 'react';
 import { ContentContainer } from '@/styles/ContentContainer';
 
 const FooterWrapper = styled.footer`
-  background-color: transparent;
-  padding: 24px 20px calc(24px + var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.02); /* Aumentada transparência - apenas 2% */
+  backdrop-filter: blur(10px); /* Reduzido blur para mostrar mais o background */
+  padding: 16px 20px calc(16px + var(--safe-bottom));
   color: #f5f5f5;
   width: 100%;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Border mais sutil */
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 1100;
-  backdrop-filter: blur(10px);
+  min-height: 60px; /* Altura mínima garantida */
 `;
 
 const Link = styled.a`

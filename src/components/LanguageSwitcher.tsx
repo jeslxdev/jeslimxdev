@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import styled from 'styled-components';
-import { media } from '../styles/media';
+import { media } from '@/styles/media';
 
 const SwitcherContainer = styled.div`
   display: flex;
@@ -35,26 +35,24 @@ const Button = styled.button`
 `;
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { language, changeLanguage } = useLanguage();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const languages = [
+    { code: 'en', flag: '🇺🇸', label: 'EN' },
+    { code: 'pt', flag: '🇧🇷', label: 'PT' }
+  ];
 
   return (
     <SwitcherContainer>
-      <Button 
-        onClick={() => changeLanguage('en')}
-        className={i18n.language.startsWith('en') ? 'active' : ''}
-      >
-        EN
-      </Button>
-      <Button 
-        onClick={() => changeLanguage('pt')}
-        className={i18n.language.startsWith('pt') ? 'active' : ''}
-      >
-        PT
-      </Button>
+      {languages.map((lang) => (
+        <Button
+          key={lang.code}
+          onClick={() => changeLanguage(lang.code as 'en' | 'pt')}
+          className={language === lang.code ? 'active' : ''}
+        >
+          {lang.flag} {lang.label}
+        </Button>
+      ))}
     </SwitcherContainer>
   );
 };

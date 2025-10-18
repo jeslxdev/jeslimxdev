@@ -1,35 +1,30 @@
 import styled from 'styled-components';
 import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
-import { fadeIn } from '@/styles/animations';
+import { fadeInScale } from '@/styles/animations';
 import { ContentContainer } from '@/styles/ContentContainer';
 
 const HeaderWrapper = styled.header`
   background-color: transparent;
-  padding: calc(var(--nav-safe-top) + 40px) 20px 60px;
+  padding: 0;
   color: white;
-  animation: ${fadeIn} 1s ease-in-out;
   width: 100%;
+  height: 100vh;
   position: relative;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - var(--nav-safe-top) - 120px);
-
-  ${media.tablet`
-    padding: calc(var(--nav-safe-top) + 30px) 15px 40px;
-    min-height: calc(100vh - var(--nav-safe-top) - 100px);
-  `}
-
-  ${media.mobile`
-    padding: calc(var(--nav-safe-top) + 20px) 10px 30px;
-    min-height: calc(100vh - var(--nav-safe-top) - 80px);
-  `}
 `;
 
 const HeaderContent = styled(ContentContainer)`
   text-align: center;
+  animation: ${fadeInScale} 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+
+  ${media.mobile`
+    width: 90%;
+  `}
 `;
 
 const Title = styled.h1`

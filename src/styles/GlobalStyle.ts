@@ -34,7 +34,9 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: #f5f5f5;
     width: 100%;
+    height: 100vh; /* Altura total da viewport */
     overflow-x: hidden; /* Evitar scroll horizontal */
+    overflow-y: hidden; /* Remover scroll vertical para evitar área branca */
 
     /* Melhorar performance em mobile */
     -webkit-backface-visibility: hidden;
@@ -45,6 +47,11 @@ const GlobalStyle = createGlobalStyle`
     /* Otimizações para touch */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden; /* Remover qualquer overflow do html */
   }
 
   #root {

@@ -11,7 +11,7 @@ import { SkillCategory } from '@/domain/entities/Profile';
 export class ProfileRepository implements IProfileRepository {
   private readonly profileData: Record<string, Profile> = {
     pt: {
-      name: 'João Eslimx',
+      name: 'João',
       role: 'Engenheiro de Software',
       specializations: ['InfoSec', 'DevOps', 'Cibersegurança'],
       description: `Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança, com forte atuação no desenvolvimento de soluções robustas e escaláveis.
@@ -51,7 +51,7 @@ Habilidades interpessoais comprovadas em liderança técnica, gestão estratégi
       ],
     },
     en: {
-      name: 'João Eslimx',
+      name: 'João',
       role: 'Software Engineer',
       specializations: ['InfoSec', 'DevOps', 'Cybersecurity'],
       description: `Software Engineer specialized in InfoSec, DevOps, and Cybersecurity, with strong expertise in developing robust and scalable solutions.
