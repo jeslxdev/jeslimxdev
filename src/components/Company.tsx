@@ -6,11 +6,12 @@ import { Card } from '@/components/common/Card';
 const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: relative;
   width: min(750px, 90%);
-  max-height: 80vh;
+  max-height: calc(80vh - 60px); /* Reduzir altura para dar espaço ao navbar */
   background: rgba(27, 61, 80, 0.5); /* 50% transparency */
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: clamp(16px, 3vw, 28px);
+  padding: clamp(24px, 4vw, 40px); /* Aumentar padding interno */
+  margin-top: 20px; /* Adicionar margem superior */
   overflow-y: auto;
   box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
   border-radius: 20px;
@@ -35,21 +36,24 @@ const CompanyWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
 
   ${media.tablet`
     width: 90%;
-    max-height: 80vh;
-    padding: 30px;
+    max-height: calc(80vh - 40px);
+    padding: clamp(20px, 3vw, 35px);
+    margin-top: 15px;
   `}
 
   ${media.mobile`
     width: 95%;
-    max-height: 85vh;
-    padding: clamp(12px, 4vw, 20px);
+    max-height: calc(85vh - 30px);
+    padding: clamp(16px, 4vw, 24px);
+    margin-top: 10px;
   `}
 `;
 
 const Title = styled.h2`
   color: #f5f5f5;
   font-size: clamp(1.25rem, 4vw, 2rem);
-  margin-bottom: clamp(16px, 3vw, 30px);
+  margin-bottom: clamp(20px, 4vw, 35px);
+  margin-top: clamp(8px, 2vw, 16px);
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 `;
