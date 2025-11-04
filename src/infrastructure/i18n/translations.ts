@@ -133,7 +133,7 @@ export const translations: Record<Language, Translations> = {
     presentation: {
       title: 'About Me',
       intro: 'Back-end and integrations specialist, with emphasis on performance, security, and production reliability.',
-      experience: 'UNICRED: development of Web/Mobile CRM and scalable APIs using PHP (Hyperf) and NestJS; Kafka messaging; CI/CD automation (Azure DevOps); strong focus on security and testing. Facta Financeira: systems modernization (Structure, Portals, CRM, Insurance, Cards) in PHP (CodeIgniter/Laravel/Yii) and Python; integrations with Dock APIs; process automation. Zallpy: microservices ecosystem and applications with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; performance optimizations and observability.',
+      experience: 'Development of Web/Mobile CRM and scalable APIs using PHP (Hyperf) and NestJS; Kafka messaging; CI/CD automation (Azure DevOps); strong focus on security and testing. Facta Financeira: systems modernization (Structure, Portals, CRM, Insurance, Cards) in PHP (CodeIgniter/Laravel/Yii) and Python; integrations with Dock APIs; process automation. Zallpy: microservices ecosystem and applications with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; performance optimizations and observability.',
       passion: 'I turn business rules into objective, scalable solutions, reducing complexity in code and operational flows. Primary stacks: PHP (Laravel/Hyperf/Slim), NestJS/TypeScript, Python; Docker, Kafka, Cloudflare, and SQL Server/MySQL.',
     },
     skills: {
