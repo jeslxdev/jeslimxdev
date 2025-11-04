@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import type { SectionType } from '@/models/Section';
+import { Navbar, Footer, ModernBackground as ModernBg } from '@/presentation/components';
 import GlobalStyle from '@/styles/GlobalStyle';
 import AppWrapper from '@/AppWrapper';
-import AnimatedBackground from '@/components/ModernBackground';
 import Carousel from '@/components/Carousel';
 
-type SectionType = 'home' | 'presentation' | 'projects' | 'company' | 'contact';
+// SectionType is imported from models/Section
 
 function App() {
   const [activeSection, setActiveSection] = useState<SectionType>('home');
@@ -22,7 +21,7 @@ function App() {
   return (
     <AppWrapper>
       <GlobalStyle />
-      <AnimatedBackground />
+  <ModernBg />
 
       <Navbar onNavigate={handleNavigate} />
 

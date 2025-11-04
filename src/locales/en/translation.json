@@ -2,19 +2,20 @@
   "title": "João Emanuel",
   "subtitle": "Software Engineer | InfoSec | DevOps | Cybersecurity",
   "aboutTitle": "About Me",
-  "aboutText": "Software Engineer specialized in InfoSec, DevOps, and Cybersecurity. Development focused on high performance, security, and scalable architectures, applying Clean Code, Clean Architecture, SOLID, and DDD. Expertise in Cloudflare, Docker, and CI/CD. Primary stacks: PHP, NestJS, Python, React, and Java.",
+  "aboutText": "Software Engineer with experience across web and mobile platforms, focused on scalable APIs, security, and high performance. End-to-end delivery: architecture, development, testing, and DevOps, applying Clean Architecture, SOLID, and DDD. Recent experience at Platform Builders, UNICRED, Zallpy, and Facta Financeira.",
   "technologiesTitle": "Technologies & Tools",
   "navbar": {
     "presentation": "About",
     "projects": "Projects",
+    "tests": "Tests",
     "company": "Company",
     "contact": "Contact"
   },
   "presentation": {
     "title": "About Me",
-    "intro": "Software Engineer specialized in InfoSec, DevOps, and Cybersecurity, with strong expertise in developing robust and scalable solutions.",
-    "experience": "Development focused on high performance, top-tier security, and scalable architectures, rigorously applying Clean Code, Clean Architecture, SOLID, and Domain-Driven Design (DDD) principles. Technical expertise in cloud infrastructure (Cloudflare), containerization (Docker), CI/CD automation, and multi-language development.",
-    "passion": "Mastery of primary stacks: PHP, NestJS, Python, React, and Java. Proven interpersonal skills in technical leadership, strategic project management, and efficient translation of business rules into high-impact technological solutions."
+    "intro": "Software Engineer focused on back-end, security, and performance, delivering robust solutions for web and mobile.",
+    "experience": "In recent years I worked at companies like Platform Builders, UNICRED, Zallpy, and Facta Financeira, building RESTful APIs, modernizing legacy systems, and automating processes. Experience with PHP (Laravel/Hyperf/Slim), Node.js/NestJS, Python, and Java, applying Clean Architecture, SOLID, testing, and observability.",
+    "passion": "I enjoy turning business rules into simple and efficient solutions. Experience with Kafka, Docker, CI/CD (Azure DevOps), Cloudflare, and relational databases. Primary stacks: PHP, NestJS, Python, React/React Native, and Java."
   },
   "skills": {
     "architecture": "Architecture",
@@ -27,16 +28,31 @@
   "projects": {
     "title": "My Projects",
     "project1": {
-      "title": "Secure Cloud Infrastructure",
-      "description": "Scalable infrastructure architecture using Cloudflare, Docker, and CI/CD with focus on high availability and advanced security."
+      "title": "Web/Mobile CRM Platform — UNICRED",
+      "description": "Architecture and development of secure and scalable RESTful APIs with PHP/Hyperf and NestJS, messaging with Kafka, and CI/CD automation. Focus on performance, security, and quality."
     },
     "project2": {
-      "title": "Security Monitoring System",
-      "description": "Real-time monitoring platform with vulnerability analysis, threat detection, and automated incident response."
+      "title": "Systems Modernization — Facta Financeira",
+      "description": "Refactoring of critical systems (Structure, Portals, CRM, Insurance, Cards), strengthening security and scalability, Dock boletos/cards APIs, and process automation with bots."
     },
     "project3": {
-      "title": "Clean Architecture with DDD",
-      "description": "Implementation of enterprise systems applying Clean Architecture, SOLID, and Domain-Driven Design for maximum maintainability and scalability."
+      "title": "Microservices Ecosystem — Zallpy",
+      "description": "Building and maintaining web/mobile applications and backend services with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; focus on performance, testing, and observability."
+    }
+  },
+  "tests": {
+    "title": "Testing & Quality",
+    "test1": {
+      "title": "Unit & Integration Tests",
+      "description": "Testing strategies focused on coverage and reliability. Experience with Jest/Vitest, mocks, spies, and API integration tests."
+    },
+    "test2": {
+      "title": "E2E & Automation",
+      "description": "End-to-end flows with Cypress/Playwright, regression validation, and quality gates in CI/CD (Azure DevOps)."
+    },
+    "test3": {
+      "title": "Observability & Quality",
+      "description": "Logs, metrics, and tracing integration to reduce MTTR and increase reliability. Linters, type-check, and continuous code review."
     }
   },
   "company": {

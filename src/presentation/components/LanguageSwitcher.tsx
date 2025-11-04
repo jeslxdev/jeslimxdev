@@ -1,4 +1,5 @@
 ﻿import styled from 'styled-components';
+import React from 'react';
 import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import type { Language } from '@/infrastructure/i18n/translations';
 
@@ -69,9 +70,8 @@ export const LanguageSwitcher: React.FC = () => {
   return (
     <SwitcherContainer>
       {languages.map((lang, index) => (
-        <>
+        <React.Fragment key={lang.code}>
           <LanguageButton
-            key={lang.code}
             $isActive={language === lang.code}
             onClick={() => changeLanguage(lang.code)}
             type="button"
@@ -79,8 +79,8 @@ export const LanguageSwitcher: React.FC = () => {
             <FlagText>{lang.flag}</FlagText>
             <LanguageLabel>{lang.label}</LanguageLabel>
           </LanguageButton>
-          {index < languages.length - 1 && <Divider key={`div-${index}`} />}
-        </>
+          {index < languages.length - 1 && <Divider />}
+        </React.Fragment>
       ))}
     </SwitcherContainer>
   );

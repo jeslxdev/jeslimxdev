@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /**
  * Language Context - Infrastructure Layer
  * Gerenciamento de estado de idioma sem dependências externas

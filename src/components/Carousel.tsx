@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import {
   sectionFadeIn,
@@ -8,11 +8,8 @@ import {
   slideOutToLeft,
   slideOutToRight
 } from '@/styles/animations';
-import Header from '@/components/Header';
-import Presentation from '@/components/Presentation';
-import Projects from '@/components/Projects';
-import Company from '@/components/Company';
-import Contact from '@/components/Contact';
+import { Header, Presentation, Projects, Company, Contact } from '@/presentation/components';
+import { sections as sectionsList, type SectionType } from '@/models/Section';
 
 interface CarouselWrapperProps {
   $isTransitioning: boolean;
@@ -74,14 +71,14 @@ const SwipeHint = styled.div`
   display: none; /* Removido conforme solicitado */
 `;
 
-type SectionType = 'home' | 'presentation' | 'projects' | 'company' | 'contact';
+// Section type is centralized in models/Section
 
 interface CarouselProps {
   activeSection: SectionType;
   onSectionChange: (section: SectionType) => void;
 }
 
-const sections: SectionType[] = ['home', 'presentation', 'projects', 'company', 'contact'];
+const sections: SectionType[] = sectionsList;
 
 const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -92,7 +89,7 @@ const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) =
 
   const currentIndex = sections.indexOf(activeSection);
 
-  const navigateToSection = (newSection: SectionType, direction: 'left' | 'right' | 'none' = 'none') => {
+  const navigateToSection = useCallback((newSection: SectionType, direction: 'left' | 'right' | 'none' = 'none') => {
     if (newSection === activeSection || isTransitioning) return;
 
     setIsTransitioning(true);
@@ -105,17 +102,17 @@ const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) =
       setIsTransitioning(false);
       setSlideDirection('none');
     }, 400);
-  };
+  }, [activeSection, isTransitioning, onSectionChange]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const nextIndex = (currentIndex + 1) % sections.length;
     navigateToSection(sections[nextIndex], 'left'); // Swipe left = content from right
-  };
+  }, [currentIndex, navigateToSection]);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     const prevIndex = currentIndex === 0 ? sections.length - 1 : currentIndex - 1;
     navigateToSection(sections[prevIndex], 'right'); // Swipe right = content from left
-  };
+  }, [currentIndex, navigateToSection]);
 
   // Touch/Mouse handlers
   const handleStart = (clientX: number) => {
@@ -180,7 +177,7 @@ const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) =
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, isTransitioning]);
+  }, [currentIndex, isTransitioning, handleNext, handlePrevious]);
 
   return (
     <CarouselWrapper
@@ -217,6 +214,8 @@ const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) =
       >
         <Projects isVisible={activeSection === 'projects'} direction="right" />
       </SectionContainer>
+
+      {/* Tests removed by request */}
 
       {/* Company */}
       <SectionContainer

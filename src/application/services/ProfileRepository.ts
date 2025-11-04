@@ -97,8 +97,9 @@ Proven interpersonal skills in technical leadership, strategic project managemen
     return Promise.resolve(profile);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async updateProfile(_profile: Profile): Promise<void> {
-    // Implementation for updating profile
+    // Implementation for updating profile (no-op in mock repository)
     return Promise.resolve();
   }
 }

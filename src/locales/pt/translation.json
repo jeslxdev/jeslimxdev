@@ -2,19 +2,20 @@
   "title": "João Emanuel",
   "subtitle": "Engenheiro de Software | InfoSec | DevOps | Cibersegurança",
   "aboutTitle": "Sobre Mim",
-  "aboutText": "Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança. Desenvolvimento focado em alta performance, segurança e arquiteturas escaláveis, aplicando Clean Code, Clean Architecture, SOLID e DDD. Expertise em Cloudflare, Docker e CI/CD. Stacks principais: PHP, NestJS, Python, React e Java.",
+  "aboutText": "Engenheiro de Software com experiência em plataformas web e mobile, focado em APIs escaláveis, segurança e alta performance. Atuação ponta a ponta: arquitetura, desenvolvimento, testes e DevOps, aplicando Clean Architecture, SOLID e DDD. Experiência recente em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira.",
   "technologiesTitle": "Tecnologias & Ferramentas",
   "navbar": {
     "presentation": "Sobre",
     "projects": "Projetos",
+    "tests": "Testes",
     "company": "Empresa",
     "contact": "Contato"
   },
   "presentation": {
     "title": "Sobre Mim",
-    "intro": "Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança, com forte atuação no desenvolvimento de soluções robustas e escaláveis.",
-    "experience": "Desenvolvimento focado em alta performance, segurança de ponta e arquiteturas escaláveis, aplicando rigorosamente os princípios de Clean Code, Clean Architecture, SOLID e Domain-Driven Design (DDD). Expertise técnica em infraestrutura cloud (Cloudflare), containerização (Docker), automação de CI/CD e desenvolvimento em múltiplas linguagens.",
-    "passion": "Domínio das stacks principais: PHP, NestJS, Python, React e Java. Habilidades interpessoais comprovadas em liderança técnica, gestão estratégica de projetos e tradução eficiente de regras de negócio em soluções tecnológicas de alto impacto."
+    "intro": "Engenheiro de Software com foco em back-end, segurança e performance, entregando soluções robustas para web e mobile.",
+    "experience": "Nos últimos anos, atuei em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira, desenvolvendo APIs RESTful, modernizando sistemas legados e automatizando processos. Trabalho com PHP (Laravel/Hyperf/Slim), Node.js/NestJS, Python e Java, aplicando Clean Architecture, SOLID, testes e observabilidade.",
+    "passion": "Gosto de transformar regras de negócio em soluções simples e eficientes. Experiência com Kafka, Docker, CI/CD (Azure DevOps), Cloudflare e bancos relacionais. Stacks principais: PHP, NestJS, Python, React/React Native e Java."
   },
   "skills": {
     "architecture": "Arquitetura",
@@ -27,16 +28,31 @@
   "projects": {
     "title": "Meus Projetos",
     "project1": {
-      "title": "Infraestrutura Cloud Segura",
-      "description": "Arquitetura de infraestrutura escalável utilizando Cloudflare, Docker e CI/CD com foco em alta disponibilidade e segurança avançada."
+      "title": "Plataforma de CRM Web/Mobile — UNICRED",
+      "description": "Arquitetura e desenvolvimento de APIs RESTful seguras e escaláveis com PHP/Hyperf e NestJS, mensageria com Kafka e automação CI/CD. Foco em performance, segurança e qualidade."
     },
     "project2": {
-      "title": "Sistema de Monitoramento de Segurança",
-      "description": "Plataforma de monitoramento em tempo real com análise de vulnerabilidades, detecção de ameaças e automação de resposta a incidentes."
+      "title": "Modernização de Sistemas — Facta Financeira",
+      "description": "Refatoração de sistemas críticos (Estrutura, Portais, CRM, Seguros, Cartões), fortalecimento de segurança e escalabilidade, APIs de boletos e cartões Dock e automação de processos com robôs."
     },
     "project3": {
-      "title": "Arquitetura Clean com DDD",
-      "description": "Implementação de sistemas corporativos aplicando Clean Architecture, SOLID e Domain-Driven Design para máxima manutenibilidade e escalabilidade."
+      "title": "Ecossistema de Microserviços — Zallpy",
+      "description": "Construção e manutenção de aplicações web/mobile e serviços backend com PHP, NestJS e Python; Docker, Kafka e SQL Server; foco em performance, testes e observabilidade."
+    }
+  },
+  "tests": {
+    "title": "Testes e Qualidade",
+    "test1": {
+      "title": "Testes Unitários e de Integração",
+      "description": "Estratégias de testes com foco em cobertura e confiabilidade. Experiência com Jest/Vitest, mocks, spies e testes de integração em APIs REST."
+    },
+    "test2": {
+      "title": "E2E e Automação",
+      "description": "Fluxos ponta a ponta com Cypress/Playwright, validação de regressões e pipelines de qualidade em CI/CD (Azure DevOps)."
+    },
+    "test3": {
+      "title": "Observabilidade e Qualidade",
+      "description": "Integração de logs, métricas e tracing para reduzir MTTR e aumentar confiabilidade. Linters, type-check e revisão contínua de código."
     }
   },
   "company": {

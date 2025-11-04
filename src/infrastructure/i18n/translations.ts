@@ -47,6 +47,7 @@ export interface Translations {
       description: string;
     };
   };
+  // no explicit tests section
   company: {
     title: string;
     technologies: string;
@@ -66,7 +67,7 @@ export const translations: Record<Language, Translations> = {
     title: 'João Emanuel',
     subtitle: 'Engenheiro de Software | InfoSec | DevOps | Cibersegurança',
     aboutTitle: 'Sobre Mim',
-    aboutText: 'Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança. Desenvolvimento focado em alta performance, segurança e arquiteturas escaláveis, aplicando Clean Code, Clean Architecture, SOLID e DDD. Expertise em Cloudflare, Docker e CI/CD. Stacks principais: PHP, NestJS, Python, React e Java.',
+    aboutText: 'Engenheiro de Software com foco em back-end e integração, entregando APIs RESTful escaláveis e seguras para plataformas web e mobile. Experiência com PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python e Java; mensageria com Kafka; containers com Docker; pipelines CI/CD (Azure DevOps) e bancos relacionais (SQL Server, MySQL). Atuação em produtos corporativos e modernização de legados (UNICRED, Zallpy, Facta), aplicando Clean Architecture, SOLID, DDD, testes e observabilidade.',
     technologiesTitle: 'Tecnologias & Ferramentas',
     navbar: {
       presentation: 'Sobre',
@@ -76,9 +77,9 @@ export const translations: Record<Language, Translations> = {
     },
     presentation: {
       title: 'Sobre Mim',
-      intro: 'Engenheiro de Software especializado em InfoSec, DevOps e Cibersegurança, com forte atuação no desenvolvimento de soluções robustas e escaláveis.',
-      experience: 'Desenvolvimento focado em alta performance, segurança de ponta e arquiteturas escaláveis, aplicando rigorosamente os princípios de Clean Code, Clean Architecture, SOLID e Domain-Driven Design (DDD). Expertise técnica em infraestrutura cloud (Cloudflare), containerização (Docker), automação de CI/CD e desenvolvimento em múltiplas linguagens.',
-      passion: 'Domínio das stacks principais: PHP, NestJS, Python, React e Java. Habilidades interpessoais comprovadas em liderança técnica, gestão estratégica de projetos e tradução eficiente de regras de negócio em soluções tecnológicas de alto impacto.',
+      intro: 'Especialista em back-end e integrações, com ênfase em performance, segurança e confiabilidade em produção.',
+      experience: 'Desenvolvimento de CRM Web/Mobile e APIs escaláveis em PHP (Hyperf) e NestJS; mensageria com Kafka; automação de pipelines CI/CD (Azure DevOps); foco em segurança e testes. Facta Financeira: modernização de sistemas (Estrutura, Portais, CRM, Seguros, Cartões) em PHP (CodeIgniter/Laravel/Yii) e Python; integrações com APIs Dock; automação de processos. Zallpy: ecossistema de microserviços e aplicações com PHP, NestJS e Python; Docker, Kafka e SQL Server; otimizações de performance e observabilidade.',
+      passion: 'Transformo regras de negócio em soluções objetivas e escaláveis, reduzindo complexidade no código e no fluxo operacional. Stacks principais: PHP (Laravel/Hyperf/Slim), NestJS/TypeScript, Python; Docker, Kafka, Cloudflare e SQL Server/MySQL.',
     },
     skills: {
       architecture: 'Arquitetura',
@@ -91,18 +92,19 @@ export const translations: Record<Language, Translations> = {
     projects: {
       title: 'Meus Projetos',
       project1: {
-        title: 'Infraestrutura Cloud Segura',
-        description: 'Arquitetura de infraestrutura escalável utilizando Cloudflare, Docker e CI/CD com foco em alta disponibilidade e segurança avançada.',
+        title: 'CRM Web/Mobile e APIs — UNICRED',
+        description: 'APIs RESTful em PHP/Hyperf e NestJS (TypeScript), mensageria com Kafka, roteiros de CI/CD no Azure DevOps, autenticação e observabilidade. Entregas com foco em throughput, segurança e consistência.',
       },
       project2: {
-        title: 'Sistema de Monitoramento de Segurança',
-        description: 'Plataforma de monitoramento em tempo real com análise de vulnerabilidades, detecção de ameaças e automação de resposta a incidentes.',
+        title: 'Modernização de Legados — Facta Financeira',
+        description: 'Refatoração de módulos críticos (Estrutura, Portais, CRM, Seguros, Cartões) em PHP (CodeIgniter/Laravel/Yii) e Python; integrações com APIs Dock (boletos/cartões); automação de rotinas e hardening de segurança.',
       },
       project3: {
-        title: 'Arquitetura Clean com DDD',
-        description: 'Implementação de sistemas corporativos aplicando Clean Architecture, SOLID e Domain-Driven Design para máxima manutenibilidade e escalabilidade.',
+        title: 'Microserviços e Apps — Zallpy',
+        description: 'Serviços backend e aplicações web/mobile com PHP, NestJS e Python; containerização com Docker; mensageria Kafka; SQL Server. Ênfase em performance, testes e métricas.',
       },
     },
+    // tests section intentionally omitted
     company: {
       title: 'Experiência Profissional',
       technologies: 'Tecnologias & Ferramentas',
@@ -120,7 +122,7 @@ export const translations: Record<Language, Translations> = {
     title: 'João Emanuel',
     subtitle: 'Software Engineer | InfoSec | DevOps | Cybersecurity',
     aboutTitle: 'About Me',
-    aboutText: 'Software Engineer specialized in InfoSec, DevOps, and Cybersecurity. Development focused on high performance, security, and scalable architectures, applying Clean Code, Clean Architecture, SOLID, and DDD. Expertise in Cloudflare, Docker, and CI/CD. Primary stacks: PHP, NestJS, Python, React, and Java.',
+    aboutText: 'Software Engineer focused on back-end and integrations, delivering secure and scalable RESTful APIs for web and mobile platforms. Experience with PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python, and Java; Kafka for messaging; Docker for containers; CI/CD in Azure DevOps; and relational databases (SQL Server, MySQL). Work on corporate products and legacy modernization (UNICRED, Zallpy, Facta), applying Clean Architecture, SOLID, DDD, testing, and observability.',
     technologiesTitle: 'Technologies & Tools',
     navbar: {
       presentation: 'About',
@@ -130,9 +132,9 @@ export const translations: Record<Language, Translations> = {
     },
     presentation: {
       title: 'About Me',
-      intro: 'Software Engineer specialized in InfoSec, DevOps, and Cybersecurity, with strong expertise in developing robust and scalable solutions.',
-      experience: 'Development focused on high performance, top-tier security, and scalable architectures, rigorously applying Clean Code, Clean Architecture, SOLID, and Domain-Driven Design (DDD) principles. Technical expertise in cloud infrastructure (Cloudflare), containerization (Docker), CI/CD automation, and multi-language development.',
-      passion: 'Mastery of primary stacks: PHP, NestJS, Python, React, and Java. Proven interpersonal skills in technical leadership, strategic project management, and efficient translation of business rules into high-impact technological solutions.',
+      intro: 'Back-end and integrations specialist, with emphasis on performance, security, and production reliability.',
+      experience: 'UNICRED: development of Web/Mobile CRM and scalable APIs using PHP (Hyperf) and NestJS; Kafka messaging; CI/CD automation (Azure DevOps); strong focus on security and testing. Facta Financeira: systems modernization (Structure, Portals, CRM, Insurance, Cards) in PHP (CodeIgniter/Laravel/Yii) and Python; integrations with Dock APIs; process automation. Zallpy: microservices ecosystem and applications with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; performance optimizations and observability.',
+      passion: 'I turn business rules into objective, scalable solutions, reducing complexity in code and operational flows. Primary stacks: PHP (Laravel/Hyperf/Slim), NestJS/TypeScript, Python; Docker, Kafka, Cloudflare, and SQL Server/MySQL.',
     },
     skills: {
       architecture: 'Architecture',
@@ -145,18 +147,19 @@ export const translations: Record<Language, Translations> = {
     projects: {
       title: 'My Projects',
       project1: {
-        title: 'Secure Cloud Infrastructure',
-        description: 'Scalable infrastructure architecture using Cloudflare, Docker, and CI/CD with focus on high availability and advanced security.',
+        title: 'Web/Mobile CRM & APIs — UNICRED',
+        description: 'RESTful APIs in PHP/Hyperf and NestJS (TypeScript), Kafka messaging, Azure DevOps CI/CD pipelines, authentication, and observability. Delivery focused on throughput, security, and consistency.',
       },
       project2: {
-        title: 'Security Monitoring System',
-        description: 'Real-time monitoring platform with vulnerability analysis, threat detection, and automated incident response.',
+        title: 'Legacy Modernization — Facta Financeira',
+        description: 'Refactoring critical modules (Structure, Portals, CRM, Insurance, Cards) in PHP (CodeIgniter/Laravel/Yii) and Python; integrations with Dock APIs (boletos/cards); routine automation and security hardening.',
       },
       project3: {
-        title: 'Clean Architecture with DDD',
-        description: 'Implementation of enterprise systems applying Clean Architecture, SOLID, and Domain-Driven Design for maximum maintainability and scalability.',
+        title: 'Microservices & Apps — Zallpy',
+        description: 'Backend services and web/mobile apps with PHP, NestJS, and Python; Docker containerization; Kafka messaging; SQL Server. Focus on performance, testing, and metrics.',
       },
     },
+    // tests section intentionally omitted
     company: {
       title: 'Professional Experience',
       technologies: 'Technologies & Tools',
