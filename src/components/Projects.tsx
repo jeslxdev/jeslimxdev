@@ -19,11 +19,11 @@ const ProjectsWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   width: min(1200px, 95%);
   max-height: calc(90vh - 80px);
   background: linear-gradient(135deg,
-    #01191e 0%,
-    #011317 50%,
-    #010d0f 100%);
+    #1a252e 0%,
+    #223037 50%,
+    #2a3940 100%);
   backdrop-filter: blur(25px);
-  border: 1px solid #2f2f2f;
+  border: 1px solid #4a5555;
   border-radius: 24px;
   padding: clamp(24px, 4vw, 48px);
   margin: clamp(20px, 3vw, 40px) auto;
@@ -35,16 +35,16 @@ const ProjectsWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   }
 
   &::-webkit-scrollbar-track {
-    background: #101010;
+    background: #223037;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #3e3e3e, #2f2f2f);
+    background: linear-gradient(to bottom, #4a5555, #3a4545);
     border-radius: 10px;
 
     &:hover {
-      background: linear-gradient(to bottom, #2f2f2f, #1f1f1f);
+      background: linear-gradient(to bottom, #5a6565, #4a5555);
     }
   }
 
@@ -114,9 +114,9 @@ const ProjectsGrid = styled.div`
 
 const ProjectCard = styled.div`
   background: linear-gradient(135deg,
-    #1f1f1f 0%,
-    #101010 100%);
-  border: 1px solid #2f2f2f;
+    #2a3940 0%,
+    #1f2a30 100%);
+  border: 1px solid #4a5555;
   border-radius: 20px;
   padding: clamp(24px, 3vw, 32px);
   transition: all 0.2s ease;
@@ -145,15 +145,16 @@ const ProjectCard = styled.div`
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, #3e3e3e 0%, #2f2f2f 100%);
+    background: linear-gradient(90deg, #6a7a84 0%, #5a6a74 100%);
   }
 
   &:hover {
     transform: translateY(-8px);
     background: linear-gradient(135deg,
-      #2f2f2f 0%,
-      #1f1f1f 100%);
+      #3a4a50 0%,
+      #2a3940 100%);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    border-color: #5a6a74;
   }
 
   ${media.tablet`

@@ -32,8 +32,8 @@ const ContactWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   position: relative;
   width: min(850px, 95%);
   max-height: calc(85vh - 60px);
-  background: #01191e;
-  border: 1px solid #3e3e3e;
+  background: #1a252e;
+  border: 1px solid #4a5555;
   border-radius: 24px;
   padding: clamp(32px, 5vw, 48px);
   margin-top: 20px;
@@ -45,16 +45,16 @@ const ContactWrapper = styled.div<{ $isVisible: boolean; $direction: string }>`
   }
 
   &::-webkit-scrollbar-track {
-    background: #1f1f1f;
+    background: #223037;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #2f2f2f;
+    background: #4a5555;
     border-radius: 10px;
 
     &:hover {
-      background: #3e3e3e;
+      background: #5a6565;
     }
   }
 
@@ -127,8 +127,8 @@ const ContactGrid = styled.div`
 `;
 
 const ContactCard = styled.a`
-  background: #1f1f1f;
-  border: 1px solid #2f2f2f;
+  background: #2a3940;
+  border: 1px solid #4a5555;
   border-radius: 20px;
   padding: clamp(24px, 4vw, 32px);
   text-decoration: none;
@@ -152,13 +152,14 @@ const ContactCard = styled.a`
     left: 0;
     width: 100%;
     height: 3px;
-    background: #4a5568;
+    background: #6a7a84;
   }
 
   &:hover {
     transform: translateY(-8px);
-    background: #2f2f2f;
+    background: #3a4a50;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border-color: #5a6a74;
   }
 
   ${media.mobile`
@@ -174,7 +175,7 @@ const ContactIcon = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #4a5568;
+  background: #6a7a84;
   display: flex;
   align-items: center;
   justify-content: center;

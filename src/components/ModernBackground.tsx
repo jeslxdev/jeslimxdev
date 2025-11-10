@@ -48,12 +48,12 @@ const CanvasContainer = styled.div`
   /* Modern dark gradient background */
   background: linear-gradient(
     135deg,
-    #000000 0%,
-    #000608 15%,
-    #010d0f 35%,
-    #011317 55%,
-    #01191e 75%,
-    #000608 100%
+    #0a0a0a 0%,
+    #121820 15%,
+    #1a252e 35%,
+    #223037 55%,
+    #2a3940 75%,
+    #1a252e 100%
   );
 
   /* Animated grid overlay */
@@ -65,11 +65,11 @@ const CanvasContainer = styled.div`
     width: 100%;
     height: 100%;
     background-image:
-      linear-gradient(rgba(63, 63, 63, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(63, 63, 63, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(120, 120, 120, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 120, 120, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
     animation: ${gradientShift} 40s ease infinite;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   /* Floating gradient orbs */

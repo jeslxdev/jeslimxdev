@@ -14,9 +14,9 @@ const NavbarWrapper = styled.aside<{ $isOpen: boolean }>`
   width: auto;
   max-width: 280px;
   padding: 16px 20px;
-  background: rgba(1, 25, 30, 0.7);
+  background: rgba(26, 37, 46, 0.7);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(47, 47, 47, 0.3);
+  border: 1px solid rgba(74, 85, 85, 0.3);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -26,7 +26,7 @@ const NavbarWrapper = styled.aside<{ $isOpen: boolean }>`
   opacity: 0.9;
 
   &:hover {
-    background: rgba(1, 19, 23, 0.85);
+    background: rgba(34, 48, 55, 0.85);
     opacity: 1;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
     transform: translateY(-50%) scale(1.02);
@@ -75,7 +75,7 @@ const NavbarWrapper = styled.aside<{ $isOpen: boolean }>`
     align-items: stretch;
     transform: translateX(${props => props.$isOpen ? '0' : '100%'});
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(1, 25, 30, 0.95);
+    background: rgba(26, 37, 46, 0.95);
     backdrop-filter: blur(30px);
     border: none; /* Remove todas as bordas no mobile */
 
@@ -94,9 +94,9 @@ const MobileToggle = styled.button`
   height: 44px;
   border: none;
   border-radius: 12px;
-  background: rgba(1, 25, 30, 0.9);
+  background: rgba(26, 37, 46, 0.9);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(47, 47, 47, 0.3);
+  border: 1px solid rgba(74, 85, 85, 0.3);
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   cursor: pointer;
@@ -106,7 +106,7 @@ const MobileToggle = styled.button`
   justify-content: center;
 
   &:hover {
-    background: rgba(1, 19, 23, 0.95);
+    background: rgba(34, 48, 55, 0.95);
     transform: scale(1.05);
     color: #ffffff;
   }
@@ -151,7 +151,7 @@ const CloseButton = styled.button`
 
   &:hover {
     color: #ffffff;
-    background: rgba(47, 47, 47, 0.3);
+    background: rgba(74, 85, 85, 0.3);
   }
 
   ${media.mobile`
@@ -207,7 +207,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
           textAlign: 'center',
           padding: '8px',
           borderRadius: '12px',
-          background: 'rgba(47, 47, 47, 0.2)'
+          background: 'rgba(74, 85, 85, 0.2)'
         }}>
           JE
         </div>
@@ -216,10 +216,10 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
           display: 'flex',
           flexDirection: 'column',
           gap: '8px',
-          background: 'rgba(31, 31, 31, 0.4)',
+          background: 'rgba(42, 57, 64, 0.4)',
           borderRadius: '16px',
           padding: '12px 8px',
-          border: '1px solid rgba(47, 47, 47, 0.3)'
+          border: '1px solid rgba(74, 85, 85, 0.3)'
         }}>
           <button onClick={() => handleNavClick('home')} style={{
             background: 'transparent',
@@ -280,7 +280,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
           <div style={{
             marginTop: '16px',
             paddingTop: '16px',
-            borderTop: '1px solid rgba(47, 47, 47, 0.3)',
+            borderTop: '1px solid rgba(74, 85, 85, 0.3)',
             display: 'flex',
             justifyContent: 'center'
           }}>

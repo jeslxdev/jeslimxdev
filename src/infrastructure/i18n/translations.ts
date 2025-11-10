@@ -59,7 +59,7 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   pt: {
     title: 'João Emanuel',
-    subtitle: 'Engenheiro de Software | InfoSec | DevOps | Cibersegurança',
+    subtitle: 'Engenheiro de Software | DevOps | Cibersegurança',
     aboutTitle: 'Sobre Mim',
     aboutText: 'Engenheiro de Software com foco em back-end e integração, entregando APIs RESTful escaláveis e seguras para plataformas web e mobile. Experiência com PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python e Java; mensageria com Kafka; containers com Docker; pipelines CI/CD (Azure DevOps) e bancos relacionais (SQL Server, MySQL). Atuação em produtos corporativos e modernização de legados (UNICRED, Zallpy, Facta), aplicando Clean Architecture, SOLID, DDD, testes e observabilidade.',
     technologiesTitle: 'Tecnologias & Ferramentas',
@@ -108,7 +108,7 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     title: 'João Emanuel',
-    subtitle: 'Software Engineer | InfoSec | DevOps | Cybersecurity',
+    subtitle: 'Software Engineer | DevOps | Cybersecurity',
     aboutTitle: 'About Me',
     aboutText: 'Software Engineer focused on back-end and integrations, delivering secure and scalable RESTful APIs for web and mobile platforms. Experience with PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python, and Java; Kafka for messaging; Docker for containers; CI/CD in Azure DevOps; and relational databases (SQL Server, MySQL). Work on corporate products and legacy modernization (UNICRED, Zallpy, Facta), applying Clean Architecture, SOLID, DDD, testing, and observability.',
     technologiesTitle: 'Technologies & Tools',

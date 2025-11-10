@@ -12,9 +12,9 @@ const float = keyframes`
 
 const HeaderWrapper = styled.header`
   background: linear-gradient(135deg,
-    #01191e 0%,
-    #011317 50%,
-    #010d0f 100%);
+    #1a252e 0%,
+    #223037 50%,
+    #2a3940 100%);
   padding: 0;
   margin: 0;
   color: white;
@@ -36,9 +36,9 @@ const HeaderWrapper = styled.header`
     width: 200%;
     height: 200%;
     background:
-      radial-gradient(circle at 20% 80%, rgba(62, 62, 62, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(47, 47, 47, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(31, 31, 31, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(180, 180, 180, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(160, 160, 160, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(140, 140, 140, 0.05) 0%, transparent 50%);
     animation: ${float} 20s ease-in-out infinite;
     pointer-events: none;
   }
@@ -65,7 +65,7 @@ const Title = styled.h1`
   font-size: 4.5rem;
   margin: 0;
   font-weight: 800;
-  background: linear-gradient(135deg, #3e3e3e 0%, #2f2f2f 100%);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
