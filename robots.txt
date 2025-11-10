@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jeslimx.dev/sitemap.xml
+
+# Disallow sensitive files
+Disallow: /src/
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /*.json$
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+
+# Allow common files
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
+Allow: *.ico
