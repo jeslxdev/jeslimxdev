@@ -1,98 +1,161 @@
+﻿import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { useLayoutEffect, useRef } from 'react';
 import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
 import { media } from '@/styles/media';
 import { LanguageSwitcher } from '@/presentation/components/LanguageSwitcher';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-const NavbarWrapper = styled.nav`
+const NavbarWrapper = styled.aside<{ $isOpen: boolean }>`
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
   z-index: 1000;
-  width: 90%;
-  max-width: 1200px;
-  padding: 15px 30px;
-  background: rgba(27, 61, 80, 0.2);
+  width: auto;
+  max-width: 280px;
+  padding: 16px 20px;
+  background: rgba(1, 25, 30, 0.7);
   backdrop-filter: blur(20px);
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  ${media.tablet`
-    padding: 12px 20px;
-    top: 15px;
-  `}
-
-  ${media.mobile`
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 20px;
-    border-radius: 30px;
-    top: 10px;
-    width: 95%;
-  `}
-`;
-
-const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #f5f5f5;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-  ${media.tablet`
-    font-size: 1.2rem;
-  `}
-
-  ${media.mobile`
-    font-size: 1.1rem;
-  `}
-`;
-
-const NavLinks = styled.div`
-  display: flex;
-  gap: 30px;
-  align-items: center;
-
-  ${media.tablet`
-    gap: 20px;
-  `}
-
-  ${media.mobile`
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-  `}
-`;
-
-const NavLink = styled.a`
-  color: rgba(245, 245, 245, 0.9);
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  padding: 8px 15px;
+  border: 1px solid rgba(47, 47, 47, 0.3);
   border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s ease;
+  opacity: 0.9;
 
   &:hover {
-    color: #f5f5f5;
-    background: rgba(61, 58, 58, 0.5);
-    transform: translateY(-2px);
+    background: rgba(1, 19, 23, 0.85);
+    opacity: 1;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%) scale(1.02);
   }
 
+  ${media.laptopLarge`
+    padding: 14px 18px;
+    gap: 18px;
+    right: 20px;
+  `}
+
+  ${media.laptop`
+    padding: 12px 16px;
+    gap: 16px;
+    right: 16px;
+  `}
+
   ${media.tablet`
-    font-size: 0.9rem;
-    padding: 6px 12px;
+    top: 20px;
+    right: 20px;
+    transform: translateY(0);
+    border-radius: 16px;
+    padding: 12px 16px;
+    gap: 14px;
+    flex-direction: row;
+    align-items: center;
+    max-width: none;
+    width: auto;
+
+    &:hover {
+      transform: translateY(0) scale(1.02);
+    }
   `}
 
   ${media.mobile`
-    font-size: 0.85rem;
-    padding: 5px 10px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 80vw;
+    height: 100vh;
+    padding: 20px;
+    gap: 16px;
+    border-radius: 0;
+    flex-direction: column;
+    align-items: stretch;
+    transform: translateX(${props => props.$isOpen ? '0' : '100%'});
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(1, 25, 30, 0.95);
+    backdrop-filter: blur(30px);
+    border: none; /* Remove todas as bordas no mobile */
+
+    &:hover {
+      transform: translateX(${props => props.$isOpen ? '0' : '100%'});
+    }
+  `}
+`;
+
+const MobileToggle = styled.button`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(1, 25, 30, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(47, 47, 47, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(1, 19, 23, 0.95);
+    transform: scale(1.05);
+    color: #ffffff;
+  }
+
+  ${media.mobile`
+    display: flex;
+  `}
+`;
+
+const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: ${props => props.$isOpen ? 1 : 0};
+  visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
+  transition: all 0.3s ease;
+  display: none;
+
+  ${media.mobile`
+    display: block;
+  `}
+`;
+
+const CloseButton = styled.button`
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(47, 47, 47, 0.3);
+  }
+
+  ${media.mobile`
+    display: block;
   `}
 `;
 
@@ -103,47 +166,129 @@ interface NavbarProps {
 const Navbar = ({ onNavigate }: NavbarProps) => {
   const { t } = useLanguage();
   const navRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Measure navbar height + offset and expose as CSS variables to prevent content overlap
-  useLayoutEffect(() => {
-    const updateVars = () => {
-      const el = navRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const styles = getComputedStyle(el);
-      const topPx = parseFloat(styles.top || '0');
-      const height = rect.height;
-      const offset = Math.round(topPx + height);
-      const root = document.documentElement;
-      root.style.setProperty('--nav-height', `${Math.round(height)}px`);
-      root.style.setProperty('--nav-offset', `${offset}px`);
-      // Also a safer top offset that includes safe-area
-      const safeTop = Number.parseFloat(getComputedStyle(root).getPropertyValue('--safe-top')) || 0;
-      root.style.setProperty('--nav-safe-top', `${offset + safeTop}px`);
-    };
+  const handleLogoClick = () => {
+    onNavigate('home');
+    setIsOpen(false);
+  };
 
-    updateVars();
-    window.addEventListener('resize', updateVars);
-    const ro = new ResizeObserver(updateVars);
-    if (navRef.current) ro.observe(navRef.current);
-    return () => {
-      window.removeEventListener('resize', updateVars);
-      ro.disconnect();
-    };
-  }, []);
+  const handleNavClick = (section: string) => {
+    onNavigate(section);
+    setIsOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <NavbarWrapper ref={navRef}>
-      <Logo>JE</Logo>
-      <NavLinks>
-        <NavLink onClick={() => onNavigate('home')}>Home</NavLink>
-        <NavLink onClick={() => onNavigate('presentation')}>{t('navbar.presentation')}</NavLink>
-        <NavLink onClick={() => onNavigate('projects')}>{t('navbar.projects')}</NavLink>
-        <NavLink onClick={() => onNavigate('company')}>{t('navbar.company')}</NavLink>
-        <NavLink onClick={() => onNavigate('contact')}>{t('navbar.contact')}</NavLink>
-        <LanguageSwitcher />
-      </NavLinks>
-    </NavbarWrapper>
+    <>
+      <MobileToggle onClick={toggleMenu}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </MobileToggle>
+
+      <MobileBackdrop $isOpen={isOpen} onClick={closeMenu} />
+
+      <NavbarWrapper ref={navRef} $isOpen={isOpen}>
+        <CloseButton onClick={closeMenu}>
+          <FaTimes />
+        </CloseButton>
+
+        <div onClick={handleLogoClick} style={{
+          fontSize: '1.4rem',
+          fontWeight: 700,
+          color: 'rgba(255, 255, 255, 0.9)',
+          cursor: 'pointer',
+          textAlign: 'center',
+          padding: '8px',
+          borderRadius: '12px',
+          background: 'rgba(47, 47, 47, 0.2)'
+        }}>
+          JE
+        </div>
+
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+          background: 'rgba(31, 31, 31, 0.4)',
+          borderRadius: '16px',
+          padding: '12px 8px',
+          border: '1px solid rgba(47, 47, 47, 0.3)'
+        }}>
+          <button onClick={() => handleNavClick('home')} style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255, 255, 255, 0.7)',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            padding: '8px 12px',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease'
+          }}>
+            Home
+          </button>
+
+          <button onClick={() => handleNavClick('projects')} style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255, 255, 255, 0.7)',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            padding: '8px 12px',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease'
+          }}>
+            {t('navbar.projects')}
+          </button>
+
+          <button onClick={() => handleNavClick('company')} style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255, 255, 255, 0.7)',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            padding: '8px 12px',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease'
+          }}>
+            {t('navbar.company')}
+          </button>
+
+          <button onClick={() => handleNavClick('contact')} style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255, 255, 255, 0.7)',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            padding: '8px 12px',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease'
+          }}>
+            {t('navbar.contact')}
+          </button>
+
+          <div style={{
+            marginTop: '16px',
+            paddingTop: '16px',
+            borderTop: '1px solid rgba(47, 47, 47, 0.3)',
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </NavbarWrapper>
+    </>
   );
 };
 

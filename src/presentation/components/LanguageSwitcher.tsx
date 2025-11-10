@@ -1,24 +1,29 @@
 ﻿import styled from 'styled-components';
 import React from 'react';
 import { useLanguage } from '@/infrastructure/i18n/LanguageContext';
+import { media } from '@/styles/media';
 import type { Language } from '@/infrastructure/i18n/translations';
 
 const SwitcherContainer = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1f1f1f;
+  border: 1px solid #2f2f2f;
   border-radius: 12px;
   padding: 0.25rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: #2f2f2f;
+    border-color: #3e3e3e;
   }
+
+  ${media.mobile`
+    border-radius: 10px;
+    padding: 0.2rem;
+  `}
 `;
 
 const LanguageButton = styled.button<{ $isActive: boolean }>`
@@ -26,7 +31,7 @@ const LanguageButton = styled.button<{ $isActive: boolean }>`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: ${props => props.$isActive ? 'rgba(59, 130, 246, 0.3)' : 'transparent'};
+  background: ${props => props.$isActive ? '#3e3e3e' : 'transparent'};
   color: ${props => props.$isActive ? '#fff' : 'rgba(255, 255, 255, 0.7)'};
   border: none;
   border-radius: 8px;
@@ -34,34 +39,62 @@ const LanguageButton = styled.button<{ $isActive: boolean }>`
   font-weight: ${props => props.$isActive ? '600' : '500'};
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 
   &:hover {
     color: #fff;
+    background: ${props => props.$isActive ? '#3e3e3e' : '#2f2f2f'};
     transform: translateY(-2px);
   }
 
   &:active {
     transform: translateY(0);
   }
-`;
 
-const FlagText = styled.span`
-  font-size: 1.25rem;
+  ${media.tablet`
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  `}
+
+  ${media.mobile`
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  `}
 `;
 
 const LanguageLabel = styled.span`
   user-select: none;
+
+  ${media.mobile`
+    display: none;
+  `}
+`;
+
+const LanguageCode = styled.span`
+  display: none;
+  user-select: none;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  ${media.mobile`
+    display: block;
+  `}
 `;
 
 const Divider = styled.div`
   width: 1px;
   height: 24px;
-  background: rgba(255, 255, 255, 0.15);
+  background: #2f2f2f;
+
+  ${media.mobile`
+    height: 20px;
+  `}
 `;
 
 const languages = [
-  { code: 'pt' as Language, label: 'PT', flag: String.fromCodePoint(0x1F1E7, 0x1F1F7) },
-  { code: 'en' as Language, label: 'EN', flag: String.fromCodePoint(0x1F1FA, 0x1F1F8) },
+  { code: 'pt' as Language, label: 'Português' },
+  { code: 'en' as Language, label: 'English' },
 ];
 
 export const LanguageSwitcher: React.FC = () => {
@@ -76,8 +109,8 @@ export const LanguageSwitcher: React.FC = () => {
             onClick={() => changeLanguage(lang.code)}
             type="button"
           >
-            <FlagText>{lang.flag}</FlagText>
             <LanguageLabel>{lang.label}</LanguageLabel>
+            <LanguageCode>{lang.code}</LanguageCode>
           </LanguageButton>
           {index < languages.length - 1 && <Divider />}
         </React.Fragment>

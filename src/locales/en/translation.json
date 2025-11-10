@@ -5,17 +5,9 @@
   "aboutText": "Software Engineer with experience across web and mobile platforms, focused on scalable APIs, security, and high performance. End-to-end delivery: architecture, development, testing, and DevOps, applying Clean Architecture, SOLID, and DDD. Recent experience at Platform Builders, UNICRED, Zallpy, and Facta Financeira.",
   "technologiesTitle": "Technologies & Tools",
   "navbar": {
-    "presentation": "About",
     "projects": "Projects",
-    "tests": "Tests",
-    "company": "Company",
+    "company": "Experience",
     "contact": "Contact"
-  },
-  "presentation": {
-    "title": "About Me",
-    "intro": "Software Engineer focused on back-end, security, and performance, delivering robust solutions for web and mobile.",
-    "experience": "In recent years I worked at companies like Platform Builders, UNICRED, Zallpy, and Facta Financeira, building RESTful APIs, modernizing legacy systems, and automating processes. Experience with PHP (Laravel/Hyperf/Slim), Node.js/NestJS, Python, and Java, applying Clean Architecture, SOLID, testing, and observability.",
-    "passion": "I enjoy turning business rules into simple and efficient solutions. Experience with Kafka, Docker, CI/CD (Azure DevOps), Cloudflare, and relational databases. Primary stacks: PHP, NestJS, Python, React/React Native, and Java."
   },
   "skills": {
     "architecture": "Architecture",
@@ -40,21 +32,6 @@
       "description": "Building and maintaining web/mobile applications and backend services with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; focus on performance, testing, and observability."
     }
   },
-  "tests": {
-    "title": "Testing & Quality",
-    "test1": {
-      "title": "Unit & Integration Tests",
-      "description": "Testing strategies focused on coverage and reliability. Experience with Jest/Vitest, mocks, spies, and API integration tests."
-    },
-    "test2": {
-      "title": "E2E & Automation",
-      "description": "End-to-end flows with Cypress/Playwright, regression validation, and quality gates in CI/CD (Azure DevOps)."
-    },
-    "test3": {
-      "title": "Observability & Quality",
-      "description": "Logs, metrics, and tracing integration to reduce MTTR and increase reliability. Linters, type-check, and continuous code review."
-    }
-  },
   "company": {
     "title": "Professional Experience",
     "technologies": "Technologies & Tools",
@@ -63,6 +40,7 @@
   },
   "contact": {
     "title": "Let's Connect!",
+    "subtitle": "Let's work together! Get in touch through any of these channels.",
     "linkedin": "Connect with me on LinkedIn",
     "email": "Send me an email",
     "github": "Check out my code on GitHub"

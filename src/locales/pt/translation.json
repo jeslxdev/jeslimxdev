@@ -5,17 +5,9 @@
   "aboutText": "Engenheiro de Software com experiência em plataformas web e mobile, focado em APIs escaláveis, segurança e alta performance. Atuação ponta a ponta: arquitetura, desenvolvimento, testes e DevOps, aplicando Clean Architecture, SOLID e DDD. Experiência recente em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira.",
   "technologiesTitle": "Tecnologias & Ferramentas",
   "navbar": {
-    "presentation": "Sobre",
     "projects": "Projetos",
-    "tests": "Testes",
-    "company": "Empresa",
+    "company": "Experiências",
     "contact": "Contato"
-  },
-  "presentation": {
-    "title": "Sobre Mim",
-    "intro": "Engenheiro de Software com foco em back-end, segurança e performance, entregando soluções robustas para web e mobile.",
-    "experience": "Nos últimos anos, atuei em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira, desenvolvendo APIs RESTful, modernizando sistemas legados e automatizando processos. Trabalho com PHP (Laravel/Hyperf/Slim), Node.js/NestJS, Python e Java, aplicando Clean Architecture, SOLID, testes e observabilidade.",
-    "passion": "Gosto de transformar regras de negócio em soluções simples e eficientes. Experiência com Kafka, Docker, CI/CD (Azure DevOps), Cloudflare e bancos relacionais. Stacks principais: PHP, NestJS, Python, React/React Native e Java."
   },
   "skills": {
     "architecture": "Arquitetura",
@@ -40,29 +32,15 @@
       "description": "Construção e manutenção de aplicações web/mobile e serviços backend com PHP, NestJS e Python; Docker, Kafka e SQL Server; foco em performance, testes e observabilidade."
     }
   },
-  "tests": {
-    "title": "Testes e Qualidade",
-    "test1": {
-      "title": "Testes Unitários e de Integração",
-      "description": "Estratégias de testes com foco em cobertura e confiabilidade. Experiência com Jest/Vitest, mocks, spies e testes de integração em APIs REST."
-    },
-    "test2": {
-      "title": "E2E e Automação",
-      "description": "Fluxos ponta a ponta com Cypress/Playwright, validação de regressões e pipelines de qualidade em CI/CD (Azure DevOps)."
-    },
-    "test3": {
-      "title": "Observabilidade e Qualidade",
-      "description": "Integração de logs, métricas e tracing para reduzir MTTR e aumentar confiabilidade. Linters, type-check e revisão contínua de código."
-    }
-  },
   "company": {
-    "title": "Experiência Profissional",
+    "title": "Experiências Profissionais",
     "technologies": "Tecnologias & Ferramentas",
     "builders": "Engenheiro de Software especializado em segurança, DevOps e arquiteturas escaláveis. Desenvolvimento de soluções críticas com foco em performance e proteção de dados.",
     "extds": "Liderança técnica e gestão de projetos internacionais, coordenando equipes e implementando soluções de alto impacto com foco em qualidade e segurança."
   },
   "contact": {
     "title": "Vamos Conversar!",
+    "subtitle": "Vamos trabalhar juntos! Entre em contato através de qualquer um desses canais.",
     "linkedin": "Conecte-se comigo no LinkedIn",
     "email": "Envie-me um email",
     "github": "Confira meu código no GitHub"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled, { css } from 'styled-components';
+import { media } from '@/styles/media';
 import {
   sectionFadeIn,
   sectionFadeOut,
@@ -8,7 +9,7 @@ import {
   slideOutToLeft,
   slideOutToRight
 } from '@/styles/animations';
-import { Header, Presentation, Projects, Company, Contact } from '@/presentation/components';
+import { Header, Projects, Company, Contact } from '@/presentation/components';
 import { sections as sectionsList, type SectionType } from '@/models/Section';
 
 interface CarouselWrapperProps {
@@ -24,6 +25,11 @@ const CarouselWrapper = styled.div<CarouselWrapperProps>`
   z-index: 500;
   touch-action: pan-x;
   cursor: ${props => props.$isTransitioning ? 'grabbing' : 'grab'};
+  overflow: hidden;
+
+  ${media.mobile`
+    touch-action: pan-y pan-x;
+  `}
 `;
 
 const SectionContainer = styled.div<{
@@ -41,6 +47,18 @@ const SectionContainer = styled.div<{
   justify-content: center;
   opacity: ${props => props.$isActive ? 1 : 0};
   pointer-events: ${props => props.$isActive ? 'auto' : 'none'};
+  padding: var(--panel-gap-y) 0; /* Remover padding lateral que causa faixa preta */
+  padding-bottom: calc(var(--footer-safe-bottom) + var(--panel-gap-y));
+
+  ${media.mobile`
+    padding: var(--panel-gap-mobile) 0; /* Remover padding lateral no mobile */
+    padding-bottom: calc(var(--footer-safe-bottom) + var(--panel-gap-mobile));
+    padding-right: calc(var(--panel-gap-mobile) + 60px); /* Space for mobile toggle */
+  `}
+
+  ${media.mobile`
+    padding: 0 4px;
+  `}
 
   ${props => props.$isActive && !props.$isExiting && css`
     animation: ${
@@ -195,15 +213,6 @@ const Carousel: React.FC<CarouselProps> = ({ activeSection, onSectionChange }) =
         $slideDirection={slideDirection}
       >
         <Header />
-      </SectionContainer>
-
-      {/* Presentation */}
-      <SectionContainer
-        $isActive={activeSection === 'presentation'}
-        $isExiting={exitingSection === 'presentation'}
-        $slideDirection={slideDirection}
-      >
-        <Presentation isVisible={activeSection === 'presentation'} direction="left" />
       </SectionContainer>
 
       {/* Projects */}

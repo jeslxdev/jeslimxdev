@@ -13,16 +13,9 @@ export interface Translations {
   aboutText: string;
   technologiesTitle: string;
   navbar: {
-    presentation: string;
     projects: string;
     company: string;
     contact: string;
-  };
-  presentation: {
-    title: string;
-    intro: string;
-    experience: string;
-    passion: string;
   };
   skills: {
     architecture: string;
@@ -56,6 +49,7 @@ export interface Translations {
   };
   contact: {
     title: string;
+    subtitle: string;
     linkedin: string;
     email: string;
     github: string;
@@ -70,16 +64,9 @@ export const translations: Record<Language, Translations> = {
     aboutText: 'Engenheiro de Software com foco em back-end e integração, entregando APIs RESTful escaláveis e seguras para plataformas web e mobile. Experiência com PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python e Java; mensageria com Kafka; containers com Docker; pipelines CI/CD (Azure DevOps) e bancos relacionais (SQL Server, MySQL). Atuação em produtos corporativos e modernização de legados (UNICRED, Zallpy, Facta), aplicando Clean Architecture, SOLID, DDD, testes e observabilidade.',
     technologiesTitle: 'Tecnologias & Ferramentas',
     navbar: {
-      presentation: 'Sobre',
       projects: 'Projetos',
-      company: 'Empresa',
+      company: 'Experiência',
       contact: 'Contato',
-    },
-    presentation: {
-      title: 'Sobre Mim',
-      intro: 'Especialista em back-end e integrações, com ênfase em performance, segurança e confiabilidade em produção.',
-      experience: 'Desenvolvimento de CRM Web/Mobile e APIs escaláveis em PHP (Hyperf) e NestJS; mensageria com Kafka; automação de pipelines CI/CD (Azure DevOps); foco em segurança e testes. Facta Financeira: modernização de sistemas (Estrutura, Portais, CRM, Seguros, Cartões) em PHP (CodeIgniter/Laravel/Yii) e Python; integrações com APIs Dock; automação de processos. Zallpy: ecossistema de microserviços e aplicações com PHP, NestJS e Python; Docker, Kafka e SQL Server; otimizações de performance e observabilidade.',
-      passion: 'Transformo regras de negócio em soluções objetivas e escaláveis, reduzindo complexidade no código e no fluxo operacional. Stacks principais: PHP (Laravel/Hyperf/Slim), NestJS/TypeScript, Python; Docker, Kafka, Cloudflare e SQL Server/MySQL.',
     },
     skills: {
       architecture: 'Arquitetura',
@@ -113,6 +100,7 @@ export const translations: Record<Language, Translations> = {
     },
     contact: {
       title: 'Vamos Conversar!',
+      subtitle: 'Vamos trabalhar juntos! Entre em contato através de qualquer um desses canais.',
       linkedin: 'Conecte-se comigo no LinkedIn',
       email: 'Envie-me um email',
       github: 'Confira meu código no GitHub',
@@ -125,16 +113,9 @@ export const translations: Record<Language, Translations> = {
     aboutText: 'Software Engineer focused on back-end and integrations, delivering secure and scalable RESTful APIs for web and mobile platforms. Experience with PHP (Laravel, Hyperf, Slim), Node.js/NestJS (TypeScript), Python, and Java; Kafka for messaging; Docker for containers; CI/CD in Azure DevOps; and relational databases (SQL Server, MySQL). Work on corporate products and legacy modernization (UNICRED, Zallpy, Facta), applying Clean Architecture, SOLID, DDD, testing, and observability.',
     technologiesTitle: 'Technologies & Tools',
     navbar: {
-      presentation: 'About',
       projects: 'Projects',
       company: 'Company',
       contact: 'Contact',
-    },
-    presentation: {
-      title: 'About Me',
-      intro: 'Back-end and integrations specialist, with emphasis on performance, security, and production reliability.',
-      experience: 'Development of Web/Mobile CRM and scalable APIs using PHP (Hyperf) and NestJS; Kafka messaging; CI/CD automation (Azure DevOps); strong focus on security and testing. Facta Financeira: systems modernization (Structure, Portals, CRM, Insurance, Cards) in PHP (CodeIgniter/Laravel/Yii) and Python; integrations with Dock APIs; process automation. Zallpy: microservices ecosystem and applications with PHP, NestJS, and Python; Docker, Kafka, and SQL Server; performance optimizations and observability.',
-      passion: 'I turn business rules into objective, scalable solutions, reducing complexity in code and operational flows. Primary stacks: PHP (Laravel/Hyperf/Slim), NestJS/TypeScript, Python; Docker, Kafka, Cloudflare, and SQL Server/MySQL.',
     },
     skills: {
       architecture: 'Architecture',
@@ -168,6 +149,7 @@ export const translations: Record<Language, Translations> = {
     },
     contact: {
       title: "Let's Connect!",
+      subtitle: "Let's work together! Get in touch through any of these channels.",
       linkedin: 'Connect with me on LinkedIn',
       email: 'Send me an email',
       github: 'Check out my code on GitHub',
