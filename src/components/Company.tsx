@@ -393,7 +393,7 @@ const Company = ({ isVisible, direction = 'top' }: CompanyProps) => {
   const experiences = [
     {
       company: 'Platform Builders',
-      role: 'Software Engineer',
+      role: 'Software Developer',
       period: '2025 - Present',
       logo: <FaBuilding />,
       description: t('company.builders'),

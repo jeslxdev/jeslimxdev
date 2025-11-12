@@ -1,8 +1,8 @@
 {
   "title": "João Emanuel",
-  "subtitle": "Engenheiro de Software | InfoSec | DevOps | Cibersegurança",
+  "subtitle": "Desenvolvedor de Software | InfoSec | DevOps | Cibersegurança",
   "aboutTitle": "Sobre Mim",
-  "aboutText": "Engenheiro de Software com experiência em plataformas web e mobile, focado em APIs escaláveis, segurança e alta performance. Atuação ponta a ponta: arquitetura, desenvolvimento, testes e DevOps, aplicando Clean Architecture, SOLID e DDD. Experiência recente em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira.",
+  "aboutText": "Desenvolvedor de Software com experiência em plataformas web e mobile, focado em APIs escaláveis, segurança e alta performance. Atuação ponta a ponta: arquitetura, desenvolvimento, testes e DevOps, aplicando Clean Architecture, SOLID e DDD. Experiência recente em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira.",
   "technologiesTitle": "Tecnologias & Ferramentas",
   "navbar": {
     "projects": "Projetos",
@@ -35,7 +35,7 @@
   "company": {
     "title": "Experiências Profissionais",
     "technologies": "Tecnologias & Ferramentas",
-    "builders": "Engenheiro de Software especializado em segurança, DevOps e arquiteturas escaláveis. Desenvolvimento de soluções críticas com foco em performance e proteção de dados.",
+    "builders": "Desenvolvedor de Software especializado em segurança, DevOps e arquiteturas escaláveis. Desenvolvimento de soluções críticas com foco em performance e proteção de dados.",
     "extds": "Liderança técnica e gestão de projetos internacionais, coordenando equipes e implementando soluções de alto impacto com foco em qualidade e segurança."
   },
   "contact": {

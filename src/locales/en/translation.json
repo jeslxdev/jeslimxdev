@@ -1,8 +1,8 @@
 {
   "title": "João Emanuel",
-  "subtitle": "Software Engineer | InfoSec | DevOps | Cybersecurity",
+  "subtitle": "Software Developer | InfoSec | DevOps | Cybersecurity",
   "aboutTitle": "About Me",
-  "aboutText": "Software Engineer with experience across web and mobile platforms, focused on scalable APIs, security, and high performance. End-to-end delivery: architecture, development, testing, and DevOps, applying Clean Architecture, SOLID, and DDD. Recent experience at Platform Builders, UNICRED, Zallpy, and Facta Financeira.",
+  "aboutText": "Software Developer with experience across web and mobile platforms, focused on scalable APIs, security, and high performance. End-to-end delivery: architecture, development, testing, and DevOps, applying Clean Architecture, SOLID, and DDD. Recent experience at Platform Builders, UNICRED, Zallpy, and Facta Financeira.",
   "technologiesTitle": "Technologies & Tools",
   "navbar": {
     "projects": "Projects",
@@ -35,7 +35,7 @@
   "company": {
     "title": "Professional Experience",
     "technologies": "Technologies & Tools",
-    "builders": "Software Engineer specialized in security, DevOps, and scalable architectures. Development of critical solutions with focus on performance and data protection.",
+    "builders": "Software Developer specialized in security, DevOps, and scalable architectures. Development of critical solutions with focus on performance and data protection.",
     "extds": "Technical leadership and international project management, coordinating teams and implementing high-impact solutions with focus on quality and security."
   },
   "contact": {
