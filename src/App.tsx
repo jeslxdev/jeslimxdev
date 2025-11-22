@@ -1,39 +1,63 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import type { SectionType } from '@/models/Section';
-import { Navbar, Footer, ModernBackground as ModernBg } from '@/presentation/components';
 import GlobalStyle from '@/styles/GlobalStyle';
 import AppWrapper from '@/AppWrapper';
-import Carousel from '@/components/Carousel';
+import Terminal from '@/components/Terminal/Terminal';
+import MatrixBackground from '@/components/Terminal/MatrixBackground';
 
 // SectionType is imported from models/Section
 
 function App() {
   const [activeSection, setActiveSection] = useState<SectionType>('home');
+  const [activeSubSection, setActiveSubSection] = useState<string | undefined>(undefined);
 
-  const handleNavigate = (section: string) => {
-    setActiveSection(section as SectionType);
-  };
-
-  const handleSectionChange = (section: SectionType) => {
+  const handleNavigate = (section: SectionType, subSection?: string) => {
     setActiveSection(section);
+    setActiveSubSection(subSection);
   };
 
   return (
     <AppWrapper>
       <GlobalStyle />
-  <ModernBg />
+      <MatrixBackground />
 
-      <Navbar onNavigate={handleNavigate} />
-
-      <Carousel
-        activeSection={activeSection}
-        onSectionChange={handleSectionChange}
-      />
-
-      <Footer />
+      <MainContainer>
+        <TerminalSection>
+          <Terminal
+            onNavigate={handleNavigate}
+            currentSection={activeSection}
+            subSection={activeSubSection}
+          />
+        </TerminalSection>
+      </MainContainer>
     </AppWrapper>
   );
-}
+}const MainContainer = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    gap: 20px;
+  }
+`;
+
+const TerminalSection = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default App;
 
