@@ -15,7 +15,7 @@ interface CommandHistory {
   type: 'success' | 'error' | 'info';
 }
 
-const Terminal = ({ onNavigate, currentSection, subSection }: TerminalProps) => {
+const Terminal = ({ onNavigate, currentSection }: TerminalProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<CommandHistory[]>([]);
