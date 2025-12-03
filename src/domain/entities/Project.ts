@@ -10,9 +10,11 @@ export interface Project {
   year: string;
 }
 
-export enum ProjectCategory {
-  ERP = 'erp',
-  MOBILE = 'mobile',
-  WEB = 'web',
-  SYSTEM = 'system',
-}
+export const ProjectCategory = {
+  ERP: 'erp',
+  MOBILE: 'mobile',
+  WEB: 'web',
+  SYSTEM: 'system',
+} as const;
+
+export type ProjectCategory = typeof ProjectCategory[keyof typeof ProjectCategory];

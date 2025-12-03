@@ -6,9 +6,11 @@ export interface Service {
   technologies: string[];
 }
 
-export enum ServiceType {
-  WEB = 'web',
-  MOBILE = 'mobile',
-  BACKEND = 'backend',
-  FULLSTACK = 'fullstack',
-}
+export const ServiceType = {
+  WEB: 'web',
+  MOBILE: 'mobile',
+  BACKEND: 'backend',
+  FULLSTACK: 'fullstack',
+} as const;
+
+export type ServiceType = typeof ServiceType[keyof typeof ServiceType];

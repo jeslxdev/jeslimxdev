@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { FaHeart, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   background: linear-gradient(180deg, ${props => props.theme.colors.backgroundLight}, ${props => props.theme.colors.background});
@@ -245,7 +245,7 @@ export const Footer = () => {
 
         <BottomContent>
           <Copyright>
-            © {currentYear} João Emanuel. {t('footer.madeWith')} <FaHeart />
+            © {currentYear} João Emanuel. {t('footer.madeWith')} PHP
           </Copyright>
         </BottomContent>
       </Container>

@@ -1,31 +1,32 @@
 export const theme = {
   colors: {
-    primary: '#6366F1', // Indigo moderno
-    primaryDark: '#4F46E5',
-    primaryLight: '#818CF8',
+    primary: '#6366F1' as string, // Indigo moderno
+    primaryDark: '#4F46E5' as string,
+    primaryLight: '#818CF8' as string,
 
-    secondary: '#EC4899', // Pink vibrante
-    secondaryDark: '#DB2777',
-    secondaryLight: '#F472B6',
+    secondary: '#EC4899' as string, // Pink vibrante
+    secondaryDark: '#DB2777' as string,
+    secondaryLight: '#F472B6' as string,
 
-    accent: '#14B8A6', // Teal
-    accentDark: '#0D9488',
+    accent: '#14B8A6' as string, // Teal
+    accentDark: '#0D9488' as string,
+    accentLight: '#34D399' as string,
 
-    background: '#0A0E27', // Azul escuro profundo
-    backgroundLight: '#151932',
-    backgroundCard: '#1A1F3A',
+    background: '#0A0E27' as string, // Azul escuro profundo
+    backgroundLight: '#151932' as string,
+    backgroundCard: '#1A1F3A' as string,
 
-    text: '#F8FAFC',
-    textSecondary: '#E2E8F0',
-    textMuted: '#94A3B8',
+    text: '#F8FAFC' as string,
+    textSecondary: '#E2E8F0' as string,
+    textMuted: '#94A3B8' as string,
 
-    border: '#2D3348',
-    borderLight: '#3F4561',
+    border: '#2D3348' as string,
+    borderLight: '#3F4561' as string,
 
-    success: '#10B981',
-    warning: '#F59E0B',
-    error: '#EF4444',
-    info: '#6366F1',
+    success: '#10B981' as string,
+    warning: '#F59E0B' as string,
+    error: '#EF4444' as string,
+    info: '#6366F1' as string,
   },  fonts: {
     primary: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     mono: "'JetBrains Mono', 'Fira Code', monospace",

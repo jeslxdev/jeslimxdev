@@ -165,11 +165,11 @@ export const About = () => {
                 <StatLabel>{t('about.stats.years')}</StatLabel>
               </StatCard>
               <StatCard>
-                <StatNumber>100+</StatNumber>
+                <StatNumber>10+</StatNumber>
                 <StatLabel>{t('about.stats.projects')}</StatLabel>
               </StatCard>
               <StatCard>
-                <StatNumber>50+</StatNumber>
+                <StatNumber>8+</StatNumber>
                 <StatLabel>{t('about.stats.clients')}</StatLabel>
               </StatCard>
             </Stats>
