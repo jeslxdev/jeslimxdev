@@ -1,12 +1,16 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from '@/App.tsx';
-import { LanguageProvider } from '@/infrastructure/i18n/LanguageContext';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <LanguageProvider>
+// Initialize i18n
+import './i18n';
+
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
       <App />
-    </LanguageProvider>
-  </StrictMode>,
-);
+    </StrictMode>,
+  );
+}

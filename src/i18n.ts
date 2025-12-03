@@ -21,7 +21,7 @@ i18n
     resources,
     fallbackLng: 'pt',
     supportedLngs: ['pt', 'en'],
-    load: 'languageOnly', // Ignora códigos de região como 'pt-BR'
+    load: 'languageOnly',
     interpolation: {
       escapeValue: false,
     },
@@ -31,13 +31,16 @@ i18n
       lookupLocalStorage: 'i18nextLng',
     },
     react: {
-      useSuspense: false, // Importante: evita suspense que pode causar tela branca
-      bindI18n: 'languageChanged', // Re-render apenas quando o idioma mudar
-      bindI18nStore: '', // Não re-render em mudanças de store
-      transEmptyNodeValue: '', // Valor padrão para nodes vazios
+      useSuspense: false,
+      bindI18n: 'languageChanged',
+      bindI18nStore: '',
+      transEmptyNodeValue: '',
       transSupportBasicHtmlNodes: true,
       transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
     },
+  })
+  .catch((error) => {
+    console.error('i18n initialization failed:', error);
   });
 
 export default i18n;

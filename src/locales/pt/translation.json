@@ -1,48 +1,167 @@
 {
-  "title": "João Emanuel",
-  "subtitle": "Desenvolvedor de Software | InfoSec | DevOps | Cibersegurança",
-  "aboutTitle": "Sobre Mim",
-  "aboutText": "Desenvolvedor de Software com experiência em plataformas web e mobile, focado em APIs escaláveis, segurança e alta performance. Atuação ponta a ponta: arquitetura, desenvolvimento, testes e DevOps, aplicando Clean Architecture, SOLID e DDD. Experiência recente em empresas como Platform Builders, UNICRED, Zallpy e Facta Financeira.",
-  "technologiesTitle": "Tecnologias & Ferramentas",
-  "navbar": {
+  "nav": {
+    "home": "Início",
+    "services": "Serviços",
+    "pricing": "Preços",
     "projects": "Projetos",
-    "company": "Experiências",
+    "about": "Sobre",
     "contact": "Contato"
   },
-  "skills": {
-    "architecture": "Arquitetura",
-    "security": "Segurança",
-    "devops": "DevOps",
-    "development": "Desenvolvimento",
-    "cloud": "Cloud",
-    "leadership": "Liderança"
-  },
-  "projects": {
-    "title": "Meus Projetos",
-    "project1": {
-      "title": "Plataforma de CRM Web/Mobile — UNICRED",
-      "description": "Arquitetura e desenvolvimento de APIs RESTful seguras e escaláveis com PHP/Hyperf e NestJS, mensageria com Kafka e automação CI/CD. Foco em performance, segurança e qualidade."
-    },
-    "project2": {
-      "title": "Modernização de Sistemas — Facta Financeira",
-      "description": "Refatoração de sistemas críticos (Estrutura, Portais, CRM, Seguros, Cartões), fortalecimento de segurança e escalabilidade, APIs de boletos e cartões Dock e automação de processos com robôs."
-    },
-    "project3": {
-      "title": "Ecossistema de Microserviços — Zallpy",
-      "description": "Construção e manutenção de aplicações web/mobile e serviços backend com PHP, NestJS e Python; Docker, Kafka e SQL Server; foco em performance, testes e observabilidade."
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "title": "João Emanuel",
+    "subtitle": "Desenvolvedor Fullstack",
+    "description": "Transformo ideias em soluções digitais de alta qualidade. Especializado em aplicativos mobile, sites e sistemas web que fazem a diferença no seu negócio.",
+    "cta": {
+      "primary": "Ver Projetos",
+      "secondary": "Entre em Contato"
     }
   },
-  "company": {
-    "title": "Experiências Profissionais",
-    "technologies": "Tecnologias & Ferramentas",
-    "builders": "Desenvolvedor de Software especializado em segurança, DevOps e arquiteturas escaláveis. Desenvolvimento de soluções críticas com foco em performance e proteção de dados.",
-    "extds": "Liderança técnica e gestão de projetos internacionais, coordenando equipes e implementando soluções de alto impacto com foco em qualidade e segurança."
+  "services": {
+    "title": "Serviços",
+    "subtitle": "Soluções completas para seu negócio digital",
+    "items": [
+      {
+        "title": "Aplicativos Mobile",
+        "description": "Desenvolvimento de aplicativos nativos e híbridos para iOS e Android usando React Native. Aplicações modernas, responsivas e com excelente performance."
+      },
+      {
+        "title": "Sites & Landing Pages",
+        "description": "Criação de sites institucionais, landing pages e portfólios com design moderno e otimizado para conversão. SEO, performance e responsividade garantidos."
+      },
+      {
+        "title": "Sistemas Web",
+        "description": "Desenvolvimento de sistemas web complexos, ERPs, CRMs e plataformas personalizadas. Arquitetura escalável e segura para seu negócio."
+      },
+      {
+        "title": "APIs & Backend",
+        "description": "Criação de APIs RESTful e GraphQL robustas e escaláveis. Integração com sistemas terceiros, microserviços e arquitetura serverless."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Alguns dos meus trabalhos recentes",
+    "viewProject": "Ver Projeto"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "text1": "Desenvolvedor de Software com 7+ anos construindo e escalando aplicações PHP. Contribuí para a evolução de sistemas críticos em empresas de referência no mercado brasileiro e liderei iniciativas técnicas e de negócios em ERP e SaaS na Europa.",
+    "text2": "Atuação em diversos segmentos: ERP, Educação Corporativa, Órgãos Públicos e Privados, Financeiras, Promotoras, Seguradoras e Cartões. Atualmente como Desenvolvedor FullStack pela Builders no Cliente Porto Seguro, trabalhando com Java 17, Angular, Maven, Spring Boot e Node.",
+    "text3": "Foco em arquitetura, performance e segurança. Especializado em construir soluções escaláveis que transformam desafios complexos em produtos digitais de sucesso.",
+    "stats": {
+      "years": "Anos de Experiência",
+      "projects": "Projetos Concluídos",
+      "clients": "Clientes Satisfeitos"
+    },
+    "skills": {
+      "title": "Tecnologias & Habilidades",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "tools": "Ferramentas & DevOps"
+    }
   },
   "contact": {
-    "title": "Vamos Conversar!",
-    "subtitle": "Vamos trabalhar juntos! Entre em contato através de qualquer um desses canais.",
-    "linkedin": "Conecte-se comigo no LinkedIn",
-    "email": "Envie-me um email",
-    "github": "Confira meu código no GitHub"
+    "title": "Entre em Contato",
+    "subtitle": "Vamos conversar sobre seu próximo projeto",
+    "info": {
+      "title": "Informações de Contato",
+      "email": "Email",
+      "location": "Localização"
+    },
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "subject": "Assunto",
+      "subjectPlaceholder": "Assunto da mensagem",
+      "message": "Mensagem",
+      "messagePlaceholder": "Conte-me sobre seu projeto...",
+      "submit": "Enviar Mensagem",
+      "success": "Mensagem enviada com sucesso!"
+    }
+  },
+  "pricing": {
+    "title": "Preços & Planos",
+    "subtitle": "Escolha o plano ideal para o seu projeto",
+    "popular": "Mais Popular",
+    "cta": "Solicitar Orçamento",
+    "starter": {
+      "name": "Starter",
+      "description": "Perfeito para landing pages e sites institucionais",
+      "note": "Prazo: 1-2 semanas",
+      "features": [
+        "Design responsivo moderno",
+        "Até 5 páginas",
+        "SEO básico",
+        "Formulário de contato",
+        "Google Analytics"
+      ]
+    },
+    "professional": {
+      "name": "Professional",
+      "description": "Ideal para e-commerces e sistemas web",
+      "note": "Prazo: 3-6 semanas",
+      "features": [
+        "Tudo do plano Starter",
+        "Até 15 páginas",
+        "Painel administrativo",
+        "Integração com APIs",
+        "Sistema de autenticação",
+        "Otimização avançada"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Soluções completas e personalizadas",
+      "note": "Prazo: Customizado",
+      "features": [
+        "Tudo do plano Professional",
+        "Páginas ilimitadas",
+        "Arquitetura escalável",
+        "Múltiplas integrações",
+        "App mobile (iOS/Android)",
+        "Suporte prioritário",
+        "DevOps & CI/CD"
+      ]
+    },
+    "calculator": {
+      "title": "Calculadora de Orçamento",
+      "projectType": "Tipo de Projeto",
+      "features": "Funcionalidades Extras",
+      "urgency": "Urgência",
+      "estimate": "Estimativa de Investimento",
+      "base": "Valor Base",
+      "featuresTotal": "Funcionalidades",
+      "urgencyFactor": "Fator Urgência",
+      "total": "Total Estimado",
+      "requestQuote": "Solicitar Orçamento Detalhado",
+      "types": {
+        "landing": "Landing Page (R$ 800)",
+        "institutional": "Site Institucional (R$ 1.500)",
+        "ecommerce": "E-commerce (R$ 3.500)",
+        "webapp": "Sistema Web (R$ 5.000)",
+        "mobile": "App Mobile (R$ 6.000)",
+        "custom": "Projeto Customizado"
+      },
+      "featuresList": {
+        "auth": "Sistema de Autenticação (+R$ 500)",
+        "payment": "Gateway de Pagamento (+R$ 800)",
+        "admin": "Painel Admin (+R$ 600)",
+        "api": "API REST/GraphQL (+R$ 700)",
+        "multilang": "Multi-idioma (+R$ 400)",
+        "seo": "SEO Avançado (+R$ 300)"
+      },
+      "urgencyOptions": {
+        "urgent": "Urgente - 1-2 semanas (+50%)",
+        "normal": "Normal - 3-4 semanas",
+        "flexible": "Flexível - 5+ semanas (-15%)"
+      }
+    }
+  },
+  "footer": {
+    "madeWith": "Feito com"
   }
 }
