@@ -1,5 +1,7 @@
 import type { Project } from '@/domain/entities';
 import { ProjectCategory } from '@/domain/entities';
+import erpextdsImg from '@/assets/erpextds.png';
+import viajesnonesImg from '@/assets/viajesnones.png';
 
 export const projects: Project[] = [
   {
@@ -9,7 +11,7 @@ export const projects: Project[] = [
     technologies: ['PHP 8.1', 'CodeIgniter 3', 'Python', 'MySQL', 'REST API', 'JavaScript', 'AT Compliance'],
     category: ProjectCategory.ERP,
     url: 'https://erp.extds.pt',
-    image: '/src/assets/erpextds.png',
+    image: erpextdsImg,
     featured: true,
     year: '2024 - Atual',
   },
@@ -29,7 +31,7 @@ export const projects: Project[] = [
     technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'SEO', 'Responsive Design'],
     category: ProjectCategory.WEB,
     url: 'https://nones.es',
-    image: '/src/assets/viajesnones.png',
+    image: viajesnonesImg,
     featured: true,
     year: '2025',
   },
