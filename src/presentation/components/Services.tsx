@@ -71,7 +71,7 @@ const ServiceCard = styled.div`
   &:hover {
     transform: translateY(-10px);
     border-color: ${props => props.theme.colors.primary};
-    box-shadow: ${props => props.theme.shadows.glow};
+    box-shadow: 0 20px 40px ${props => props.theme.colors.primary}33;
   }
 `;
 
@@ -86,6 +86,12 @@ const IconWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.lg};
   font-size: ${props => props.theme.fontSizes['2xl']};
   color: ${props => props.theme.colors.text};
+  transition: all ${props => props.theme.transitions.base};
+
+  ${ServiceCard}:hover & {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 30px ${props => props.theme.colors.primary}66;
+  }
 `;
 
 const ServiceTitle = styled.h3`

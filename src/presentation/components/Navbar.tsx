@@ -140,13 +140,13 @@ const CTAButton = styled.a`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, ${props => props.theme.colors.background}33, transparent);
     transition: left 0.5s;
   }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 25px ${props => props.theme.colors.primary}66;
 
     &::before {
       left: 100%;

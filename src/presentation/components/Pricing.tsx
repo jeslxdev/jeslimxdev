@@ -117,12 +117,16 @@ const PlanPrice = styled.div`
 const Price = styled.div`
   font-size: ${props => props.theme.fontSizes['3xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.primary};
+  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.accent});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: ${props => props.theme.spacing.xs};
 
   span {
     font-size: ${props => props.theme.fontSizes.lg};
     color: ${props => props.theme.colors.textSecondary};
+    -webkit-text-fill-color: ${props => props.theme.colors.textSecondary};
   }
 `;
 
@@ -142,11 +146,25 @@ const Feature = styled.li`
   gap: ${props => props.theme.spacing.md};
   margin-bottom: ${props => props.theme.spacing.md};
   color: ${props => props.theme.colors.text};
+  animation: ${fadeInUp} 0.4s ease-out both;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.15s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.25s; }
+  &:nth-child(5) { animation-delay: 0.3s; }
+  &:nth-child(6) { animation-delay: 0.35s; }
+  &:nth-child(7) { animation-delay: 0.4s; }
 
   svg {
     color: ${props => props.theme.colors.primary};
     margin-top: 4px;
     flex-shrink: 0;
+    transition: transform ${props => props.theme.transitions.base};
+  }
+
+  &:hover svg {
+    transform: scale(1.2) rotate(10deg);
   }
 `;
 
@@ -161,10 +179,31 @@ const PlanButton = styled.button`
   font-weight: ${props => props.theme.fontWeights.semibold};
   cursor: pointer;
   transition: all ${props => props.theme.transitions.base};
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px ${props => props.theme.colors.primary}44;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: ${props => props.theme.colors.background}33;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px ${props => props.theme.colors.primary}66;
+
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
   }
 `;
 
@@ -342,8 +381,12 @@ const ContactButton = styled.button`
   transition: all ${props => props.theme.transitions.base};
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px ${props => props.theme.colors.primary}55;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
   }
 `;
 

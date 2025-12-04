@@ -142,13 +142,13 @@ const TechList = styled.div`
 `;
 
 const TechBadge = styled.span`
-  background: rgba(139, 92, 246, 0.1);
+  background: ${props => props.theme.colors.secondary}22;
   color: ${props => props.theme.colors.secondary};
   padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.sm};
   border-radius: ${props => props.theme.borderRadius.md};
   font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  font-weight: ${props => props.theme.fontWeights.semibold};
+  border: 1px solid ${props => props.theme.colors.secondary}66;
 `;
 
 const ProjectLinks = styled.div`

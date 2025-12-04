@@ -76,7 +76,7 @@ const SocialLink = styled.a`
     background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
     border-color: transparent;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 5px 15px ${props => props.theme.colors.primary}66;
   }
 `;
 

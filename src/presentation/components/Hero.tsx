@@ -68,9 +68,12 @@ const Container = styled.div`
 const Greeting = styled.p`
   color: ${props => props.theme.colors.primary};
   font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  font-weight: ${props => props.theme.fontWeights.bold};
   margin-bottom: ${props => props.theme.spacing.md};
   animation: ${fadeInUp} 0.6s ease-out;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px ${props => props.theme.colors.primary}44;
 `;
 
 const Title = styled.h1`
@@ -80,15 +83,16 @@ const Title = styled.h1`
 
   background: linear-gradient(
     135deg,
-    ${props => props.theme.colors.text},
-    ${props => props.theme.colors.primary},
-    ${props => props.theme.colors.secondary}
+    ${props => props.theme.colors.primary} 0%,
+    ${props => props.theme.colors.accent} 50%,
+    ${props => props.theme.colors.secondary} 100%
   );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: ${gradientMove} 5s ease infinite, ${fadeInUp} 0.8s ease-out;
+  filter: drop-shadow(0 0 30px ${props => props.theme.colors.primary}44);
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     font-size: ${props => props.theme.fontSizes['4xl']};

@@ -88,11 +88,23 @@ const SkillBadge = styled.span`
   font-size: ${props => props.theme.fontSizes.sm};
   font-weight: ${props => props.theme.fontWeights.medium};
   transition: all ${props => props.theme.transitions.base};
+  animation: ${fadeInUp} 0.5s ease-out both;
+
+  &:nth-child(1) { animation-delay: 0.05s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.15s; }
+  &:nth-child(4) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.25s; }
+  &:nth-child(6) { animation-delay: 0.3s; }
+  &:nth-child(7) { animation-delay: 0.35s; }
+  &:nth-child(8) { animation-delay: 0.4s; }
 
   &:hover {
     border-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.primary};
-    transform: translateY(-2px);
+    background: ${props => props.theme.colors.primary}11;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px ${props => props.theme.colors.primary}33;
   }
 `;
 

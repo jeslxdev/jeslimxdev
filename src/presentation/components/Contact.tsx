@@ -77,13 +77,20 @@ const InfoItem = styled.a`
 
   &:hover {
     border-color: ${props => props.theme.colors.primary};
+    background: ${props => props.theme.colors.primary}11;
     color: ${props => props.theme.colors.primary};
-    transform: translateX(5px);
+    transform: translateX(8px);
+    box-shadow: 0 5px 20px ${props => props.theme.colors.primary}33;
   }
 
   svg {
     font-size: ${props => props.theme.fontSizes.xl};
     color: ${props => props.theme.colors.primary};
+    transition: transform ${props => props.theme.transitions.base};
+  }
+
+  &:hover svg {
+    transform: scale(1.2) rotate(5deg);
   }
 `;
 
@@ -191,7 +198,7 @@ const SubmitButton = styled.button`
 
 const SuccessMessage = styled.div`
   padding: ${props => props.theme.spacing.md};
-  background: rgba(16, 185, 129, 0.1);
+  background: ${props => props.theme.colors.accent}22;
   border: 1px solid ${props => props.theme.colors.accent};
   border-radius: ${props => props.theme.borderRadius.lg};
   color: ${props => props.theme.colors.accent};
