@@ -7,7 +7,6 @@ import {
   Hero,
   Services,
   Pricing,
-  Projects,
   About,
   Contact,
   Footer,
@@ -73,7 +72,6 @@ function App() {
         <Hero />
         <Services />
         <Pricing />
-        <Projects />
         <About />
         <Contact />
       </main>
