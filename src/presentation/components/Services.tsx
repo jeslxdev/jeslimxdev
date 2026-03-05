@@ -41,8 +41,22 @@ const Container = styled.div`
 `;
 
 const SectionHead = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${props => props.theme.spacing['2xl']};
+  align-items: end;
   margin-bottom: ${props => props.theme.spacing['3xl']};
+  padding-bottom: ${props => props.theme.spacing['2xl']};
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+
+  @media (max-width: ${props => props.theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: ${props => props.theme.spacing.lg};
+  }
 `;
+
+const HeadLeft = styled.div``;
+const HeadRight = styled.div``;
 
 const Label = styled.p`
   font-family: ${props => props.theme.fonts.mono};
@@ -56,17 +70,36 @@ const Label = styled.p`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   color: ${props => props.theme.colors.text};
   font-weight: ${props => props.theme.fontWeights.bold};
   letter-spacing: -0.03em;
-  margin-bottom: ${props => props.theme.spacing.md};
+  line-height: 1.05;
 `;
 
 const SectionSub = styled.p`
-  font-size: ${props => props.theme.fontSizes.lg};
+  font-size: ${props => props.theme.fontSizes.base};
   color: ${props => props.theme.colors.textMuted};
-  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: ${props => props.theme.spacing.lg};
+`;
+
+const ExploreLink = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textSecondary};
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { color: ${props => props.theme.colors.text}; border-color: ${props => props.theme.colors.textMuted}; }
 `;
 
 const Grid = styled.div`
@@ -138,27 +171,6 @@ const CardDesc = styled.p`
   margin-bottom: ${props => props.theme.spacing.lg};
 `;
 
-const TagRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${props => props.theme.spacing.sm};
-`;
-
-const Tag = styled.span`
-  font-family: ${props => props.theme.fonts.mono};
-  font-size: ${props => props.theme.fontSizes.xs};
-  color: ${props => props.theme.colors.textMuted};
-  border: 1px solid ${props => props.theme.colors.border};
-  padding: 2px ${props => props.theme.spacing.sm};
-  letter-spacing: 0.05em;
-  transition: all 0.2s;
-
-  ${Card}:hover & {
-    border-color: ${props => props.theme.colors.borderLight};
-    color: ${props => props.theme.colors.textSecondary};
-  }
-`;
-
 export const Services = () => {
   const { t } = useTranslation();
 
@@ -166,9 +178,16 @@ export const Services = () => {
     <Section id="services">
       <Container>
         <SectionHead>
-          <Label>capabilities</Label>
-          <SectionTitle>{t('services.title')}</SectionTitle>
-          <SectionSub>{t('services.subtitle')}</SectionSub>
+          <HeadLeft>
+            <Label>capabilities</Label>
+            <SectionTitle>{t('services.title')}</SectionTitle>
+          </HeadLeft>
+          <HeadRight>
+            <SectionSub>{t('services.subtitle')}</SectionSub>
+            <ExploreLink onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              discuss a project →
+            </ExploreLink>
+          </HeadRight>
         </SectionHead>
 
         <Grid>
@@ -180,11 +199,6 @@ export const Services = () => {
                 <CardNumber>{String(i + 1).padStart(2, '0')}</CardNumber>
                 <CardTitle>{t(`services.items.${i}.title`)}</CardTitle>
                 <CardDesc>{t(`services.items.${i}.description`)}</CardDesc>
-                <TagRow>
-                  {service.technologies.map(tech => (
-                    <Tag key={tech}>{tech}</Tag>
-                  ))}
-                </TagRow>
               </Card>
             );
           })}

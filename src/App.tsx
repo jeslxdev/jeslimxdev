@@ -5,11 +5,13 @@ import { colorPalettes } from './presentation/styles/colorPalettes';
 import {
   Navbar,
   Hero,
+  StatsBand,
   Services,
   Projects,
   About,
   Founder,
   Pricing,
+  CtaBand,
   Contact,
   Footer,
   LanguageSwitcher,
@@ -58,11 +60,13 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <StatsBand />
         <Services />
         <Projects />
         <About />
         <Founder />
         <Pricing />
+        <CtaBand />
         <Contact />
       </main>
       <Footer />
