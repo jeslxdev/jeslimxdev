@@ -1,7 +1,23 @@
-import styled from 'styled-components';
-import { fadeInUp, gradientMove } from '../styles/animations';
+﻿import { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { fadeInUp, fadeIn } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
-import { FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
+import { FaArrowDown, FaChevronRight } from 'react-icons/fa';
+
+const gridScroll = keyframes`
+  from { transform: translate(0, 0); }
+  to   { transform: translate(50px, 50px); }
+`;
+
+const scanline = keyframes`
+  0%   { top: -10%; }
+  100% { top: 110%; }
+`;
+
+const blink = keyframes`
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+`;
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -9,252 +25,315 @@ const HeroSection = styled.section`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: ${props => props.theme.spacing['4xl']} ${props => props.theme.spacing.xl};
+  padding: 120px ${props => props.theme.spacing.xl} ${props => props.theme.spacing['4xl']};
   overflow: hidden;
+  background: ${props => props.theme.colors.background};
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
-    padding: ${props => props.theme.spacing['3xl']} ${props => props.theme.spacing.md};
+    padding: 100px ${props => props.theme.spacing.md} ${props => props.theme.spacing['3xl']};
   }
 `;
 
-const Background = styled.div`
+const GridBg = styled.div`
   position: absolute;
-  top: 0;
+  inset: -100px;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: ${gridScroll} 8s linear infinite;
+`;
+
+const ScanLine = styled.div`
+  position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 0;
-  overflow: hidden;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  z-index: 1;
+  animation: ${scanline} 6s linear infinite;
+  pointer-events: none;
+`;
 
-  /* Grid pattern */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-      linear-gradient(${props => props.theme.colors.primary}15 1px, transparent 1px),
-      linear-gradient(90deg, ${props => props.theme.colors.primary}15 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.3;
-  }
-
-  /* Animated gradient orbs */
-  &::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background:
-      radial-gradient(circle at 20% 50%, ${props => props.theme.colors.primary}20 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, ${props => props.theme.colors.secondary}20 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, ${props => props.theme.colors.accent}15 0%, transparent 50%);
-    animation: ${gradientMove} 20s ease infinite;
-  }
+const Vignette = styled.div`
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, #000000cc 100%);
+  z-index: 1;
+  pointer-events: none;
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
-  text-align: center;
+  z-index: 2;
 `;
 
-const Greeting = styled.p`
-  color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  margin-bottom: ${props => props.theme.spacing.md};
-  animation: ${fadeInUp} 0.6s ease-out;
+const SystemBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing.sm};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 20px ${props => props.theme.colors.primary}44;
-`;
+  margin-bottom: ${props => props.theme.spacing.xl};
+  animation: ${fadeIn} 0.6s ease-out;
 
-const Title = styled.h1`
-  font-size: ${props => props.theme.fontSizes['6xl']};
-  margin-bottom: ${props => props.theme.spacing.lg};
-  animation: ${fadeInUp} 0.8s ease-out;
-
-  background: linear-gradient(
-    135deg,
-    ${props => props.theme.colors.primary} 0%,
-    ${props => props.theme.colors.accent} 50%,
-    ${props => props.theme.colors.secondary} 100%
-  );
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ${gradientMove} 5s ease infinite, ${fadeInUp} 0.8s ease-out;
-  filter: drop-shadow(0 0 30px ${props => props.theme.colors.primary}44);
-
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    font-size: ${props => props.theme.fontSizes['4xl']};
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: ${props => props.theme.colors.primary};
+    animation: ${blink} 2s step-end infinite;
   }
 `;
 
-const Subtitle = styled.h2`
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  color: ${props => props.theme.colors.textSecondary};
-  margin-bottom: ${props => props.theme.spacing.xl};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  animation: ${fadeInUp} 1s ease-out;
+const Title = styled.h1`
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: ${props => props.theme.fontWeights.extrabold};
+  color: ${props => props.theme.colors.text};
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: ${props => props.theme.spacing.lg};
+  animation: ${fadeInUp} 0.8s ease-out both;
+  animation-delay: 0.1s;
 
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    font-size: ${props => props.theme.fontSizes.xl};
+  span {
+    color: ${props => props.theme.colors.textMuted};
+  }
+`;
+
+const Subtitle = styled.p`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.lg};
+  color: ${props => props.theme.colors.textMuted};
+  margin-bottom: ${props => props.theme.spacing.md};
+  animation: ${fadeInUp} 0.8s ease-out both;
+  animation-delay: 0.2s;
+  letter-spacing: 0.05em;
+
+  &::before {
+    content: '> ';
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
 const Description = styled.p`
   font-size: ${props => props.theme.fontSizes.lg};
-  color: ${props => props.theme.colors.textMuted};
-  max-width: 700px;
-  margin: 0 auto ${props => props.theme.spacing['2xl']};
+  color: ${props => props.theme.colors.textSecondary};
+  max-width: 680px;
   line-height: 1.8;
-  animation: ${fadeInUp} 1.2s ease-out;
+  margin-bottom: ${props => props.theme.spacing['2xl']};
+  animation: ${fadeInUp} 0.8s ease-out both;
+  animation-delay: 0.3s;
+
+  @media (max-width: ${props => props.theme.breakpoints.md}) {
+    font-size: ${props => props.theme.fontSizes.base};
+  }
 `;
 
-const CTAContainer = styled.div`
+const CTARow = styled.div`
   display: flex;
   gap: ${props => props.theme.spacing.lg};
-  justify-content: center;
-  margin-bottom: ${props => props.theme.spacing['2xl']};
-  animation: ${fadeInUp} 1.4s ease-out;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: ${props => props.theme.spacing['3xl']};
+  animation: ${fadeInUp} 0.8s ease-out both;
+  animation-delay: 0.4s;
+`;
+
+const PrimaryBtn = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing.sm};
+  background: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.background};
+  padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing['2xl']};
+  font-size: ${props => props.theme.fontSizes.base};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: ${props => props.theme.fonts.primary};
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+
+  &:hover {
+    background: ${props => props.theme.colors.primaryDark};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232, 232, 232, 0.2);
+  }
+`;
+
+const SecondaryBtn = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing.sm};
+  background: transparent;
+  color: ${props => props.theme.colors.textSecondary};
+  padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing['2xl']};
+  font-size: ${props => props.theme.fontSizes.base};
+  font-weight: ${props => props.theme.fontWeights.medium};
+  font-family: ${props => props.theme.fonts.primary};
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid ${props => props.theme.colors.border};
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.text};
+    transform: translateY(-2px);
+  }
+`;
+
+const StatsRow = styled.div`
+  display: flex;
+  gap: 0;
+  border: 1px solid ${props => props.theme.colors.border};
+  width: fit-content;
+  animation: ${fadeInUp} 0.8s ease-out both;
+  animation-delay: 0.5s;
 
   @media (max-width: ${props => props.theme.breakpoints.sm}) {
     flex-direction: column;
-    align-items: center;
+    width: 100%;
   }
 `;
 
-const PrimaryButton = styled.button`
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  color: ${props => props.theme.colors.text};
-  padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing['2xl']};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  transition: all ${props => props.theme.transitions.base};
-  cursor: pointer;
+const StatItem = styled.div`
+  padding: ${props => props.theme.spacing.lg} ${props => props.theme.spacing['2xl']};
+  border-right: 1px solid ${props => props.theme.colors.border};
+  min-width: 180px;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: ${props => props.theme.shadows.glow};
+  &:last-child {
+    border-right: none;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) {
+    border-right: none;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+    min-width: unset;
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `;
 
-const SecondaryButton = styled.button`
-  background: transparent;
-  border: 2px solid ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.primary};
-  padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing['2xl']};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  transition: all ${props => props.theme.transitions.base};
-  cursor: pointer;
-
-  &:hover {
-    background: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.text};
-    transform: translateY(-3px);
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: ${props => props.theme.spacing.lg};
-  justify-content: center;
-  animation: ${fadeInUp} 1.6s ease-out;
-`;
-
-const SocialLink = styled.a`
-  color: ${props => props.theme.colors.textSecondary};
+const StatValue = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
   font-size: ${props => props.theme.fontSizes['2xl']};
-  transition: all ${props => props.theme.transitions.base};
-
-  &:hover {
-    color: ${props => props.theme.colors.primary};
-    transform: translateY(-3px);
-  }
+  font-weight: ${props => props.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.text};
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
 `;
 
-const ScrollIndicator = styled.div`
+const StatLabel = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+`;
+
+const ScrollHint = styled.button`
   position: absolute;
   bottom: ${props => props.theme.spacing['2xl']};
   left: 50%;
   transform: translateX(-50%);
-  color: ${props => props.theme.colors.textMuted};
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  animation: ${fadeInUp} 2s ease-out;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${props => props.theme.spacing.sm};
+  background: none;
+  border: none;
   cursor: pointer;
+  color: ${props => props.theme.colors.textMuted};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: ${fadeIn} 2s ease-out both;
+  animation-delay: 1s;
+  transition: color 0.2s;
 
   &:hover {
     color: ${props => props.theme.colors.primary};
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    bottom: ${props => props.theme.spacing.xl};
   }
 `;
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const [dots, setDots] = useState('');
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setDots(d => d.length >= 3 ? '' : d + '.');
+    }, 500);
+    return () => clearInterval(iv);
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <HeroSection id="home">
-      <Background />
+      <GridBg />
+      <ScanLine />
+      <Vignette />
+
       <Container>
-        <Greeting>{t('hero.greeting')}</Greeting>
-        <Title>{t('hero.title')}</Title>
+        <SystemBadge>
+          {t('hero.greeting')} &nbsp;|&nbsp; SYS::ONLINE{dots}
+        </SystemBadge>
+
+        <Title>
+          We Build.<span> We Scale.</span><br />We Deliver.
+        </Title>
+
         <Subtitle>{t('hero.subtitle')}</Subtitle>
+
         <Description>{t('hero.description')}</Description>
 
-        <CTAContainer>
-          <PrimaryButton onClick={() => scrollToSection('projects')}>
-            {t('hero.cta.primary')}
-          </PrimaryButton>
-          <SecondaryButton onClick={() => scrollToSection('contact')}>
+        <CTARow>
+          <PrimaryBtn onClick={() => scrollTo('services')}>
+            {t('hero.cta.primary')} <FaChevronRight size={12} />
+          </PrimaryBtn>
+          <SecondaryBtn onClick={() => scrollTo('contact')}>
             {t('hero.cta.secondary')}
-          </SecondaryButton>
-        </CTAContainer>
+          </SecondaryBtn>
+        </CTARow>
 
-        <SocialLinks>
-          <SocialLink
-            href="https://github.com/jeslxdev"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </SocialLink>
-          <SocialLink
-            href="https://www.linkedin.com/in/joao-emanuel-752778174/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </SocialLink>
-        </SocialLinks>
+        <StatsRow>
+          <StatItem>
+            <StatValue>7+</StatValue>
+            <StatLabel>Years in market</StatLabel>
+          </StatItem>
+          <StatItem>
+            <StatValue>50+</StatValue>
+            <StatLabel>Projects delivered</StatLabel>
+          </StatItem>
+          <StatItem>
+            <StatValue>AI-First</StatValue>
+            <StatLabel>Core specialty</StatLabel>
+          </StatItem>
+        </StatsRow>
       </Container>
 
-      <ScrollIndicator onClick={() => scrollToSection('services')}>
-        <FaArrowDown />
-      </ScrollIndicator>
+      <ScrollHint onClick={() => scrollTo('services')}>
+        scroll <FaArrowDown />
+      </ScrollHint>
     </HeroSection>
   );
 };

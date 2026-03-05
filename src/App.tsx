@@ -1,78 +1,48 @@
-import { useEffect, useState, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, theme as defaultTheme } from './presentation/styles';
-import { colorPalettes } from './presentation/styles/colorPalettes';
 import {
   Navbar,
   Hero,
   Services,
-  Pricing,
+  Projects,
   About,
+  Founder,
+  Pricing,
   Contact,
   Footer,
   LanguageSwitcher,
-  ThemeSelectorSimple,
 } from './presentation/components';
 
 function App() {
-  const [paletteIndex, setPaletteIndex] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    console.log('App mounted successfully');
-    const savedPalette = localStorage.getItem('selectedPalette');
-    const savedMode = localStorage.getItem('darkMode');
-
-    if (savedPalette) {
-      setPaletteIndex(parseInt(savedPalette, 10));
-    }
-    if (savedMode) {
-      setIsDarkMode(savedMode === 'true');
-    }
-  }, []);
-
-  const currentTheme = useMemo(() => {
-    const palette = colorPalettes[paletteIndex];
-    const mode = isDarkMode ? palette.dark : palette.light;
-
-    console.log('Atualizando tema para paleta:', paletteIndex, palette.name, 'Modo:', isDarkMode ? 'Dark' : 'Light');
-
-    return {
-      ...defaultTheme,
-      colors: {
-        ...palette.colors,
-        background: mode.background,
-        backgroundLight: mode.surface,
-        backgroundCard: mode.surface,
-        text: mode.text,
-        textSecondary: mode.textSecondary,
-        textMuted: mode.textSecondary,
-        border: mode.border,
-        borderLight: mode.border,
-      },
-    };
-  }, [paletteIndex, isDarkMode]);
-
-  const toggleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    localStorage.setItem('darkMode', newMode.toString());
+  const currentTheme = {
+    ...defaultTheme,
+    colors: {
+      ...defaultTheme.colors,
+      background: '#0A0A0A',
+      backgroundLight: '#111111',
+      backgroundCard: '#1A1A1A',
+      text: '#FFFFFF',
+      textSecondary: '#C8C8C8',
+      textMuted: '#666666',
+      border: '#2D2D2D',
+      borderLight: '#3A3A3A',
+      primary: '#E8E8E8',
+      primaryDark: '#C0C0C0',
+      primaryLight: '#FFFFFF',
+    },
   };
 
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <ThemeSelectorSimple
-        onThemeChange={setPaletteIndex}
-        isDarkMode={isDarkMode}
-        onToggleDarkMode={toggleDarkMode}
-      />
       <Navbar />
       <main>
         <Hero />
         <Services />
-        <Pricing />
+        <Projects />
         <About />
+        <Founder />
+        <Pricing />
         <Contact />
       </main>
       <Footer />
@@ -82,4 +52,5 @@ function App() {
 }
 
 export default App;
+
 

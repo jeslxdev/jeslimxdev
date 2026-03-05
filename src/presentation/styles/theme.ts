@@ -1,35 +1,37 @@
 export const theme = {
   colors: {
-    primary: '#6366F1' as string, // Indigo moderno
-    primaryDark: '#4F46E5' as string,
-    primaryLight: '#818CF8' as string,
+    // Cold Steel — primary accent is near-white chrome
+    primary: '#E8E8E8' as string,
+    primaryDark: '#C0C0C0' as string,
+    primaryLight: '#FFFFFF' as string,
 
-    secondary: '#EC4899' as string, // Pink vibrante
-    secondaryDark: '#DB2777' as string,
-    secondaryLight: '#F472B6' as string,
+    secondary: '#2D2D2D' as string,
+    secondaryDark: '#1A1A1A' as string,
+    secondaryLight: '#3A3A3A' as string,
 
-    accent: '#14B8A6' as string, // Teal
-    accentDark: '#0D9488' as string,
-    accentLight: '#34D399' as string,
+    accent: '#FFFFFF' as string,
+    accentDark: '#E0E0E0' as string,
+    accentLight: '#FFFFFF' as string,
 
-    background: '#0A0E27' as string, // Azul escuro profundo
-    backgroundLight: '#151932' as string,
-    backgroundCard: '#1A1F3A' as string,
+    background: '#0A0A0A' as string,
+    backgroundLight: '#111111' as string,
+    backgroundCard: '#1A1A1A' as string,
 
-    text: '#F8FAFC' as string,
-    textSecondary: '#E2E8F0' as string,
-    textMuted: '#94A3B8' as string,
+    text: '#FFFFFF' as string,
+    textSecondary: '#C8C8C8' as string,
+    textMuted: '#666666' as string,
 
-    border: '#2D3348' as string,
-    borderLight: '#3F4561' as string,
+    border: '#2D2D2D' as string,
+    borderLight: '#3A3A3A' as string,
 
-    success: '#10B981' as string,
-    warning: '#F59E0B' as string,
-    error: '#EF4444' as string,
-    info: '#6366F1' as string,
-  },  fonts: {
-    primary: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    mono: "'JetBrains Mono', 'Fira Code', monospace",
+    success: '#A8A8A8' as string,
+    warning: '#808080' as string,
+    error: '#D0D0D0' as string,
+    info: '#E8E8E8' as string,
+  },
+  fonts: {
+    primary: "'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    mono: "'IBM Plex Mono', 'JetBrains Mono', 'Fira Code', monospace",
   },
 
   fontSizes: {
@@ -75,22 +77,22 @@ export const theme = {
   },
 
   borderRadius: {
-    sm: '0.25rem',  // 4px
-    md: '0.375rem', // 6px
-    lg: '0.5rem',   // 8px
-    xl: '0.75rem',  // 12px
-    '2xl': '1rem',  // 16px
-    full: '9999px',
+    sm: '0px',
+    md: '2px',
+    lg: '2px',
+    xl: '2px',
+    '2xl': '4px',
+    full: '2px',
   },
 
   shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    glow: '0 0 30px currentColor',
-    glowPrimary: '0 0 30px var(--primary-color)',
+    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.8)',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.9)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.9)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.95)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 1)',
+    glow: '0 0 20px rgba(232, 232, 232, 0.15), 0 0 40px rgba(232, 232, 232, 0.05)',
+    glowPrimary: '0 0 20px rgba(232, 232, 232, 0.2)',
   },
 
   transitions: {

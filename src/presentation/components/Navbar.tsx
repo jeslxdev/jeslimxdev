@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fadeInDown } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
 
-const Nav = styled.nav<{ $isScrolled: boolean }>`
+const Nav = styled.nav<{ $scrolled: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
   padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing.xl};
-  background-color: ${({ $isScrolled, theme }) =>
-    $isScrolled ? `${theme.colors.backgroundCard}ee` : 'transparent'};
-  backdrop-filter: ${({ $isScrolled }) => ($isScrolled ? 'blur(10px)' : 'none')};
-  border-bottom: ${({ $isScrolled, theme }) =>
-    $isScrolled ? `1px solid ${theme.colors.border}` : 'none'};
-  transition: all ${props => props.theme.transitions.base};
+  background: ${({ $scrolled, theme }) =>
+    $scrolled ? `${theme.colors.background}f0` : 'transparent'};
+  backdrop-filter: ${({ $scrolled }) => ($scrolled ? 'blur(12px)' : 'none')};
+  border-bottom: ${({ $scrolled, theme }) =>
+    $scrolled ? `1px solid ${theme.colors.border}` : 'none'};
+  transition: all 0.25s ease;
   animation: ${fadeInDown} 0.6s ease-out;
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
@@ -24,7 +24,7 @@ const Nav = styled.nav<{ $isScrolled: boolean }>`
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -32,41 +32,40 @@ const Container = styled.div`
 `;
 
 const Logo = styled.a`
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  font-weight: ${props => props.theme.fontWeights.extrabold};
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  cursor: pointer;
-  transition: all ${props => props.theme.transitions.base};
   display: flex;
   align-items: center;
   gap: ${props => props.theme.spacing.sm};
-  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-    transition: width ${props => props.theme.transitions.base};
-    border-radius: ${props => props.theme.borderRadius.full};
-  }
+const LogoMark = styled.span`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xl};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.text};
+  letter-spacing: -0.02em;
 
-  &:hover::before {
-    width: 100%;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
+  span {
+    color: ${props => props.theme.colors.textMuted};
   }
 `;
 
-const Menu = styled.ul<{ $isOpen: boolean }>`
+const LogoSub = styled.span`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-left: 1px solid ${props => props.theme.colors.border};
+  padding-left: ${props => props.theme.spacing.sm};
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) {
+    display: none;
+  }
+`;
+
+const Menu = styled.ul<{ $open: boolean }>`
   display: flex;
   gap: ${props => props.theme.spacing.xl};
   list-style: none;
@@ -74,87 +73,72 @@ const Menu = styled.ul<{ $isOpen: boolean }>`
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     position: fixed;
-    top: 70px;
+    top: 64px;
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: ${props => props.theme.colors.backgroundCard}fa;
-    backdrop-filter: blur(10px);
+    background: ${props => props.theme.colors.backgroundCard}f8;
+    backdrop-filter: blur(12px);
     padding: ${props => props.theme.spacing.xl};
     gap: ${props => props.theme.spacing.lg};
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
-    transition: transform ${props => props.theme.transitions.base};
     border-bottom: 1px solid ${props => props.theme.colors.border};
+    transform: ${({ $open }) => ($open ? 'translateX(0)' : 'translateX(100%)')};
+    transition: transform 0.25s ease;
   }
 `;
 
 const MenuItem = styled.li``;
 
-const MenuLink = styled.a`
-  color: ${props => props.theme.colors.textSecondary};
-  font-size: ${props => props.theme.fontSizes.base};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  transition: all ${props => props.theme.transitions.base};
+const NavLink = styled.a`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.sm};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
+  padding: ${props => props.theme.spacing.xs} 0;
   position: relative;
+  transition: color 0.2s;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -2px;
+    left: 0;
     width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-    transition: width ${props => props.theme.transitions.base};
-    border-radius: ${props => props.theme.borderRadius.full};
+    height: 1px;
+    background: ${props => props.theme.colors.primary};
+    transition: width 0.2s ease;
   }
 
   &:hover {
     color: ${props => props.theme.colors.text};
 
     &::after {
-      width: 70%;
+      width: 100%;
     }
   }
 `;
 
-const CTAButton = styled.a`
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  color: ${props => props.theme.colors.text};
-  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.lg};
-  border-radius: ${props => props.theme.borderRadius.full};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  transition: all ${props => props.theme.transitions.base};
+const ContactBtn = styled.a`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.background};
+  background: ${props => props.theme.colors.text};
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, ${props => props.theme.colors.background}33, transparent);
-    transition: left 0.5s;
-  }
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.lg};
+  transition: all 0.2s ease;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px ${props => props.theme.colors.primary}66;
-
-    &::before {
-      left: 100%;
-    }
+    background: ${props => props.theme.colors.primaryDark};
+    transform: translateY(-1px);
   }
 `;
 
-const MobileMenuButton = styled.button`
+const Hamburger = styled.button`
   display: none;
   flex-direction: column;
   gap: 5px;
@@ -168,79 +152,60 @@ const MobileMenuButton = styled.button`
   }
 
   span {
-    width: 25px;
-    height: 3px;
-    background-color: ${props => props.theme.colors.text};
-    border-radius: ${props => props.theme.borderRadius.sm};
-    transition: all ${props => props.theme.transitions.base};
+    width: 22px;
+    height: 2px;
+    background: ${props => props.theme.colors.textSecondary};
+    transition: all 0.2s ease;
   }
 `;
 
 export const Navbar = () => {
   const { t } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+  const go = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
   };
 
+  const navItems = [
+    { key: 'nav.home',     id: 'home'     },
+    { key: 'nav.services', id: 'services' },
+    { key: 'nav.projects', id: 'projects' },
+    { key: 'nav.about',    id: 'about'    },
+    { key: 'nav.founder',  id: 'founder'  },
+    { key: 'nav.pricing',  id: 'pricing'  },
+  ];
+
   return (
-    <Nav $isScrolled={isScrolled}>
+    <Nav $scrolled={scrolled}>
       <Container>
-        <Logo onClick={() => scrollToSection('home')}>{'<JE />'}</Logo>
+        <Logo onClick={() => go('home')}>
+          <LogoMark>FLN<span>.</span></LogoMark>
+          <LogoSub>Solutions IT</LogoSub>
+        </Logo>
 
-        <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          <span />
-          <span />
-          <span />
-        </MobileMenuButton>
-
-        <Menu $isOpen={isMobileMenuOpen}>
+        <Menu $open={menuOpen}>
+          {navItems.map(({ key, id }) => (
+            <MenuItem key={id}>
+              <NavLink onClick={() => go(id)}>{t(key)}</NavLink>
+            </MenuItem>
+          ))}
           <MenuItem>
-            <MenuLink onClick={() => scrollToSection('home')}>
-              {t('nav.home')}
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink onClick={() => scrollToSection('services')}>
-              {t('nav.services')}
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink onClick={() => scrollToSection('pricing')}>
-              {t('nav.pricing')}
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink onClick={() => scrollToSection('projects')}>
-              {t('nav.projects')}
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink onClick={() => scrollToSection('about')}>
-              {t('nav.about')}
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <CTAButton onClick={() => scrollToSection('contact')}>
-              {t('nav.contact')}
-            </CTAButton>
+            <ContactBtn onClick={() => go('contact')}>{t('nav.contact')}</ContactBtn>
           </MenuItem>
         </Menu>
+
+        <Hamburger onClick={() => setMenuOpen(o => !o)}>
+          <span /><span /><span />
+        </Hamburger>
       </Container>
     </Nav>
   );

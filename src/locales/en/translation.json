@@ -1,153 +1,170 @@
-{
+﻿{
   "nav": {
     "home": "Home",
     "services": "Services",
-    "pricing": "Pricing",
-    "projects": "Projects",
+    "pricing": "Plans",
+    "projects": "Work",
     "about": "About",
+    "founder": "Founder",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "title": "João Emanuel",
-    "subtitle": "Fullstack Developer",
-    "description": "I transform ideas into high-quality digital solutions. Specialized in mobile apps, websites, and web systems that make a difference for your business.",
+    "greeting": "// FEILEN SOLUTIONS IT",
+    "title": "We Build. We Scale. We Deliver.",
+    "subtitle": "Software Delivery & IT Outsourcing",
+    "description": "Agile delivery of high-quality software. Experienced professionals across all market verticals. From custom development and mobile apps to full outsourcing — we architect, build, and guarantee scalability, security, and results.",
     "cta": {
-      "primary": "View Projects",
-      "secondary": "Get in Touch"
+      "primary": "Our Services",
+      "secondary": "Start a Project"
+    },
+    "stats": {
+      "delivery": "Delivery",
+      "deliveryLabel": "Agile sprints, real velocity",
+      "ai": "AI-First",
+      "aiLabel": "Intelligence in every layer",
+      "scale": "Enterprise",
+      "scaleLabel": "Elastic, secure, ready"
     }
   },
   "services": {
-    "title": "Services",
-    "subtitle": "Complete solutions for your digital business",
+    "title": "What We Do",
+    "subtitle": "End-to-end technology solutions for companies that can't afford to stop",
     "items": [
       {
+        "title": "Software Delivery",
+        "description": "Complete product cycles from ideation to production. Web platforms, SaaS, ERPs and custom systems built with agile methodology — on time, on spec."
+      },
+      {
         "title": "Mobile Applications",
-        "description": "Development of native and hybrid applications for iOS and Android using React Native. Modern, responsive applications with excellent performance."
+        "description": "Native and hybrid apps for iOS and Android engineered for performance and scale. React Native, clean architecture and pixel-perfect UI."
       },
       {
-        "title": "Websites & Landing Pages",
-        "description": "Creation of institutional websites, landing pages, and portfolios with modern design optimized for conversion. SEO, performance, and responsiveness guaranteed."
+        "title": "IT Outsourcing",
+        "description": "Plug senior engineers directly into your team. Frontend, backend, full-stack and tech leads available — without the recruitment overhead."
       },
       {
-        "title": "Web Systems",
-        "description": "Development of complex web systems, ERPs, CRMs, and custom platforms. Scalable and secure architecture for your business."
+        "title": "AI & Intelligence",
+        "description": "Our core specialty. LLM integrations, automation pipelines, predictive models and AI-powered features embedded into your product or infrastructure."
       },
       {
-        "title": "APIs & Backend",
-        "description": "Creation of robust and scalable RESTful and GraphQL APIs. Integration with third-party systems, microservices, and serverless architecture."
+        "title": "Cloud & Scalability",
+        "description": "Microservices, containerization, CI/CD and cloud-native architecture on AWS, GCP or Azure. Built to grow without breaking."
+      },
+      {
+        "title": "Security & Compliance",
+        "description": "Application security, penetration testing, LGPD/GDPR compliance, auth systems and data protection at every layer of the stack."
       }
     ]
   },
   "projects": {
-    "title": "Projects",
-    "subtitle": "Some of my recent work",
-    "viewProject": "View Project"
+    "title": "Case Studies",
+    "subtitle": "Selected delivery highlights",
+    "viewProject": "View Case"
   },
   "about": {
-    "title": "About Me",
-    "text1": "Software Developer with 7+ years building and scaling PHP applications. Contributed to the evolution of critical systems in leading Brazilian companies and led technical and business initiatives in ERP and SaaS in Europe.",
-    "text2": "Experience across multiple sectors: ERP, Corporate Education, Public and Private Organizations, Financial Institutions, Credit Unions, Insurance, and Cards. Currently working as a FullStack Developer at Builders for Porto Seguro client, working with Java 17, Angular, Maven, Spring Boot, and Node.",
-    "text3": "Focus on architecture, performance, and security. Specialized in building scalable solutions that transform complex challenges into successful digital products.",
+    "title": "About Feilen",
+    "text1": "Feilen Solutions IT is a technology company specialized in software delivery and IT outsourcing. Founded by senior developers with 7+ years of hands-on experience across fintech, insurtech, ERP, SaaS, and corporate education.",
+    "text2": "We operate across all market verticals — from large enterprise ERPs to early-stage startups — delivering software that is scalable, secure, and production-ready. Our team has shipped systems for financial institutions, credit unions, and international companies in Europe and Brazil.",
+    "text3": "Artificial Intelligence is our core differentiator. We embed intelligent automation, LLM pipelines, and data-driven features into every solution we build — not as an afterthought, but as a first-class architecture layer.",
     "stats": {
-      "years": "Years of Experience",
-      "projects": "Completed Projects",
-      "clients": "Satisfied Clients"
+      "years": "Years in Market",
+      "projects": "Projects Delivered",
+      "clients": "Enterprise Clients"
     },
-    "skills": {
-      "title": "Technologies & Skills",
+    "pillars": {
+      "title": "Tech Stack",
       "frontend": "Frontend",
       "backend": "Backend",
       "database": "Database",
-      "tools": "Tools & DevOps"
+      "tools": "DevOps & Cloud"
     }
   },
   "contact": {
-    "title": "Get in Touch",
-    "subtitle": "Let's talk about your next project",
+    "title": "Start a Project",
+    "subtitle": "Tell us what you need. We respond within 24h.",
     "info": {
-      "title": "Contact Information",
+      "title": "Get in Touch",
       "email": "Email",
-      "location": "Location"
+      "location": "HQ"
     },
     "form": {
-      "name": "Name",
-      "namePlaceholder": "Your name",
+      "name": "Your Name",
+      "namePlaceholder": "Full name",
       "email": "Email",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "business@company.com",
       "subject": "Subject",
-      "subjectPlaceholder": "Message subject",
+      "subjectPlaceholder": "Project brief or inquiry",
       "message": "Message",
-      "messagePlaceholder": "Tell me about your project...",
+      "messagePlaceholder": "Describe your project, stack, timeline and goals...",
       "submit": "Send Message",
-      "success": "Message sent successfully!"
+      "success": "Message sent. We will be in touch shortly."
     }
   },
   "pricing": {
-    "title": "Pricing & Plans",
-    "subtitle": "Choose the ideal plan for your project",
-    "popular": "Most Popular",
-    "cta": "Request Quote",
+    "title": "Engagement Models",
+    "subtitle": "Flexible delivery formats for any stage",
+    "popular": "Most Requested",
+    "cta": "Get Quote",
     "starter": {
-      "name": "Starter",
-      "description": "Perfect for landing pages and institutional websites",
-      "note": "Timeline: 1-2 weeks",
+      "name": "Delivery",
+      "description": "Fixed-scope project delivery",
+      "note": "Timeline: 1–8 weeks",
       "features": [
-        "Modern responsive design",
-        "Up to 5 pages",
-        "Basic SEO",
-        "Contact form",
-        "Google Analytics"
+        "Dedicated project team",
+        "Defined scope & milestones",
+        "Weekly sprint reviews",
+        "Full source code ownership",
+        "Post-launch support (30 days)"
       ]
     },
     "professional": {
-      "name": "Professional",
-      "description": "Ideal for e-commerce and web systems",
-      "note": "Timeline: 3-6 weeks",
+      "name": "Outsourcing",
+      "description": "Senior engineers embedded in your team",
+      "note": "Minimum 3-month contract",
       "features": [
-        "Everything in Starter",
-        "Up to 15 pages",
-        "Admin dashboard",
-        "API integration",
-        "Authentication system",
-        "Advanced optimization"
+        "1–5 senior engineers",
+        "Full-stack or specialized profiles",
+        "Daily standups & async comms",
+        "Code review & documentation",
+        "Ramp-up in 5 business days",
+        "Tech lead available on demand"
       ]
     },
     "enterprise": {
       "name": "Enterprise",
-      "description": "Complete and customized solutions",
-      "note": "Timeline: Custom",
+      "description": "Full-service technology partnership",
+      "note": "Custom SLA & terms",
       "features": [
-        "Everything in Professional",
-        "Unlimited pages",
-        "Scalable architecture",
-        "Multiple integrations",
-        "Mobile app (iOS/Android)",
-        "Priority support",
-        "DevOps & CI/CD"
+        "Everything in Outsourcing",
+        "Dedicated tech manager",
+        "AI features by default",
+        "Architecture consulting",
+        "Security audit included",
+        "24/7 priority support",
+        "DevOps & CI/CD pipeline"
       ]
     },
     "calculator": {
-      "title": "Budget Calculator",
+      "title": "Estimate Your Investment",
       "projectType": "Project Type",
-      "features": "Extra Features",
-      "urgency": "Urgency",
+      "features": "Add-ons",
+      "urgency": "Timeline",
       "estimate": "Investment Estimate",
       "base": "Base Value",
-      "featuresTotal": "Features",
-      "urgencyFactor": "Urgency Factor",
+      "featuresTotal": "Add-ons",
+      "urgencyFactor": "Timeline Factor",
       "total": "Estimated Total",
       "requestQuote": "Request Detailed Quote",
       "types": {
         "landing": "Landing Page ($800)",
-        "institutional": "Institutional Website ($1,500)",
+        "institutional": "Corporate Website ($1,500)",
         "ecommerce": "E-commerce ($3,500)",
         "webapp": "Web System ($5,000)",
         "mobile": "Mobile App ($6,000)",
         "custom": "Custom Project"
       },
       "featuresList": {
-        "auth": "Authentication System (+$500)",
+        "auth": "Auth System (+$500)",
         "payment": "Payment Gateway (+$800)",
         "admin": "Admin Panel (+$600)",
         "api": "REST/GraphQL API (+$700)",
@@ -155,13 +172,13 @@
         "seo": "Advanced SEO (+$300)"
       },
       "urgencyOptions": {
-        "urgent": "Urgent - 1-2 weeks (+50%)",
-        "normal": "Normal - 3-4 weeks",
-        "flexible": "Flexible - 5+ weeks (-15%)"
+        "urgent": "Rush — 1–2 weeks (+50%)",
+        "normal": "Standard — 3–4 weeks",
+        "flexible": "Flexible — 5+ weeks (-15%)"
       }
     }
   },
   "footer": {
-    "madeWith": "Made with"
+    "madeWith": "Built by"
   }
 }

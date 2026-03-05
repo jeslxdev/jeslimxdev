@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { fadeInUp } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { contactInfo } from '@/application/data';
 
 const ContactSection = styled.section`
@@ -176,33 +176,39 @@ const TextArea = styled.textarea`
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  color: ${props => props.theme.colors.text};
+  background: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.background};
   padding: ${props => props.theme.spacing.md} ${props => props.theme.spacing.xl};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  font-size: ${props => props.theme.fontSizes.base};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  border: none;
+  font-size: ${props => props.theme.fontSizes.sm};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: ${props => props.theme.fonts.primary};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: all ${props => props.theme.transitions.base};
   cursor: pointer;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
 
   &:hover {
+    background: ${props => props.theme.colors.primaryDark};
     transform: translateY(-2px);
-    box-shadow: ${props => props.theme.shadows.glow};
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 `;
 
 const SuccessMessage = styled.div`
   padding: ${props => props.theme.spacing.md};
-  background: ${props => props.theme.colors.accent}22;
-  border: 1px solid ${props => props.theme.colors.accent};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  color: ${props => props.theme.colors.accent};
+  background: transparent;
+  border: 1px solid ${props => props.theme.colors.border};
+  color: ${props => props.theme.colors.textSecondary};
   text-align: center;
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.sm};
+  letter-spacing: 0.05em;
 `;
 
 export const Contact = () => {
@@ -305,33 +311,7 @@ export const Contact = () => {
                 </InfoItem>
               )}
 
-              {contactInfo.github && (
-                <InfoItem
-                  href={contactInfo.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub />
-                  <InfoText>
-                    <InfoLabel>GitHub</InfoLabel>
-                    <InfoValue>@jeslxdev</InfoValue>
-                  </InfoText>
-                </InfoItem>
-              )}
 
-              {contactInfo.linkedin && (
-                <InfoItem
-                  href={contactInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedin />
-                  <InfoText>
-                    <InfoLabel>LinkedIn</InfoLabel>
-                    <InfoValue>João Emanuel</InfoValue>
-                  </InfoText>
-                </InfoItem>
-              )}
             </InfoList>
           </ContactInfo>
 

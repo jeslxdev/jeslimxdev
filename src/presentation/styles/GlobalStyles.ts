@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700;800&display=swap');
+
   * {
     margin: 0;
     padding: 0;
@@ -33,6 +35,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: ${props => props.theme.fontWeights.bold};
     line-height: 1.2;
     color: ${props => props.theme.colors.text};
+    letter-spacing: -0.02em;
   }
 
   h1 {
@@ -85,28 +88,23 @@ export const GlobalStyles = createGlobalStyle`
 
   ::selection {
     background-color: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.background};
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
     background: ${props => props.theme.colors.background};
+    border-left: 1px solid ${props => props.theme.colors.border};
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-    border-radius: ${props => props.theme.borderRadius.md};
+    background: ${props => props.theme.colors.border};
 
     &:hover {
-      background: ${props => props.theme.colors.primaryDark};
+      background: ${props => props.theme.colors.primary};
     }
-  }
-
-  /* Prevent iframe embedding */
-  iframe {
-    display: none !important;
   }
 `;

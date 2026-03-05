@@ -1,153 +1,170 @@
-{
+﻿{
   "nav": {
     "home": "Início",
     "services": "Serviços",
-    "pricing": "Preços",
-    "projects": "Projetos",
+    "pricing": "Planos",
+    "projects": "Cases",
     "about": "Sobre",
+    "founder": "Founder",
     "contact": "Contato"
   },
   "hero": {
-    "greeting": "Olá, eu sou",
-    "title": "João Emanuel",
-    "subtitle": "Desenvolvedor Fullstack",
-    "description": "Transformo ideias em soluções digitais de alta qualidade. Especializado em aplicativos mobile, sites e sistemas web que fazem a diferença no seu negócio.",
+    "greeting": "// FEILEN SOLUTIONS IT",
+    "title": "Construímos. Escalamos. Entregamos.",
+    "subtitle": "Software Delivery & Outsourcing de TI",
+    "description": "Entrega ágil de software de alta qualidade. Profissionais experientes em todos os segmentos do mercado. Do desenvolvimento customizado e apps mobile ao outsourcing completo — arquitetamos, construímos e garantimos escalabilidade, segurança e resultados.",
     "cta": {
-      "primary": "Ver Projetos",
-      "secondary": "Entre em Contato"
+      "primary": "Nossos Serviços",
+      "secondary": "Iniciar Projeto"
+    },
+    "stats": {
+      "delivery": "Delivery",
+      "deliveryLabel": "Sprints ágeis, velocidade real",
+      "ai": "IA em Foco",
+      "aiLabel": "Inteligência em cada camada",
+      "scale": "Enterprise",
+      "scaleLabel": "Elástico, seguro, pronto"
     }
   },
   "services": {
-    "title": "Serviços",
-    "subtitle": "Soluções completas para seu negócio digital",
+    "title": "O Que Fazemos",
+    "subtitle": "Soluções tecnológicas de ponta a ponta para empresas que não podem parar",
     "items": [
       {
+        "title": "Software Delivery",
+        "description": "Ciclos completos de produto da ideação à produção. Plataformas web, SaaS, ERPs e sistemas customizados com metodologia ágil — no prazo e conforme especificado."
+      },
+      {
         "title": "Aplicativos Mobile",
-        "description": "Desenvolvimento de aplicativos nativos e híbridos para iOS e Android usando React Native. Aplicações modernas, responsivas e com excelente performance."
+        "description": "Apps nativos e híbridos para iOS e Android engenheirados para performance e escala. React Native, arquitetura limpa e UI pixel-perfect."
       },
       {
-        "title": "Sites & Landing Pages",
-        "description": "Criação de sites institucionais, landing pages e portfólios com design moderno e otimizado para conversão. SEO, performance e responsividade garantidos."
+        "title": "Outsourcing de TI",
+        "description": "Engenheiros sênior alocados diretamente no seu time. Perfis frontend, backend, full-stack e tech leads disponíveis — sem overhead de recrutamento."
       },
       {
-        "title": "Sistemas Web",
-        "description": "Desenvolvimento de sistemas web complexos, ERPs, CRMs e plataformas personalizadas. Arquitetura escalável e segura para seu negócio."
+        "title": "IA & Inteligência",
+        "description": "Nossa especialidade principal. Integrações LLM, pipelines de automação, modelos preditivos e features com IA embarcadas no seu produto ou infraestrutura."
       },
       {
-        "title": "APIs & Backend",
-        "description": "Criação de APIs RESTful e GraphQL robustas e escaláveis. Integração com sistemas terceiros, microserviços e arquitetura serverless."
+        "title": "Cloud & Escalabilidade",
+        "description": "Microsserviços, conteinerização, CI/CD e arquitetura cloud-native na AWS, GCP ou Azure. Construído para crescer sem quebrar."
+      },
+      {
+        "title": "Segurança & Compliance",
+        "description": "Segurança de aplicações, pentesting, conformidade com LGPD/GDPR, sistemas de autenticação e proteção de dados em cada camada da stack."
       }
     ]
   },
   "projects": {
-    "title": "Projetos",
-    "subtitle": "Alguns dos meus trabalhos recentes",
-    "viewProject": "Ver Projeto"
+    "title": "Cases",
+    "subtitle": "Destaques de entregas selecionadas",
+    "viewProject": "Ver Case"
   },
   "about": {
-    "title": "Sobre Mim",
-    "text1": "Desenvolvedor de Software com 7+ anos construindo e escalando aplicações PHP. Contribuí para a evolução de sistemas críticos em empresas de referência no mercado brasileiro e liderei iniciativas técnicas e de negócios em ERP e SaaS na Europa.",
-    "text2": "Atuação em diversos segmentos: ERP, Educação Corporativa, Órgãos Públicos e Privados, Financeiras, Promotoras, Seguradoras e Cartões. Atualmente como Desenvolvedor FullStack pela Builders no Cliente Porto Seguro, trabalhando com Java 17, Angular, Maven, Spring Boot e Node.",
-    "text3": "Foco em arquitetura, performance e segurança. Especializado em construir soluções escaláveis que transformam desafios complexos em produtos digitais de sucesso.",
+    "title": "Sobre a Feilen",
+    "text1": "A Feilen Solutions IT é uma empresa de tecnologia especializada em software delivery e outsourcing de TI. Fundada por desenvolvedores sênior com 7+ anos de experiência prática em fintech, insurtech, ERP, SaaS e educação corporativa.",
+    "text2": "Atuamos em todos os verticais de mercado — de grandes ERPs corporativos a startups em estágio inicial — entregando software escalável, seguro e pronto para produção. Nossa equipe já entregou sistemas para instituições financeiras, cooperativas de crédito e empresas internacionais na Europa e no Brasil.",
+    "text3": "Inteligência Artificial é nosso principal diferencial. Incorporamos automação inteligente, pipelines LLM e features orientadas a dados em cada solução que construímos — não como um adicional, mas como uma camada de arquitetura de primeira classe.",
     "stats": {
-      "years": "Anos de Experiência",
-      "projects": "Projetos Concluídos",
-      "clients": "Clientes Satisfeitos"
+      "years": "Anos no Mercado",
+      "projects": "Projetos Entregues",
+      "clients": "Clientes Enterprise"
     },
-    "skills": {
-      "title": "Tecnologias & Habilidades",
+    "pillars": {
+      "title": "Tecnologias",
       "frontend": "Frontend",
       "backend": "Backend",
       "database": "Banco de Dados",
-      "tools": "Ferramentas & DevOps"
+      "tools": "DevOps & Cloud"
     }
   },
   "contact": {
-    "title": "Entre em Contato",
-    "subtitle": "Vamos conversar sobre seu próximo projeto",
+    "title": "Inicie um Projeto",
+    "subtitle": "Conte o que você precisa. Respondemos em até 24h.",
     "info": {
-      "title": "Informações de Contato",
+      "title": "Entre em Contato",
       "email": "Email",
-      "location": "Localização"
+      "location": "HQ"
     },
     "form": {
-      "name": "Nome",
-      "namePlaceholder": "Seu nome",
+      "name": "Seu Nome",
+      "namePlaceholder": "Nome completo",
       "email": "Email",
-      "emailPlaceholder": "seu@email.com",
+      "emailPlaceholder": "contato@empresa.com",
       "subject": "Assunto",
-      "subjectPlaceholder": "Assunto da mensagem",
+      "subjectPlaceholder": "Briefing do projeto ou dúvida",
       "message": "Mensagem",
-      "messagePlaceholder": "Conte-me sobre seu projeto...",
+      "messagePlaceholder": "Descreva seu projeto, stack, prazo e objetivos...",
       "submit": "Enviar Mensagem",
-      "success": "Mensagem enviada com sucesso!"
+      "success": "Mensagem enviada. Entraremos em contato em breve."
     }
   },
   "pricing": {
-    "title": "Preços & Planos",
-    "subtitle": "Escolha o plano ideal para o seu projeto",
-    "popular": "Mais Popular",
+    "title": "Modelos de Engajamento",
+    "subtitle": "Formatos flexíveis de entrega para qualquer estágio",
+    "popular": "Mais Solicitado",
     "cta": "Solicitar Orçamento",
     "starter": {
-      "name": "Starter",
-      "description": "Perfeito para landing pages e sites institucionais",
-      "note": "Prazo: 1-2 semanas",
+      "name": "Delivery",
+      "description": "Entrega de projeto com escopo definido",
+      "note": "Prazo: 1–8 semanas",
       "features": [
-        "Design responsivo moderno",
-        "Até 5 páginas",
-        "SEO básico",
-        "Formulário de contato",
-        "Google Analytics"
+        "Time dedicado ao projeto",
+        "Escopo e milestones definidos",
+        "Reviews semanais de sprint",
+        "Código-fonte 100% do cliente",
+        "Suporte pós-entrega (30 dias)"
       ]
     },
     "professional": {
-      "name": "Professional",
-      "description": "Ideal para e-commerces e sistemas web",
-      "note": "Prazo: 3-6 semanas",
+      "name": "Outsourcing",
+      "description": "Engenheiros sênior no seu time",
+      "note": "Contrato mínimo de 3 meses",
       "features": [
-        "Tudo do plano Starter",
-        "Até 15 páginas",
-        "Painel administrativo",
-        "Integração com APIs",
-        "Sistema de autenticação",
-        "Otimização avançada"
+        "1–5 engenheiros sênior",
+        "Perfis full-stack ou especializados",
+        "Daily standups e async",
+        "Code review e documentação",
+        "Ramp-up em 5 dias úteis",
+        "Tech lead sob demanda"
       ]
     },
     "enterprise": {
       "name": "Enterprise",
-      "description": "Soluções completas e personalizadas",
-      "note": "Prazo: Customizado",
+      "description": "Parceria tecnológica completa",
+      "note": "SLA e termos customizados",
       "features": [
-        "Tudo do plano Professional",
-        "Páginas ilimitadas",
-        "Arquitetura escalável",
-        "Múltiplas integrações",
-        "App mobile (iOS/Android)",
-        "Suporte prioritário",
-        "DevOps & CI/CD"
+        "Tudo do plano Outsourcing",
+        "Tech manager dedicado",
+        "IA por padrão em todo projeto",
+        "Consultoria de arquitetura",
+        "Auditoria de segurança inclusa",
+        "Suporte prioritário 24/7",
+        "Pipeline DevOps & CI/CD"
       ]
     },
     "calculator": {
-      "title": "Calculadora de Orçamento",
+      "title": "Estime seu Investimento",
       "projectType": "Tipo de Projeto",
-      "features": "Funcionalidades Extras",
-      "urgency": "Urgência",
+      "features": "Add-ons",
+      "urgency": "Prazo",
       "estimate": "Estimativa de Investimento",
       "base": "Valor Base",
-      "featuresTotal": "Funcionalidades",
-      "urgencyFactor": "Fator Urgência",
+      "featuresTotal": "Add-ons",
+      "urgencyFactor": "Fator de Prazo",
       "total": "Total Estimado",
       "requestQuote": "Solicitar Orçamento Detalhado",
       "types": {
         "landing": "Landing Page (R$ 800)",
-        "institutional": "Site Institucional (R$ 1.500)",
+        "institutional": "Site Corporativo (R$ 1.500)",
         "ecommerce": "E-commerce (R$ 3.500)",
         "webapp": "Sistema Web (R$ 5.000)",
         "mobile": "App Mobile (R$ 6.000)",
         "custom": "Projeto Customizado"
       },
       "featuresList": {
-        "auth": "Sistema de Autenticação (+R$ 500)",
+        "auth": "Sistema de Auth (+R$ 500)",
         "payment": "Gateway de Pagamento (+R$ 800)",
         "admin": "Painel Admin (+R$ 600)",
         "api": "API REST/GraphQL (+R$ 700)",
@@ -155,13 +172,13 @@
         "seo": "SEO Avançado (+R$ 300)"
       },
       "urgencyOptions": {
-        "urgent": "Urgente - 1-2 semanas (+50%)",
-        "normal": "Normal - 3-4 semanas",
-        "flexible": "Flexível - 5+ semanas (-15%)"
+        "urgent": "Rush — 1–2 semanas (+50%)",
+        "normal": "Padrão — 3–4 semanas",
+        "flexible": "Flexível — 5+ semanas (-15%)"
       }
     }
   },
   "footer": {
-    "madeWith": "Feito com"
+    "madeWith": "Desenvolvido por"
   }
 }

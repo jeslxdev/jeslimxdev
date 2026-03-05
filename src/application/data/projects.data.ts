@@ -27,8 +27,8 @@ export const projects: Project[] = [
   {
     id: '3',
     title: 'Viaje Nones - Site WordPress',
-    description: 'Site institucional em WordPress para agência de viagens espanhola. Design responsivo e moderno, otimizado para SEO, com sistema de reservas integrado e galeria de destinos turísticos.',
-    technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'SEO', 'Responsive Design'],
+    description: 'Site institucional em WordPress para agência de viagens espanhola. Design responsivo e moderno, otimizado para SEO, com sistema de reservas integrado, galeria de destinos turísticos, desenvolvimento de plugins customizados e integração de APIs via SOAP e GIAV.',
+    technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'SOAP API', 'GIAV', 'Custom Plugins', 'SEO'],
     category: ProjectCategory.WEB,
     url: 'https://nones.es',
     image: viajesnonesImg,

@@ -1,13 +1,20 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { fadeInUp } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
-import { FaCheck, FaRocket, FaStar, FaCrown, FaCalculator } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 
-const PricingSection = styled.section`
+const Section = styled.section`
   padding: ${props => props.theme.spacing['4xl']} ${props => props.theme.spacing.xl};
-  background-color: ${props => props.theme.colors.background};
+  background: ${props => props.theme.colors.backgroundLight};
   position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${props => props.theme.colors.border}, transparent);
+  }
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     padding: ${props => props.theme.spacing['3xl']} ${props => props.theme.spacing.md};
@@ -15,617 +22,207 @@ const PricingSection = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
 `;
 
-const Header = styled.div`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing['3xl']};
+const Label = styled.p`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: ${props => props.theme.spacing.md};
+
+  &::before { content: '// '; }
 `;
 
-const SectionTitle = styled.h2`
+const Title = styled.h2`
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: ${props => props.theme.colors.text};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  letter-spacing: -0.03em;
   margin-bottom: ${props => props.theme.spacing.md};
   animation: ${fadeInUp} 0.8s ease-out;
 `;
 
-const SectionSubtitle = styled.p`
+const Subtitle = styled.p`
   font-size: ${props => props.theme.fontSizes.lg};
-  color: ${props => props.theme.colors.textSecondary};
-  max-width: 600px;
-  margin: 0 auto;
-  animation: ${fadeInUp} 1s ease-out;
+  color: ${props => props.theme.colors.textMuted};
+  margin-bottom: ${props => props.theme.spacing['3xl']};
 `;
 
-const PricingGrid = styled.div`
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${props => props.theme.spacing['2xl']};
-  margin-bottom: ${props => props.theme.spacing['4xl']};
+  gap: 0;
+  border: 1px solid ${props => props.theme.colors.border};
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
-    gap: ${props => props.theme.spacing.xl};
+    border: none;
+    gap: 1px;
+    background: ${props => props.theme.colors.border};
   }
 `;
 
-const PricingCard = styled.div<{ featured?: boolean }>`
-  background: ${props => props.theme.colors.backgroundCard};
-  border: 2px solid ${props => props.featured ? props.theme.colors.primary : props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.xl};
+const Card = styled.div<{ $featured?: boolean }>`
+  background: ${props => props.$featured ? props.theme.colors.backgroundCard : props.theme.colors.background};
   padding: ${props => props.theme.spacing['2xl']};
+  border-right: 1px solid ${props => props.theme.colors.border};
   position: relative;
-  transition: all ${props => props.theme.transitions.base};
-  animation: ${fadeInUp} 1.2s ease-out;
+  transition: background 0.2s;
+  animation: ${fadeInUp} 0.8s ease-out both;
 
-  ${props => props.featured && `
-    transform: scale(1.05);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  &:last-child { border-right: none; }
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+
+  ${props => props.$featured && `
+    border-top: 2px solid ${props.theme.colors.primary};
   `}
 
   &:hover {
-    transform: ${props => props.featured ? 'scale(1.08)' : 'scale(1.03)'};
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background: ${props => props.theme.colors.backgroundCard};
   }
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
-    transform: none !important;
-
-    &:hover {
-      transform: translateY(-5px) !important;
-    }
+    border-right: none;
   }
 `;
 
-const FeaturedBadge = styled.div`
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.accent});
-  color: ${props => props.theme.colors.text};
-  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.lg};
-  border-radius: ${props => props.theme.borderRadius.full};
-  font-size: ${props => props.theme.fontSizes.sm};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  display: flex;
-  align-items: center;
-  gap: ${props => props.theme.spacing.xs};
-`;
-
-const PlanIcon = styled.div`
-  font-size: 3rem;
-  color: ${props => props.theme.colors.primary};
-  margin-bottom: ${props => props.theme.spacing.lg};
+const FeaturedTag = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: ${props => props.theme.spacing.md};
+  border: 1px solid ${props => props.theme.colors.border};
+  display: inline-block;
+  padding: 2px ${props => props.theme.spacing.sm};
 `;
 
 const PlanName = styled.h3`
   font-size: ${props => props.theme.fontSizes['2xl']};
-  margin-bottom: ${props => props.theme.spacing.md};
-`;
-
-const PlanDescription = styled.p`
-  color: ${props => props.theme.colors.textSecondary};
-  margin-bottom: ${props => props.theme.spacing.xl};
-  font-size: ${props => props.theme.fontSizes.sm};
-`;
-
-const PlanPrice = styled.div`
-  margin-bottom: ${props => props.theme.spacing.xl};
-`;
-
-const Price = styled.div`
-  font-size: ${props => props.theme.fontSizes['3xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.accent});
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: ${props => props.theme.spacing.xs};
-
-  span {
-    font-size: ${props => props.theme.fontSizes.lg};
-    color: ${props => props.theme.colors.textSecondary};
-    -webkit-text-fill-color: ${props => props.theme.colors.textSecondary};
-  }
+  color: ${props => props.theme.colors.text};
+  letter-spacing: -0.02em;
+  margin-bottom: ${props => props.theme.spacing.sm};
 `;
 
-const PriceNote = styled.p`
+const PlanDesc = styled.p`
   font-size: ${props => props.theme.fontSizes.sm};
-  color: ${props => props.theme.colors.textSecondary};
+  color: ${props => props.theme.colors.textMuted};
+  margin-bottom: ${props => props.theme.spacing.md};
+  line-height: 1.6;
+`;
+
+const PlanNote = styled.p`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.05em;
+  margin-bottom: ${props => props.theme.spacing.xl};
+  padding: ${props => props.theme.spacing.sm};
+  border-left: 2px solid ${props => props.theme.colors.border};
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background: ${props => props.theme.colors.border};
+  margin-bottom: ${props => props.theme.spacing.xl};
 `;
 
 const FeatureList = styled.ul`
   list-style: none;
-  margin-bottom: ${props => props.theme.spacing.xl};
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.theme.spacing.md};
+  margin-bottom: ${props => props.theme.spacing['2xl']};
 `;
 
 const Feature = styled.li`
   display: flex;
   align-items: flex-start;
   gap: ${props => props.theme.spacing.md};
-  margin-bottom: ${props => props.theme.spacing.md};
-  color: ${props => props.theme.colors.text};
-  animation: ${fadeInUp} 0.4s ease-out both;
-
-  &:nth-child(1) { animation-delay: 0.1s; }
-  &:nth-child(2) { animation-delay: 0.15s; }
-  &:nth-child(3) { animation-delay: 0.2s; }
-  &:nth-child(4) { animation-delay: 0.25s; }
-  &:nth-child(5) { animation-delay: 0.3s; }
-  &:nth-child(6) { animation-delay: 0.35s; }
-  &:nth-child(7) { animation-delay: 0.4s; }
-
-  svg {
-    color: ${props => props.theme.colors.primary};
-    margin-top: 4px;
-    flex-shrink: 0;
-    transition: transform ${props => props.theme.transitions.base};
-  }
-
-  &:hover svg {
-    transform: scale(1.2) rotate(10deg);
-  }
-`;
-
-const PlanButton = styled.button`
-  width: 100%;
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.accent});
-  color: ${props => props.theme.colors.text};
-  padding: ${props => props.theme.spacing.md};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  border: none;
-  font-size: ${props => props.theme.fontSizes.base};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  cursor: pointer;
-  transition: all ${props => props.theme.transitions.base};
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px ${props => props.theme.colors.primary}44;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: ${props => props.theme.colors.background}33;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px ${props => props.theme.colors.primary}66;
-
-    &::before {
-      width: 300px;
-      height: 300px;
-    }
-  }
-`;
-
-// Budget Calculator
-const CalculatorSection = styled.div`
-  background: ${props => props.theme.colors.backgroundCard};
-  border: 2px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  padding: ${props => props.theme.spacing['2xl']};
-  animation: ${fadeInUp} 1.4s ease-out;
-`;
-
-const CalculatorHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing.xl};
-`;
-
-const CalculatorTitle = styled.h3`
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  margin-bottom: ${props => props.theme.spacing.md};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${props => props.theme.spacing.md};
-
-  svg {
-    color: ${props => props.theme.colors.primary};
-  }
-`;
-
-const CalculatorGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${props => props.theme.spacing.xl};
-
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const CalculatorForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.lg};
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.sm};
-`;
-
-const Label = styled.label`
   font-size: ${props => props.theme.fontSizes.sm};
-  color: ${props => props.theme.colors.text};
-  font-weight: ${props => props.theme.fontWeights.medium};
-`;
-
-const Select = styled.select`
-  padding: ${props => props.theme.spacing.md};
-  background: ${props => props.theme.colors.background};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  color: ${props => props.theme.colors.text};
-  font-size: ${props => props.theme.fontSizes.base};
-  cursor: pointer;
-  transition: all ${props => props.theme.transitions.base};
-
-  &:focus {
-    border-color: ${props => props.theme.colors.primary};
-    outline: none;
-    box-shadow: 0 0 0 3px ${props => props.theme.colors.primary}33;
-  }
-
-  option {
-    background: ${props => props.theme.colors.backgroundCard};
-    color: ${props => props.theme.colors.text};
-  }
-`;
-
-const CheckboxGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.sm};
-`;
-
-const CheckboxLabel = styled.label`
-  display: flex;
-  align-items: center;
-  gap: ${props => props.theme.spacing.md};
-  cursor: pointer;
-  padding: ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.md};
-  transition: all ${props => props.theme.transitions.base};
-
-  &:hover {
-    background: ${props => props.theme.colors.background};
-  }
-
-  input {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: ${props => props.theme.colors.primary};
-  }
-
-  span {
-    color: ${props => props.theme.colors.text};
-    font-size: ${props => props.theme.fontSizes.sm};
-  }
-`;
-
-const EstimateResult = styled.div`
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}22, ${props => props.theme.colors.accent}22);
-  border: 2px solid ${props => props.theme.colors.primary};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  padding: ${props => props.theme.spacing.xl};
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.lg};
-`;
-
-const EstimateTitle = styled.h4`
-  font-size: ${props => props.theme.fontSizes.xl};
-  text-align: center;
-`;
-
-const EstimateDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.md};
-`;
-
-const EstimateItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${props => props.theme.spacing.sm};
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-
-  &:last-child {
-    border-bottom: none;
-    padding-top: ${props => props.theme.spacing.md};
-    font-size: ${props => props.theme.fontSizes.lg};
-    font-weight: ${props => props.theme.fontWeights.bold};
-  }
-`;
-
-const EstimateLabel = styled.span`
   color: ${props => props.theme.colors.textSecondary};
-  font-size: ${props => props.theme.fontSizes.sm};
+  line-height: 1.5;
+
+  svg {
+    color: ${props => props.theme.colors.textMuted};
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
 `;
 
-const EstimateValue = styled.span`
-  color: ${props => props.theme.colors.text};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-`;
-
-const TotalValue = styled.span`
-  color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  font-weight: ${props => props.theme.fontWeights.bold};
-`;
-
-const ContactButton = styled.button`
+const ContactBtn = styled.a`
+  display: block;
   width: 100%;
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.accent});
-  color: ${props => props.theme.colors.text};
+  text-align: center;
   padding: ${props => props.theme.spacing.md};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  border: none;
-  font-size: ${props => props.theme.fontSizes.base};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.semibold};
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all ${props => props.theme.transitions.base};
+  transition: all 0.2s ease;
+  background: transparent;
+  color: ${props => props.theme.colors.textSecondary};
+  border: 1px solid ${props => props.theme.colors.border};
 
   &:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 10px 30px ${props => props.theme.colors.primary}55;
-  }
-
-  &:active {
-    transform: translateY(0) scale(0.98);
+    background: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.background};
+    border-color: ${props => props.theme.colors.text};
   }
 `;
 
-export const Pricing: React.FC = () => {
+const plans = [
+  { key: 'starter',      featured: false },
+  { key: 'professional', featured: true  },
+  { key: 'enterprise',   featured: false },
+] as const;
+
+export const Pricing = () => {
   const { t } = useTranslation();
-
-  const [projectType, setProjectType] = useState('landing');
-  const [features, setFeatures] = useState<string[]>([]);
-  const [urgency, setUrgency] = useState('normal');
-
-  const basePrices: Record<string, number> = {
-    landing: 800,
-    institutional: 1500,
-    ecommerce: 3500,
-    webapp: 5000,
-    mobile: 6000,
-    custom: 0,
-  };
-
-  const featurePrices: Record<string, number> = {
-    auth: 500,
-    payment: 800,
-    admin: 600,
-    api: 700,
-    multilang: 400,
-    seo: 300,
-  };
-
-  const urgencyMultiplier: Record<string, number> = {
-    urgent: 1.5,
-    normal: 1,
-    flexible: 0.85,
-  };
-
-  const toggleFeature = (feature: string) => {
-    setFeatures(prev =>
-      prev.includes(feature)
-        ? prev.filter(f => f !== feature)
-        : [...prev, feature]
-    );
-  };
-
-  const calculateTotal = () => {
-    const base = basePrices[projectType] || 0;
-    const featuresTotal = features.reduce((sum, f) => sum + (featurePrices[f] || 0), 0);
-    const subtotal = base + featuresTotal;
-    return Math.round(subtotal * urgencyMultiplier[urgency]);
-  };
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <PricingSection id="pricing">
+    <Section id="pricing">
       <Container>
-        <Header>
-          <SectionTitle>{t('pricing.title')}</SectionTitle>
-          <SectionSubtitle>{t('pricing.subtitle')}</SectionSubtitle>
-        </Header>
+        <Label>engagement</Label>
+        <Title>{t('pricing.title')}</Title>
+        <Subtitle>{t('pricing.subtitle')}</Subtitle>
 
-        <PricingGrid>
-          <PricingCard>
-            <PlanIcon><FaRocket /></PlanIcon>
-            <PlanName>{t('pricing.starter.name')}</PlanName>
-            <PlanDescription>{t('pricing.starter.description')}</PlanDescription>
-            <PlanPrice>
-              <Price>R$ 800 <span>- 2.000</span></Price>
-              <PriceNote>{t('pricing.starter.note')}</PriceNote>
-            </PlanPrice>
-            <FeatureList>
-              <Feature><FaCheck /> {t('pricing.starter.features.0')}</Feature>
-              <Feature><FaCheck /> {t('pricing.starter.features.1')}</Feature>
-              <Feature><FaCheck /> {t('pricing.starter.features.2')}</Feature>
-              <Feature><FaCheck /> {t('pricing.starter.features.3')}</Feature>
-              <Feature><FaCheck /> {t('pricing.starter.features.4')}</Feature>
-            </FeatureList>
-            <PlanButton onClick={scrollToContact}>{t('pricing.cta')}</PlanButton>
-          </PricingCard>
-
-          <PricingCard featured>
-            <FeaturedBadge><FaStar /> {t('pricing.popular')}</FeaturedBadge>
-            <PlanIcon><FaStar /></PlanIcon>
-            <PlanName>{t('pricing.professional.name')}</PlanName>
-            <PlanDescription>{t('pricing.professional.description')}</PlanDescription>
-            <PlanPrice>
-              <Price>R$ 3.000 <span>- 8.000</span></Price>
-              <PriceNote>{t('pricing.professional.note')}</PriceNote>
-            </PlanPrice>
-            <FeatureList>
-              <Feature><FaCheck /> {t('pricing.professional.features.0')}</Feature>
-              <Feature><FaCheck /> {t('pricing.professional.features.1')}</Feature>
-              <Feature><FaCheck /> {t('pricing.professional.features.2')}</Feature>
-              <Feature><FaCheck /> {t('pricing.professional.features.3')}</Feature>
-              <Feature><FaCheck /> {t('pricing.professional.features.4')}</Feature>
-              <Feature><FaCheck /> {t('pricing.professional.features.5')}</Feature>
-            </FeatureList>
-            <PlanButton onClick={scrollToContact}>{t('pricing.cta')}</PlanButton>
-          </PricingCard>
-
-          <PricingCard>
-            <PlanIcon><FaCrown /></PlanIcon>
-            <PlanName>{t('pricing.enterprise.name')}</PlanName>
-            <PlanDescription>{t('pricing.enterprise.description')}</PlanDescription>
-            <PlanPrice>
-              <Price>R$ 10.000<span>+</span></Price>
-              <PriceNote>{t('pricing.enterprise.note')}</PriceNote>
-            </PlanPrice>
-            <FeatureList>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.0')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.1')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.2')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.3')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.4')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.5')}</Feature>
-              <Feature><FaCheck /> {t('pricing.enterprise.features.6')}</Feature>
-            </FeatureList>
-            <PlanButton onClick={scrollToContact}>{t('pricing.cta')}</PlanButton>
-          </PricingCard>
-        </PricingGrid>
-
-        <CalculatorSection>
-          <CalculatorHeader>
-            <CalculatorTitle>
-              <FaCalculator /> {t('pricing.calculator.title')}
-            </CalculatorTitle>
-          </CalculatorHeader>
-
-          <CalculatorGrid>
-            <CalculatorForm>
-              <FormGroup>
-                <Label>{t('pricing.calculator.projectType')}</Label>
-                <Select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
-                  <option value="landing">{t('pricing.calculator.types.landing')}</option>
-                  <option value="institutional">{t('pricing.calculator.types.institutional')}</option>
-                  <option value="ecommerce">{t('pricing.calculator.types.ecommerce')}</option>
-                  <option value="webapp">{t('pricing.calculator.types.webapp')}</option>
-                  <option value="mobile">{t('pricing.calculator.types.mobile')}</option>
-                  <option value="custom">{t('pricing.calculator.types.custom')}</option>
-                </Select>
-              </FormGroup>
-
-              <FormGroup>
-                <Label>{t('pricing.calculator.features')}</Label>
-                <CheckboxGroup>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('auth')}
-                      onChange={() => toggleFeature('auth')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.auth')}</span>
-                  </CheckboxLabel>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('payment')}
-                      onChange={() => toggleFeature('payment')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.payment')}</span>
-                  </CheckboxLabel>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('admin')}
-                      onChange={() => toggleFeature('admin')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.admin')}</span>
-                  </CheckboxLabel>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('api')}
-                      onChange={() => toggleFeature('api')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.api')}</span>
-                  </CheckboxLabel>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('multilang')}
-                      onChange={() => toggleFeature('multilang')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.multilang')}</span>
-                  </CheckboxLabel>
-                  <CheckboxLabel>
-                    <input
-                      type="checkbox"
-                      checked={features.includes('seo')}
-                      onChange={() => toggleFeature('seo')}
-                    />
-                    <span>{t('pricing.calculator.featuresList.seo')}</span>
-                  </CheckboxLabel>
-                </CheckboxGroup>
-              </FormGroup>
-
-              <FormGroup>
-                <Label>{t('pricing.calculator.urgency')}</Label>
-                <Select value={urgency} onChange={(e) => setUrgency(e.target.value)}>
-                  <option value="urgent">{t('pricing.calculator.urgencyOptions.urgent')}</option>
-                  <option value="normal">{t('pricing.calculator.urgencyOptions.normal')}</option>
-                  <option value="flexible">{t('pricing.calculator.urgencyOptions.flexible')}</option>
-                </Select>
-              </FormGroup>
-            </CalculatorForm>
-
-            <EstimateResult>
-              <EstimateTitle>{t('pricing.calculator.estimate')}</EstimateTitle>
-              <EstimateDetails>
-                <EstimateItem>
-                  <EstimateLabel>{t('pricing.calculator.base')}</EstimateLabel>
-                  <EstimateValue>R$ {basePrices[projectType].toLocaleString('pt-BR')}</EstimateValue>
-                </EstimateItem>
-                {features.length > 0 && (
-                  <EstimateItem>
-                    <EstimateLabel>{t('pricing.calculator.featuresTotal')}</EstimateLabel>
-                    <EstimateValue>
-                      R$ {features.reduce((sum, f) => sum + (featurePrices[f] || 0), 0).toLocaleString('pt-BR')}
-                    </EstimateValue>
-                  </EstimateItem>
-                )}
-                {urgency !== 'normal' && (
-                  <EstimateItem>
-                    <EstimateLabel>{t('pricing.calculator.urgencyFactor')}</EstimateLabel>
-                    <EstimateValue>x{urgencyMultiplier[urgency]}</EstimateValue>
-                  </EstimateItem>
-                )}
-                <EstimateItem>
-                  <EstimateLabel>{t('pricing.calculator.total')}</EstimateLabel>
-                  <TotalValue>R$ {calculateTotal().toLocaleString('pt-BR')}</TotalValue>
-                </EstimateItem>
-              </EstimateDetails>
-              <ContactButton onClick={scrollToContact}>
-                {t('pricing.calculator.requestQuote')}
-              </ContactButton>
-            </EstimateResult>
-          </CalculatorGrid>
-        </CalculatorSection>
+        <Grid>
+          {plans.map(({ key, featured }) => (
+            <Card key={key} $featured={featured}>
+              {featured && <FeaturedTag>{t('pricing.popular')}</FeaturedTag>}
+              <PlanName>{t(`pricing.${key}.name`)}</PlanName>
+              <PlanDesc>{t(`pricing.${key}.description`)}</PlanDesc>
+              <PlanNote>{t(`pricing.${key}.note`)}</PlanNote>
+              <Divider />
+              <FeatureList>
+                {(t(`pricing.${key}.features`, { returnObjects: true }) as string[]).map((f, i) => (
+                  <Feature key={i}>
+                    <FaCheck size={10} />
+                    {f}
+                  </Feature>
+                ))}
+              </FeatureList>
+              <ContactBtn onClick={scrollToContact}>{t('pricing.cta')}</ContactBtn>
+            </Card>
+          ))}
+        </Grid>
       </Container>
-    </PricingSection>
+    </Section>
   );
 };

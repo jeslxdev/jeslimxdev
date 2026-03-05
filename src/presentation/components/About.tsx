@@ -1,11 +1,19 @@
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { fadeInUp } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
 
-const AboutSection = styled.section`
+const Section = styled.section`
   padding: ${props => props.theme.spacing['4xl']} ${props => props.theme.spacing.xl};
-  background-color: ${props => props.theme.colors.background};
+  background: ${props => props.theme.colors.background};
   position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${props => props.theme.colors.border}, transparent);
+  }
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     padding: ${props => props.theme.spacing['3xl']} ${props => props.theme.spacing.md};
@@ -13,25 +21,36 @@ const AboutSection = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
 `;
 
-const Header = styled.div`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing['3xl']};
-`;
-
-const SectionTitle = styled.h2`
+const Label = styled.p`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   margin-bottom: ${props => props.theme.spacing.md};
-  animation: ${fadeInUp} 0.8s ease-out;
+  animation: ${fadeInUp} 0.6s ease-out;
+
+  &::before { content: '// '; }
 `;
 
-const Content = styled.div`
+const Title = styled.h2`
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: ${props => props.theme.colors.text};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  letter-spacing: -0.03em;
+  margin-bottom: ${props => props.theme.spacing['3xl']};
+  animation: ${fadeInUp} 0.7s ease-out;
+`;
+
+const Layout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: ${props => props.theme.spacing['3xl']};
-  align-items: center;
+  gap: ${props => props.theme.spacing['4xl']};
+  align-items: start;
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: 1fr;
@@ -39,196 +58,166 @@ const Content = styled.div`
   }
 `;
 
-const TextContent = styled.div`
-  animation: ${fadeInUp} 1s ease-out;
+const Left = styled.div`
+  animation: ${fadeInUp} 0.8s ease-out;
 `;
 
-const AboutText = styled.p`
-  font-size: ${props => props.theme.fontSizes.lg};
+const BodyText = styled.p`
+  font-size: ${props => props.theme.fontSizes.base};
   color: ${props => props.theme.colors.textSecondary};
-  line-height: 1.8;
+  line-height: 1.85;
   margin-bottom: ${props => props.theme.spacing.lg};
-`;
 
-const SkillsContent = styled.div`
-  animation: ${fadeInUp} 1.2s ease-out;
-`;
-
-const SkillsTitle = styled.h3`
-  margin-bottom: ${props => props.theme.spacing.xl};
-  color: ${props => props.theme.colors.text};
-`;
-
-const SkillCategories = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${props => props.theme.spacing.xl};
-`;
-
-const SkillCategory = styled.div``;
-
-const CategoryTitle = styled.h4`
-  color: ${props => props.theme.colors.primary};
-  margin-bottom: ${props => props.theme.spacing.md};
-  font-size: ${props => props.theme.fontSizes.lg};
-`;
-
-const SkillList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${props => props.theme.spacing.sm};
-`;
-
-const SkillBadge = styled.span`
-  background: ${props => props.theme.colors.backgroundCard};
-  border: 1px solid ${props => props.theme.colors.border};
-  color: ${props => props.theme.colors.textSecondary};
-  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  font-size: ${props => props.theme.fontSizes.sm};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  transition: all ${props => props.theme.transitions.base};
-  animation: ${fadeInUp} 0.5s ease-out both;
-
-  &:nth-child(1) { animation-delay: 0.05s; }
-  &:nth-child(2) { animation-delay: 0.1s; }
-  &:nth-child(3) { animation-delay: 0.15s; }
-  &:nth-child(4) { animation-delay: 0.2s; }
-  &:nth-child(5) { animation-delay: 0.25s; }
-  &:nth-child(6) { animation-delay: 0.3s; }
-  &:nth-child(7) { animation-delay: 0.35s; }
-  &:nth-child(8) { animation-delay: 0.4s; }
-
-  &:hover {
-    border-color: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.primary};
-    background: ${props => props.theme.colors.primary}11;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 15px ${props => props.theme.colors.primary}33;
+  &:last-of-type {
+    margin-bottom: ${props => props.theme.spacing['2xl']};
   }
 `;
 
-const Stats = styled.div`
+const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${props => props.theme.spacing.xl};
-  margin-top: ${props => props.theme.spacing['2xl']};
+  border: 1px solid ${props => props.theme.colors.border};
 
   @media (max-width: ${props => props.theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
   }
 `;
 
-const StatCard = styled.div`
-  text-align: center;
+const Stat = styled.div`
   padding: ${props => props.theme.spacing.xl};
-  background: ${props => props.theme.colors.backgroundCard};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  transition: all ${props => props.theme.transitions.base};
+  border-right: 1px solid ${props => props.theme.colors.border};
+  text-align: left;
 
-  &:hover {
-    border-color: ${props => props.theme.colors.primary};
-    transform: translateY(-5px);
+  &:last-child { border-right: none; }
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) {
+    border-right: none;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+
+    &:last-child { border-bottom: none; }
   }
 `;
 
-const StatNumber = styled.div`
-  font-size: ${props => props.theme.fontSizes['4xl']};
+const StatNum = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes['3xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: ${props => props.theme.spacing.sm};
+  color: ${props => props.theme.colors.text};
+  letter-spacing: -0.03em;
 `;
 
-const StatLabel = styled.div`
+const StatLbl = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+`;
+
+const Right = styled.div`
+  animation: ${fadeInUp} 1s ease-out;
+`;
+
+const PillarTitle = styled.h3`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.sm};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: ${props => props.theme.spacing.xl};
+  padding-bottom: ${props => props.theme.spacing.md};
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+`;
+
+const PillarGroup = styled.div`
+  margin-bottom: ${props => props.theme.spacing.xl};
+`;
+
+const PillarLabel = styled.div`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  color: ${props => props.theme.colors.textMuted};
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: ${props => props.theme.spacing.md};
+`;
+
+const TagRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${props => props.theme.spacing.sm};
+`;
+
+const Tag = styled.span`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
   color: ${props => props.theme.colors.textSecondary};
-  font-size: ${props => props.theme.fontSizes.base};
+  border: 1px solid ${props => props.theme.colors.border};
+  padding: 3px ${props => props.theme.spacing.sm};
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.text};
+  }
 `;
 
 export const About = () => {
   const { t } = useTranslation();
 
-  const skills = {
-    frontend: ['React', 'Angular', 'TypeScript', 'Next.js', 'Vue.js', 'Styled Components'],
-    backend: ['PHP', 'Java 17', 'Python', 'Node.js', 'Spring Boot', 'Laravel', 'CodeIgniter'],
-    database: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Oracle'],
-    tools: ['Git', 'Docker', 'Maven', 'AWS', 'CI/CD', 'REST API', 'Microservices'],
+  const stack = {
+    frontend: ['React', 'Angular', 'TypeScript', 'Vue'],
+    backend: ['Java', 'PHP', 'Python', 'Node.js'],
+    database: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Oracle'],
+    tools: ['Docker', 'AWS', 'GCP', 'Linux', 'K8s', 'CI/CD'],
   };
 
   return (
-    <AboutSection id="about">
+    <Section id="about">
       <Container>
-        <Header>
-          <SectionTitle>{t('about.title')}</SectionTitle>
-        </Header>
+        <Label>about feilen</Label>
+        <Title>{t('about.title')}</Title>
 
-        <Content>
-          <TextContent>
-            <AboutText>{t('about.text1')}</AboutText>
-            <AboutText>{t('about.text2')}</AboutText>
-            <AboutText>{t('about.text3')}</AboutText>
+        <Layout>
+          <Left>
+            <BodyText>{t('about.text1')}</BodyText>
+            <BodyText>{t('about.text2')}</BodyText>
+            <BodyText>{t('about.text3')}</BodyText>
 
-            <Stats>
-              <StatCard>
-                <StatNumber>7+</StatNumber>
-                <StatLabel>{t('about.stats.years')}</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>10+</StatNumber>
-                <StatLabel>{t('about.stats.projects')}</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>8+</StatNumber>
-                <StatLabel>{t('about.stats.clients')}</StatLabel>
-              </StatCard>
-            </Stats>
-          </TextContent>
+            <StatsGrid>
+              <Stat>
+                <StatNum>7+</StatNum>
+                <StatLbl>{t('about.stats.years')}</StatLbl>
+              </Stat>
+              <Stat>
+                <StatNum>50+</StatNum>
+                <StatLbl>{t('about.stats.projects')}</StatLbl>
+              </Stat>
+              <Stat>
+                <StatNum>10+</StatNum>
+                <StatLbl>{t('about.stats.clients')}</StatLbl>
+              </Stat>
+            </StatsGrid>
+          </Left>
 
-          <SkillsContent>
-            <SkillsTitle>{t('about.skills.title')}</SkillsTitle>
-            <SkillCategories>
-              <SkillCategory>
-                <CategoryTitle>{t('about.skills.frontend')}</CategoryTitle>
-                <SkillList>
-                  {skills.frontend.map((skill) => (
-                    <SkillBadge key={skill}>{skill}</SkillBadge>
-                  ))}
-                </SkillList>
-              </SkillCategory>
+          <Right>
+            <PillarTitle>{t('about.pillars.title')}</PillarTitle>
 
-              <SkillCategory>
-                <CategoryTitle>{t('about.skills.backend')}</CategoryTitle>
-                <SkillList>
-                  {skills.backend.map((skill) => (
-                    <SkillBadge key={skill}>{skill}</SkillBadge>
-                  ))}
-                </SkillList>
-              </SkillCategory>
-
-              <SkillCategory>
-                <CategoryTitle>{t('about.skills.database')}</CategoryTitle>
-                <SkillList>
-                  {skills.database.map((skill) => (
-                    <SkillBadge key={skill}>{skill}</SkillBadge>
-                  ))}
-                </SkillList>
-              </SkillCategory>
-
-              <SkillCategory>
-                <CategoryTitle>{t('about.skills.tools')}</CategoryTitle>
-                <SkillList>
-                  {skills.tools.map((skill) => (
-                    <SkillBadge key={skill}>{skill}</SkillBadge>
-                  ))}
-                </SkillList>
-              </SkillCategory>
-            </SkillCategories>
-          </SkillsContent>
-        </Content>
+            {Object.entries(stack).map(([key, techs]) => (
+              <PillarGroup key={key}>
+                <PillarLabel>
+                  {t(`about.pillars.${key === 'tools' ? 'tools' : key}`)}
+                </PillarLabel>
+                <TagRow>
+                  {techs.map(tech => <Tag key={tech}>{tech}</Tag>)}
+                </TagRow>
+              </PillarGroup>
+            ))}
+          </Right>
+        </Layout>
       </Container>
-    </AboutSection>
+    </Section>
   );
 };

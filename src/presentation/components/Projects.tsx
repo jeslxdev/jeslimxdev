@@ -1,13 +1,21 @@
-import styled from 'styled-components';
-import { fadeInUp, scaleIn } from '../styles/animations';
+﻿import styled from 'styled-components';
+import { fadeInUp } from '../styles/animations';
 import { useTranslation } from 'react-i18next';
 import { projects } from '@/application/data';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProjectsSection = styled.section`
   padding: ${props => props.theme.spacing['4xl']} ${props => props.theme.spacing.xl};
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background: ${props => props.theme.colors.backgroundLight};
   position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${props => props.theme.colors.border}, transparent);
+  }
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     padding: ${props => props.theme.spacing['3xl']} ${props => props.theme.spacing.md};
@@ -15,32 +23,37 @@ const ProjectsSection = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
 `;
 
-const Header = styled.div`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing['3xl']};
-`;
-
-const SectionTitle = styled.h2`
-  margin-bottom: ${props => props.theme.spacing.md};
-  animation: ${fadeInUp} 0.8s ease-out;
-`;
-
-const SectionSubtitle = styled.p`
-  font-size: ${props => props.theme.fontSizes.lg};
+const Label = styled.p`
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
   color: ${props => props.theme.colors.textMuted};
-  max-width: 600px;
-  margin: 0 auto;
-  animation: ${fadeInUp} 1s ease-out;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: ${props => props.theme.spacing.md};
+  animation: ${fadeInUp} 0.6s ease-out;
+
+  &::before { content: '// '; }
+`;
+
+const Title = styled.h2`
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: ${props => props.theme.colors.text};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  letter-spacing: -0.03em;
+  margin-bottom: ${props => props.theme.spacing['3xl']};
+  animation: ${fadeInUp} 0.7s ease-out;
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: ${props => props.theme.spacing['2xl']};
+  gap: 1px;
+  background: ${props => props.theme.colors.border};
+  border: 1px solid ${props => props.theme.colors.border};
 
   @media (max-width: ${props => props.theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
@@ -49,11 +62,9 @@ const Grid = styled.div`
 
 const ProjectCard = styled.div`
   background: ${props => props.theme.colors.backgroundCard};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.xl};
   overflow: hidden;
-  transition: all ${props => props.theme.transitions.base};
-  animation: ${scaleIn} 0.6s ease-out;
+  transition: all 0.2s;
+  animation: ${fadeInUp} 0.6s ease-out;
   animation-fill-mode: both;
   display: flex;
   flex-direction: column;
@@ -63,9 +74,7 @@ const ProjectCard = styled.div`
   &:nth-child(3) { animation-delay: 0.3s; }
 
   &:hover {
-    transform: translateY(-10px);
-    border-color: ${props => props.theme.colors.primary};
-    box-shadow: ${props => props.theme.shadows.xl};
+    background: ${props => props.theme.colors.background};
   }
 `;
 
@@ -74,22 +83,20 @@ const ProjectImage = styled.div<{ $hasImage: boolean; $imageUrl?: string }>`
   background: ${({ $hasImage, $imageUrl, theme }) =>
     $hasImage && $imageUrl
       ? `url(${$imageUrl})`
-      : `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`};
+      : `linear-gradient(135deg, ${theme.colors.backgroundCard}, ${theme.colors.background})`};
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: ${({ $hasImage }) => ($hasImage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.3)')};
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -98,12 +105,13 @@ const ProjectYear = styled.span`
   top: ${props => props.theme.spacing.md};
   right: ${props => props.theme.spacing.md};
   background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.primary};
-  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.md};
-  border-radius: ${props => props.theme.borderRadius.full};
-  font-size: ${props => props.theme.fontSizes.sm};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  color: ${props => props.theme.colors.textMuted};
+  padding: 2px ${props => props.theme.spacing.sm};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
+  letter-spacing: 0.1em;
   z-index: 1;
+  border: 1px solid ${props => props.theme.colors.border};
 `;
 
 const ProjectContent = styled.div`
@@ -113,24 +121,28 @@ const ProjectContent = styled.div`
   flex-direction: column;
 `;
 
-const ProjectCategory = styled.span`
-  color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.fontSizes.sm};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+const ProjectCategoryLabel = styled.span`
+  font-family: ${props => props.theme.fonts.mono};
+  color: ${props => props.theme.colors.textMuted};
+  font-size: ${props => props.theme.fontSizes.xs};
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.15em;
   margin-bottom: ${props => props.theme.spacing.sm};
+  display: block;
 `;
 
 const ProjectTitle = styled.h3`
   margin-bottom: ${props => props.theme.spacing.md};
   color: ${props => props.theme.colors.text};
+  font-size: ${props => props.theme.fontSizes.lg};
+  font-weight: ${props => props.theme.fontWeights.semibold};
 `;
 
 const ProjectDescription = styled.p`
   margin-bottom: ${props => props.theme.spacing.lg};
   color: ${props => props.theme.colors.textSecondary};
   line-height: 1.7;
+  font-size: ${props => props.theme.fontSizes.sm};
   flex: 1;
 `;
 
@@ -142,13 +154,18 @@ const TechList = styled.div`
 `;
 
 const TechBadge = styled.span`
-  background: ${props => props.theme.colors.secondary}22;
-  color: ${props => props.theme.colors.secondary};
-  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.md};
+  font-family: ${props => props.theme.fonts.mono};
   font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  border: 1px solid ${props => props.theme.colors.secondary}66;
+  color: ${props => props.theme.colors.textSecondary};
+  border: 1px solid ${props => props.theme.colors.border};
+  padding: 2px ${props => props.theme.spacing.sm};
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.text};
+  }
 `;
 
 const ProjectLinks = styled.div`
@@ -160,18 +177,23 @@ const ProjectLink = styled.a`
   display: flex;
   align-items: center;
   gap: ${props => props.theme.spacing.sm};
-  color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.fontSizes.sm};
+  color: ${props => props.theme.colors.text};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.semibold};
-  transition: all ${props => props.theme.transitions.base};
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+  padding-bottom: 2px;
 
   &:hover {
-    color: ${props => props.theme.colors.primaryLight};
-    transform: translateX(5px);
+    color: ${props => props.theme.colors.textMuted};
+    border-color: transparent;
   }
 
   svg {
-    font-size: ${props => props.theme.fontSizes.base};
+    font-size: ${props => props.theme.fontSizes.xs};
   }
 `;
 
@@ -181,10 +203,8 @@ export const Projects = () => {
   return (
     <ProjectsSection id="projects">
       <Container>
-        <Header>
-          <SectionTitle>{t('projects.title')}</SectionTitle>
-          <SectionSubtitle>{t('projects.subtitle')}</SectionSubtitle>
-        </Header>
+        <Label>case studies</Label>
+        <Title>{t('projects.title')}</Title>
 
         <Grid>
           {projects.map((project) => (
@@ -193,7 +213,7 @@ export const Projects = () => {
                 <ProjectYear>{project.year}</ProjectYear>
               </ProjectImage>
               <ProjectContent>
-                <ProjectCategory>{project.category.toUpperCase()}</ProjectCategory>
+                <ProjectCategoryLabel>{project.category.toUpperCase()}</ProjectCategoryLabel>
                 <ProjectTitle>{project.title}</ProjectTitle>
                 <ProjectDescription>{project.description}</ProjectDescription>
                 <TechList>
