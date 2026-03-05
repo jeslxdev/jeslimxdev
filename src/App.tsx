@@ -1,5 +1,7 @@
+﻿import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, theme as defaultTheme } from './presentation/styles';
+import { colorPalettes } from './presentation/styles/colorPalettes';
 import {
   Navbar,
   Hero,
@@ -11,24 +13,42 @@ import {
   Contact,
   Footer,
   LanguageSwitcher,
+  ThemeSelectorSimple,
 } from './presentation/components';
 
 function App() {
+  const [paletteIndex, setPaletteIndex] = useState<number>(() => {
+    const saved = localStorage.getItem('selectedPalette');
+    return saved ? parseInt(saved, 10) : 0;
+  });
+
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('isDarkMode');
+    return saved !== null ? saved === 'true' : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', String(isDarkMode));
+  }, [isDarkMode]);
+
+  const palette = colorPalettes[paletteIndex] ?? colorPalettes[0];
+  const mode = isDarkMode ? palette.dark : palette.light;
+
   const currentTheme = {
     ...defaultTheme,
     colors: {
       ...defaultTheme.colors,
-      background: '#0A0A0A',
-      backgroundLight: '#111111',
-      backgroundCard: '#1A1A1A',
-      text: '#FFFFFF',
-      textSecondary: '#C8C8C8',
-      textMuted: '#666666',
-      border: '#2D2D2D',
-      borderLight: '#3A3A3A',
-      primary: '#E8E8E8',
-      primaryDark: '#C0C0C0',
-      primaryLight: '#FFFFFF',
+      ...palette.colors,
+      background: mode.background,
+      backgroundLight: mode.surface,
+      backgroundCard: isDarkMode
+        ? `${mode.background}cc`
+        : mode.surface,
+      text: mode.text,
+      textSecondary: mode.textSecondary,
+      textMuted: isDarkMode ? '#666666' : '#999999',
+      border: mode.border,
+      borderLight: mode.border,
     },
   };
 
@@ -47,10 +67,13 @@ function App() {
       </main>
       <Footer />
       <LanguageSwitcher />
+      <ThemeSelectorSimple
+        onThemeChange={setPaletteIndex}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode(prev => !prev)}
+      />
     </ThemeProvider>
   );
 }
 
 export default App;
-
-

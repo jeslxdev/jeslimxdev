@@ -1,232 +1,5 @@
-import { useState, useEffect } from 'react';
-
-interface ColorPalette {
-  name: string;
-  colors: {
-    primary: string;
-    primaryDark: string;
-    primaryLight: string;
-    secondary: string;
-    secondaryDark: string;
-    secondaryLight: string;
-    accent: string;
-    accentDark: string;
-    accentLight: string;
-    success: string;
-    warning: string;
-    error: string;
-    info: string;
-  };
-  dark: {
-    background: string;
-    surface: string;
-    text: string;
-    textSecondary: string;
-    border: string;
-  };
-  light: {
-    background: string;
-    surface: string;
-    text: string;
-    textSecondary: string;
-    border: string;
-  };
-}
-
-const colorPalettes: ColorPalette[] = [
-  {
-    name: 'Classic Gold',
-    colors: {
-      primary: '#D4AF37',
-      primaryDark: '#B8941E',
-      primaryLight: '#E5C758',
-      secondary: '#2C2416',
-      secondaryDark: '#1A1409',
-      secondaryLight: '#3E3220',
-      accent: '#FFD700',
-      accentDark: '#DAB900',
-      accentLight: '#FFE44D',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#1A1409',
-      surface: '#2C2416',
-      text: '#F5F5DC',
-      textSecondary: '#D4C5A0',
-      border: '#3E3220',
-    },
-    light: {
-      background: '#FFF8E7',
-      surface: '#FFFFFF',
-      text: '#2C2416',
-      textSecondary: '#5A4A2E',
-      border: '#E5D7BB',
-    },
-  },
-  {
-    name: 'Elegant Beige',
-    colors: {
-      primary: '#C9A96E',
-      primaryDark: '#A68B52',
-      primaryLight: '#E0C791',
-      secondary: '#8B7355',
-      secondaryDark: '#6B5742',
-      secondaryLight: '#A68F73',
-      accent: '#D4AF37',
-      accentDark: '#B8941E',
-      accentLight: '#E5C758',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#2B2318',
-      surface: '#3D3024',
-      text: '#F5F0E6',
-      textSecondary: '#D9CDB8',
-      border: '#4F4232',
-    },
-    light: {
-      background: '#FAF7F2',
-      surface: '#FFFFFF',
-      text: '#3D3024',
-      textSecondary: '#6B5E4F',
-      border: '#E8DFD0',
-    },
-  },
-  {
-    name: 'Royal Bronze',
-    colors: {
-      primary: '#CD7F32',
-      primaryDark: '#A66827',
-      primaryLight: '#E09B52',
-      secondary: '#4A3428',
-      secondaryDark: '#2E201A',
-      secondaryLight: '#664836',
-      accent: '#B87333',
-      accentDark: '#985F2A',
-      accentLight: '#D49056',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#1C140E',
-      surface: '#2E201A',
-      text: '#F5E6D3',
-      textSecondary: '#D4BFA8',
-      border: '#422C1F',
-    },
-    light: {
-      background: '#FFF5EB',
-      surface: '#FFFFFF',
-      text: '#2E201A',
-      textSecondary: '#5C4033',
-      border: '#E8D4C0',
-    },
-  },
-  {
-    name: 'Champagne Rose',
-    colors: {
-      primary: '#F1DDCF',
-      primaryDark: '#D4BFA8',
-      primaryLight: '#FAF0E6',
-      secondary: '#C9A0A0',
-      secondaryDark: '#A67C7C',
-      secondaryLight: '#E0BEBE',
-      accent: '#E6B8A2',
-      accentDark: '#C9987C',
-      accentLight: '#F5D4C3',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#2A1F1F',
-      surface: '#3C2C2C',
-      text: '#FAF0E6',
-      textSecondary: '#E0CFCF',
-      border: '#4E3939',
-    },
-    light: {
-      background: '#FFF9F5',
-      surface: '#FFFFFF',
-      text: '#3C2C2C',
-      textSecondary: '#6B5555',
-      border: '#F0E0D6',
-    },
-  },
-  {
-    name: 'Platinum Luxury',
-    colors: {
-      primary: '#E5E4E2',
-      primaryDark: '#C1BFBD',
-      primaryLight: '#F5F5F3',
-      secondary: '#8C8C88',
-      secondaryDark: '#6B6B68',
-      secondaryLight: '#ADADAA',
-      accent: '#BFC1C2',
-      accentDark: '#9FA1A2',
-      accentLight: '#D9DBDC',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#1A1A19',
-      surface: '#2C2C2A',
-      text: '#F5F5F3',
-      textSecondary: '#D4D4D2',
-      border: '#3E3E3C',
-    },
-    light: {
-      background: '#FAFAF9',
-      surface: '#FFFFFF',
-      text: '#2C2C2A',
-      textSecondary: '#5A5A58',
-      border: '#ECECEA',
-    },
-  },
-  {
-    name: 'Warm Terracotta',
-    colors: {
-      primary: '#E07856',
-      primaryDark: '#C25A3A',
-      primaryLight: '#F09876',
-      secondary: '#8B4513',
-      secondaryDark: '#6B340F',
-      secondaryLight: '#A65625',
-      accent: '#D2691E',
-      accentDark: '#B4541A',
-      accentLight: '#E88445',
-      success: '#4CAF50',
-      warning: '#FF9800',
-      error: '#F44336',
-      info: '#2196F3',
-    },
-    dark: {
-      background: '#1F1410',
-      surface: '#322118',
-      text: '#F5E6D3',
-      textSecondary: '#D9C3AD',
-      border: '#452E20',
-    },
-    light: {
-      background: '#FFF6F0',
-      surface: '#FFFFFF',
-      text: '#322118',
-      textSecondary: '#64432F',
-      border: '#F0DACB',
-    },
-  },
-];
+﻿import { useState, useEffect } from 'react';
+import { colorPalettes } from '../styles/colorPalettes';
 
 interface ThemeSelectorProps {
   onThemeChange: (paletteIndex: number) => void;
@@ -237,7 +10,7 @@ interface ThemeSelectorProps {
 export const ThemeSelectorSimple: React.FC<ThemeSelectorProps> = ({
   onThemeChange,
   isDarkMode,
-  onToggleDarkMode
+  onToggleDarkMode,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activePalette, setActivePalette] = useState(0);
@@ -251,7 +24,6 @@ export const ThemeSelectorSimple: React.FC<ThemeSelectorProps> = ({
   }, []);
 
   const handlePaletteChange = (index: number) => {
-    console.log('Mudando para paleta:', index, colorPalettes[index].name);
     setActivePalette(index);
     localStorage.setItem('selectedPalette', index.toString());
     onThemeChange(index);
@@ -262,26 +34,30 @@ export const ThemeSelectorSimple: React.FC<ThemeSelectorProps> = ({
 
   return (
     <>
-      {/* Botão Toggle */}
+      {/* Toggle button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         style={{
           position: 'fixed',
           top: '50%',
-          right: isOpen ? '320px' : '0',
+          right: isOpen ? '300px' : '0',
           transform: 'translateY(-50%)',
-          width: '50px',
-          height: '50px',
+          width: '44px',
+          height: '44px',
           background: `linear-gradient(135deg, ${currentPalette.colors.primary}, ${currentPalette.colors.secondary})`,
           border: 'none',
-          borderRadius: '12px 0 0 12px',
+          borderRadius: '8px 0 0 8px',
           cursor: 'pointer',
           zIndex: 10000,
           color: mode.text,
-          fontSize: '24px',
-          boxShadow: '-4px 0 15px rgba(0, 0, 0, 0.3)',
-          transition: 'all 0.3s ease',
+          fontSize: '20px',
+          boxShadow: '-4px 0 15px rgba(0,0,0,0.4)',
+          transition: 'right 0.3s ease',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
+        title="Theme selector"
       >
         🎨
       </button>
@@ -291,72 +67,100 @@ export const ThemeSelectorSimple: React.FC<ThemeSelectorProps> = ({
         style={{
           position: 'fixed',
           top: '50%',
-          right: isOpen ? '0' : '-320px',
+          right: isOpen ? '0' : '-300px',
           transform: 'translateY(-50%)',
-          width: '320px',
+          width: '300px',
           maxHeight: '80vh',
           background: mode.surface,
-          backdropFilter: 'blur(10px)',
           borderTop: `1px solid ${mode.border}`,
           borderBottom: `1px solid ${mode.border}`,
           borderLeft: `1px solid ${mode.border}`,
-          borderRight: 'none',
-          borderRadius: '16px 0 0 16px',
-          boxShadow: '-4px 0 20px rgba(0, 0, 0, 0.3)',
+          borderRadius: '12px 0 0 12px',
+          boxShadow: '-4px 0 24px rgba(0,0,0,0.4)',
           transition: 'right 0.3s ease',
           zIndex: 9999,
           overflowY: 'auto',
           padding: '20px',
         }}
       >
-        <h3 style={{ color: mode.text, marginBottom: '20px' }}>Escolha a Paleta</h3>
+        <h3
+          style={{
+            fontFamily: 'IBM Plex Mono, monospace',
+            fontSize: '12px',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: mode.text,
+            marginBottom: '16px',
+          }}
+        >
+          // PALETTE
+        </h3>
 
-        {/* Dark/Light Mode Toggle */}
-        <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ color: mode.text, fontSize: '14px' }}>Modo {isDarkMode ? 'Escuro' : 'Claro'}</span>
+        {/* Dark / Light toggle */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '20px',
+            paddingBottom: '16px',
+            borderBottom: `1px solid ${mode.border}`,
+          }}
+        >
+          <span style={{ color: mode.textSecondary, fontSize: '13px', fontFamily: 'IBM Plex Mono, monospace' }}>
+            {isDarkMode ? 'Dark' : 'Light'}
+          </span>
           <button
             onClick={onToggleDarkMode}
             style={{
-              background: isDarkMode ? 'linear-gradient(135deg, #4A4A4A, #2A2A2A)' : 'linear-gradient(135deg, #F0F0F0, #FFFFFF)',
-              border: `2px solid ${isDarkMode ? '#666' : '#DDD'}`,
-              borderRadius: '20px',
-              padding: '8px 16px',
+              background: 'transparent',
+              border: `1px solid ${mode.border}`,
+              padding: '6px 14px',
               cursor: 'pointer',
-              color: isDarkMode ? 'white' : '#2A2A2A',
-              fontWeight: '600',
-              fontSize: '20px',
-              transition: 'all 0.3s ease',
+              color: mode.text,
+              fontSize: '18px',
+              fontFamily: 'IBM Plex Mono, monospace',
+              transition: 'all 0.2s',
             }}
           >
             {isDarkMode ? '🌙' : '☀️'}
           </button>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {colorPalettes.map((palette: ColorPalette, index: number) => (
+        {/* Palette list */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {colorPalettes.map((palette, index) => (
             <button
               key={index}
               onClick={() => handlePaletteChange(index)}
               style={{
-                background: activePalette === index
-                  ? `${currentPalette.colors.primary}33`
-                  : mode.background,
-                border: `2px solid ${activePalette === index ? currentPalette.colors.primary : mode.border}`,
-                borderRadius: '12px',
-                padding: '12px',
+                background: activePalette === index ? `${currentPalette.colors.primary}22` : 'transparent',
+                border: `1px solid ${activePalette === index ? currentPalette.colors.primary : mode.border}`,
+                padding: '10px 12px',
                 cursor: 'pointer',
                 textAlign: 'left',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
               }}
             >
-              <div style={{ color: mode.text, fontWeight: '600', marginBottom: '8px' }}>
-                {palette.name} {activePalette === index && '✓'}
+              <div style={{ display: 'flex', gap: '4px', flexShrink: 0 }}>
+                <div style={{ width: '18px', height: '18px', background: palette.colors.primary, border: `1px solid ${mode.border}` }} />
+                <div style={{ width: '18px', height: '18px', background: palette.colors.secondary, border: `1px solid ${mode.border}` }} />
+                <div style={{ width: '18px', height: '18px', background: palette.colors.accent, border: `1px solid ${mode.border}` }} />
               </div>
-              <div style={{ display: 'flex', gap: '6px' }}>
-                <div style={{ width: '32px', height: '32px', background: palette.colors.primary, borderRadius: '6px', border: `1px solid ${mode.border}` }} />
-                <div style={{ width: '32px', height: '32px', background: palette.colors.secondary, borderRadius: '6px', border: `1px solid ${mode.border}` }} />
-                <div style={{ width: '32px', height: '32px', background: palette.colors.accent, borderRadius: '6px', border: `1px solid ${mode.border}` }} />
-              </div>
+              <span
+                style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  letterSpacing: '0.08em',
+                  color: activePalette === index ? mode.text : mode.textSecondary,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {palette.name} {activePalette === index ? '◆' : ''}
+              </span>
             </button>
           ))}
         </div>
