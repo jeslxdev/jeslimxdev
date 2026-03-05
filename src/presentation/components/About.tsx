@@ -192,7 +192,7 @@ export const About = () => {
                 <StatLbl>{t('about.stats.years')}</StatLbl>
               </Stat>
               <Stat>
-                <StatNum>50+</StatNum>
+                <StatNum>10+</StatNum>
                 <StatLbl>{t('about.stats.projects')}</StatLbl>
               </Stat>
               <Stat>

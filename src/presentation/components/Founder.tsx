@@ -212,8 +212,8 @@ export const Founder = () => {
               software that works at scale and stands up in production.
             </Bio>
             <Bio>
-              Has led full-cycle deliveries for clients in Portugal, Spain, and Brazil, working across backend, frontend,
-              and infrastructure. Core background in PHP, Java, and Python with growing focus on AI-augmented systems and
+              Has led full-cycle deliveries for clients in Portugal, Brussels, Spain, and Brazil, working across backend,
+              frontend, and infrastructure. Core background in PHP, Java, and Python with growing focus on AI-augmented systems and
               modern cloud architectures.
             </Bio>
 
